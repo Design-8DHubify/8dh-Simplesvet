@@ -137,28 +137,13 @@
         a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
 
         /* ==========================================
-           3. TIPOGRAFIA FLUIDA
+           3. TIPOGRAFIA FLUIDA E EFEITOS
            ========================================== */
-        .sv-h1 {
-            font-family: var(--font-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
-            font-size: clamp(2.5rem, 5vw, 4rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm);
-        }
-        .sv-h2 {
-            font-family: var(--font-primary); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em;
-            font-size: clamp(2rem, 4vw, 2.75rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm);
-        }
-        .sv-h3 {
-            font-family: var(--font-primary); font-weight: 600; line-height: 1.3;
-            font-size: clamp(1.35rem, 3vw, 1.85rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-xs);
-        }
-        .sv-h4 {
-            font-family: var(--font-primary); font-weight: 600; line-height: 1.4;
-            font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--sv-gray-400);
-        }
-        .sv-p {
-            font-weight: 300; line-height: 1.8;
-            font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--sv-gray-300); margin-bottom: var(--spacing-sm);
-        }
+        .sv-h1 { font-family: var(--font-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
+        .sv-h2 { font-family: var(--font-primary); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; font-size: clamp(2rem, 4vw, 2.75rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
+        .sv-h3 { font-family: var(--font-primary); font-weight: 600; line-height: 1.3; font-size: clamp(1.35rem, 3vw, 1.85rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-xs); }
+        .sv-h4 { font-family: var(--font-primary); font-weight: 600; line-height: 1.4; font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--sv-gray-400); }
+        .sv-p { font-weight: 300; line-height: 1.8; font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--sv-gray-300); margin-bottom: var(--spacing-sm); }
         .sv-p.lead { font-weight: 400; font-size: clamp(1.125rem, 2vw, 1.35rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-md); }
         .sv-small { font-weight: 400; line-height: 1.5; font-size: 0.875rem; color: var(--sv-gray-200); }
 
@@ -168,6 +153,49 @@
         .text-center { text-align: center; }
         .font-bold { font-weight: 700; }
         .my-2 { margin-top: 1rem; margin-bottom: 1rem; }
+
+        /* --- NOVOS EFEITOS DE BLUR E ANIMAÇÃO --- */
+        .text-gradient {
+            background-image: linear-gradient(to bottom, var(--sv-gray-600), var(--sv-gray-400), var(--sv-gray-300));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes appearZoom {
+            0% { opacity: 0; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .anim-appear { animation: appear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
+        .anim-appear-zoom { animation: appearZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
+        .anim-delay-150 { animation-delay: 150ms; }
+        .anim-delay-300 { animation-delay: 300ms; }
+        .anim-delay-700 { animation-delay: 700ms; }
+        .anim-delay-1000 { animation-delay: 1000ms; }
+
+        /* Glow Background Effect */
+        .glow-bg {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none; z-index: 0;
+        }
+        .glow-blob-1 {
+            position: absolute; left: 50%; top: -128px; height: 256px; width: 60%; 
+            transform: translateX(-50%) scale(2.5); border-radius: 50%; 
+            background: radial-gradient(ellipse at center, rgba(103, 176, 230, 0.3) 10%, transparent 60%); 
+        }
+        .glow-blob-2 {
+            position: absolute; left: 50%; top: -128px; height: 128px; width: 40%; 
+            transform: translateX(-50%) scale(2); border-radius: 50%; 
+            background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.25) 10%, transparent 60%); 
+        }
+        @media (min-width: 640px) { 
+            .glow-blob-1 { height: 512px; } 
+            .glow-blob-2 { height: 256px; } 
+        }
 
         /* ==========================================
            4. COMPONENTES DE BOTÕES E INPUTS
@@ -196,7 +224,7 @@
         .sv-btn-outline { background: transparent; color: var(--sv-blue-brand) !important; border-color: var(--sv-blue-brand); }
         .sv-btn-outline:hover { background: var(--sv-blue-brand); color: var(--sv-white) !important; border-color: var(--sv-blue-brand); transform: translateY(-2px); }
 
-        /* Botão Branco (Para secções escuras/Hero) */
+        /* Botão Branco */
         .sv-btn-white { background: var(--sv-white); color: var(--sv-blue-brand) !important; border-color: var(--sv-white); box-shadow: var(--shadow-medium); }
         .sv-btn-white:hover { background: var(--sv-gray-10); border-color: var(--sv-gray-10); transform: translateY(-2px); box-shadow: var(--shadow-hard); color: var(--sv-blue-brand) !important; }
         
@@ -209,15 +237,13 @@
         .sv-card { background: var(--sv-white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-20); box-shadow: var(--shadow-soft); transition: all var(--transition-medium); height: 100%; }
         .sv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); border-color: var(--sv-gray-30); }
 
-        /* Estilos dos Modais (Preview) */
+        /* Estilos dos Modais */
         .sv-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(80, 88, 92, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
         .sv-modal-overlay.active { opacity: 1; visibility: visible; }
         .sv-modal { background: var(--sv-white); border-radius: var(--radius-lg); width: 90%; max-width: 600px; position: relative; transform: translateY(20px) scale(0.95); transition: all var(--transition-medium); box-shadow: var(--shadow-brutal); overflow: hidden; }
         .sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
         .sv-modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--sv-gray-10); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sv-gray-400); transition: all var(--transition-fast); z-index: 10; }
         .sv-modal-close:hover { background: var(--sv-gray-30); color: var(--sv-red-danger); }
-
-        /* Preview Inline de Modais no Editor */
         .editor-modal-preview { position: relative !important; opacity: 1 !important; visibility: visible !important; min-height: 400px; background: rgba(80, 88, 92, 0.1) !important; border-radius: var(--radius-lg); margin-top: 1rem; z-index: 1 !important; padding: 2rem 1rem; }
         .editor-modal-preview .sv-modal { transform: translateY(0) scale(1) !important; margin: 0 auto; }
 
@@ -267,6 +293,9 @@
         .py-lg { padding: 6rem 0; } .py-xl { padding: 10rem 0; }
 
         .bg-primary { background-color: var(--sv-blue-brand); } .bg-white { background-color: var(--sv-white); }
+
+        /* Layout e Especiais de Alinhamento para Mobile */
+        .text-left-desktop { text-align: left; }
 
         /* ==========================================
            6. DESIGN SYSTEM DASHBOARD (APP UI)
@@ -353,13 +382,6 @@
         .mobile-toggle { display: none; position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; background: var(--sv-blue-brand); color: white; border: none; padding: 12px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-medium); transition: transform 0.2s; }
         .mobile-toggle:active { transform: scale(0.9); }
 
-        /* Efeitos LP Original */
-        .hero-gradient { background: linear-gradient(135deg, #007AB0 0%, #0F3D60 100%); }
-        .shape-blob { position: absolute; filter: blur(120px); opacity: 0.4; z-index: 0; border-radius: 50%; }
-
-        @keyframes floatMockup { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        .anim-float { animation: floatMockup 6s ease-in-out infinite; }
-
         .stats-item { padding: 1rem; }
         .stats-divider { border-left: 1px solid var(--sv-gray-30); border-right: 1px solid var(--sv-gray-30); }
 
@@ -384,6 +406,11 @@
             .grid-2, .grid-3, .grid-4, .bento-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .col-span-8, .col-span-4, .col-span-6, .col-span-12 { grid-column: span 1; }
             
+            /* Utilitário para inverter a grelha no mobile (Mockup Hero/Thank You) */
+            .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 2.5rem; }
+            .text-left-desktop { text-align: center !important; padding-right: 0 !important; }
+            .text-left-desktop .flex { justify-content: center; }
+
             .editor-panel { padding: 3rem 1.5rem 2rem 1.5rem; }
             .editor-badge { left: 1rem; }
             .editor-actions { flex-direction: column; align-items: stretch; }
@@ -436,8 +463,7 @@
                 <div class="ds-menu-item" onclick="navigate('emails')"><i data-lucide="mail"></i> E-mail Marketing</div>
                 
                 <div class="sv-small mt-5 mb-2" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Páginas (Preview)</div>
-                <div class="ds-menu-item" onclick="navigate('landing')"><i data-lucide="monitor-play"></i> LP (Curta)</div>
-                <div class="ds-menu-item" onclick="navigate('landing-long')"><i data-lucide="scroll-text"></i> LP (Longa / Form)</div>
+                <div class="ds-menu-item" onclick="navigate('landing-long')"><i data-lucide="monitor-play"></i> Landing Page</div>
                 <div class="ds-menu-item" onclick="navigate('thank-you')"><i data-lucide="check-circle"></i> Página de Sucesso</div>
             </nav>
         </aside>
@@ -627,17 +653,17 @@ strong, b { font-weight: 600 !important; }
 }
 
 /* VARIAÇÕES DE BOTÕES */
-.sv-btn-primary { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; }
-.sv-btn-primary:hover { background-color: #134C77 !important; border-color: #134C77 !important; color: #FFFFFF !important; }
+.sv-btn-primary { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important; }
+.sv-btn-primary:hover { background-color: #134C77 !important; border-color: #134C77 !important; color: #FFFFFF !important; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08) !important; transform: translateY(-2px) !important; }
 
 .sv-btn-secondary { background-color: #FFFFFF !important; color: #008ECE !important; border-color: #D7DEE4 !important; }
-.sv-btn-secondary:hover { border-color: #008ECE !important; background-color: #F8F9FA !important; color: #008ECE !important; }
+.sv-btn-secondary:hover { border-color: #008ECE !important; background-color: #F8F9FA !important; color: #008ECE !important; transform: translateY(-2px) !important; }
 
 .sv-btn-outline { background-color: transparent !important; color: #008ECE !important; border-color: #008ECE !important; }
-.sv-btn-outline:hover { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; }
+.sv-btn-outline:hover { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; transform: translateY(-2px) !important; }
 
 .sv-btn-white { background-color: #FFFFFF !important; color: #008ECE !important; border-color: #FFFFFF !important; box-shadow: 0 12px 32px rgba(0,0,0,0.06) !important; }
-.sv-btn-white:hover { background-color: #F8F9FA !important; border-color: #F8F9FA !important; color: #008ECE !important; }
+.sv-btn-white:hover { background-color: #F8F9FA !important; border-color: #F8F9FA !important; color: #008ECE !important; box-shadow: 4px 4px 0 rgba(0, 142, 206, 0.2) !important; transform: translateY(-2px) !important; }
 
 /* MOBILE FIRST (Até 639px) */
 h1, h1 * { font-size: 35px !important; line-height: 1.15 !important; margin-bottom: 16px !important; font-weight: 700 !important; }
@@ -679,6 +705,31 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
 .sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
 .sv-modal-close { position: absolute; top: 16px; right: 16px; background: #F2F3F4; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #50585C; transition: all 0.2s ease; z-index: 10; }
 .sv-modal-close:hover { background: #D7DEE4; color: #D71D2D; }
+
+/* EFEITOS BLUR DE FUNDO (HERO) */
+.text-gradient {
+    background-image: linear-gradient(to bottom, #222222, #50585C, #5D6C75) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+}
+
+@keyframes appearZoom {
+    0% { opacity: 0; transform: scale(0.96); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.glow-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.glow-blob-1 { position: absolute; left: 50%; top: -128px; height: 256px; width: 60%; transform: translateX(-50%) scale(2.5); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(103, 176, 230, 0.3) 10%, transparent 60%); }
+.glow-blob-2 { position: absolute; left: 50%; top: -128px; height: 128px; width: 40%; transform: translateX(-50%) scale(2); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.25) 10%, transparent 60%); }
+@media (min-width: 640px) { .glow-blob-1 { height: 512px; } .glow-blob-2 { height: 256px; } }
+.anim-appear-zoom { animation: appearZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+/* LAYOUT MOBILE HELPER */
+@media (max-width: 768px) {
+    .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 2.5rem; }
+    .text-left-desktop { text-align: center !important; }
+    .text-left-desktop .flex { justify-content: center; }
+}
 </code></pre>
                     </div>
                 </div>
@@ -728,30 +779,13 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 </div>
             </section>
 
-            <!-- 7. EDITOR VISUAL NO-CODE (COM REMOÇÃO, LINKS E ADIÇÃO) -->
+            <!-- 7. EDITOR VISUAL NO-CODE -->
             <section id="templates" class="ds-section">
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">Editor de Secções (No-Code)</h1>
                     <p class="sv-p lead">Apenas clique no texto para editar o conteúdo. <b>Pode adicionar, reorganizar ou remover os blocos livremente.</b> Quando estiver perfeito, clique em <b>"Exportar HTML Limpo"</b> para copiar o código perfeitamente higienizado para o RD Station.</p>
 
-                    <!-- A: Hero Section -->
-                    <div class="editor-panel mt-4">
-                        <div class="editor-badge">EDITAR: SECÇÃO HERO (TOPO)</div>
-                        <div class="py-lg text-center bg-primary" id="editable-hero" style="border-radius: var(--radius-lg); position: relative; margin-top: 1rem;">
-                            <div class="container-sm">
-                                <h1 class="sv-h1 text-white" contenteditable="true" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">Título Principal de Impacto</h1>
-                                <p class="sv-p text-white" contenteditable="true" style="font-size: 1.2rem; opacity:0.9;">Subtítulo descritivo com a proposta de valor. Teste gratuitamente.</p>
-                                <div class="mt-4">
-                                    <a href="#" class="sv-btn sv-btn-white" contenteditable="true">Botão de Ação Principal</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="editor-actions">
-                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-hero', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML Limpo</button>
-                        </div>
-                    </div>
-
-                    <!-- B: Tabela de Preços -->
+                    <!-- A: Tabela de Preços -->
                     <div class="editor-panel mt-4">
                         <div class="editor-badge">EDITAR: PLANOS DE PREÇOS (EM R$)</div>
                         <div class="grid grid-3 mt-2" id="editable-pricing">
@@ -779,7 +813,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         </div>
                     </div>
 
-                    <!-- C: Bento Grid Editável -->
+                    <!-- B: Bento Grid Editável -->
                     <div class="editor-panel mt-4">
                         <div class="editor-badge">EDITAR E REORGANIZAR: BENTO GRID</div>
                         <div class="bento-grid mt-2" id="editable-bento">
@@ -822,7 +856,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         </div>
                     </div>
 
-                    <!-- D: Swiper Carrossel Editável -->
+                    <!-- C: Swiper Carrossel Editável -->
                     <div class="editor-panel mt-4">
                         <div class="editor-badge">EDITAR: CARROSSEL (DEPOIMENTOS)</div>
                         <p class="sv-small mb-4 mt-2">O movimento automático do carrossel será ativado na Landing Page final (exportada).</p>
@@ -855,7 +889,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         </div>
                     </div>
 
-                    <!-- E: Accordion Editável -->
+                    <!-- D: Accordion Editável -->
                     <div class="editor-panel mt-4">
                         <div class="editor-badge">EDITAR: ACORDEÃO (FAQ)</div>
                         <div class="accordion-wrapper mt-2" id="editable-accordion">
@@ -1036,143 +1070,49 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
             </section>
 
             <!-- ==========================================
-                 LANDING PAGE (OPÇÃO 1 - GERAL - CURTA)
-                 ========================================== -->
-            <section id="landing" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
-                
-                <!-- Hero -->
-                <div class="py-xl hero-gradient" style="position: relative; overflow: hidden;">
-                    <div class="shape-blob" style="width: 700px; height: 700px; background: var(--sv-turq-brand); top: -300px; right: -150px;"></div>
-                    <div class="shape-blob" style="width: 500px; height: 500px; background: var(--sv-primary); bottom: -200px; left: -150px; opacity: 0.6;"></div>
-
-                    <div class="container" style="position: relative; z-index: 10;">
-                        <div class="grid grid-2 items-center gap-4">
-                            <div data-aos="fade-right">
-                                <div style="display:inline-flex; align-items:center; gap: 8px; padding: 10px 24px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-pill); color: white; margin-bottom: 2rem; font-weight: 500; backdrop-filter: blur(10px);">
-                                    <i data-lucide="star" style="width: 18px; fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand);"></i> O Software Nº1 do Mercado Pet
-                                </div>
-                                <h1 class="sv-h1 text-white" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.1;">
-                                    A gestão da sua clínica <span style="color: var(--sv-turq-brand);">nunca foi tão simples.</span>
-                                </h1>
-                                <p class="sv-p text-white mt-4" style="font-size: clamp(1.1rem, 2vw, 1.25rem); opacity: 0.9;">
-                                    Aumente a rentabilidade e liberte o seu tempo para cuidar do que realmente importa: os animais. 
-                                </p>
-                            </div>
-                            
-                            <!-- Formulário Floating -->
-                            <div class="sv-card" data-aos="fade-left" data-aos-delay="100" style="box-shadow: var(--shadow-brutal); border: none; padding: 3.5rem; border-top: 8px solid var(--sv-turq-brand);">
-                                <h3 class="sv-h3 text-center mb-1">Comece o seu teste grátis</h3>
-                                <p class="sv-small text-center mb-4">7 dias de acesso total. Sem cartão de crédito.</p>
-                                
-                                <form id="demoForm" class="flex flex-col">
-                                    <input type="text" name="name" placeholder="O seu nome completo" class="sv-input" required>
-                                    <input type="email" name="email" placeholder="O seu e-mail profissional" class="sv-input" required>
-                                    <input type="tel" name="phone" placeholder="Telemóvel (WhatsApp)" class="sv-input" required>
-                                    <select class="sv-input" required>
-                                        <option value="" disabled selected>Qual é a sua função?</option>
-                                        <option>Gestor / Proprietário</option>
-                                        <option>Médico Veterinário</option>
-                                        <option>Rececionista</option>
-                                    </select>
-                                    <button type="submit" class="sv-btn sv-btn-primary mt-2 w-100" style="font-size: 1.1rem; padding: 20px;">Criar a minha conta agora</button>
-                                    <p class="sv-small text-center mt-4 flex items-center justify-center gap-1" style="opacity: 0.8;">
-                                        <i data-lucide="lock" style="width: 14px;"></i> Os seus dados estão totalmente seguros.
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Benefícios Bento Grid -->
-                <div class="py-lg" style="background: var(--sv-bg);">
-                    <div class="container">
-                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Tudo integrado no mesmo ecossistema</h2>
-                        <div class="bento-grid mt-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="sv-bento-card col-span-8">
-                                <div>
-                                    <div style="background: var(--sv-blue-100); width: 70px; height: 70px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
-                                        <i data-lucide="file-text" style="color: var(--sv-primary); width: 36px; height: 36px;"></i>
-                                    </div>
-                                    <h3 class="sv-h3">Módulo Fiscal Automático</h3>
-                                    <p class="sv-p">Emita faturas e recibos diretamente no sistema, ganhando tempo para si e para os seus clientes, sem stress com as Finanças.</p>
-                                </div>
-                            </div>
-                            <div class="sv-bento-card col-span-4 sv-bento-highlight" style="--bento-bg: var(--sv-purple-brand); --bento-border: var(--sv-purple-brand);">
-                                <div>
-                                    <i data-lucide="message-circle" style="color: white; width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
-                                    <h3 class="sv-h3 text-white">WhatsApp Nativo</h3>
-                                    <p class="sv-p" style="color: rgba(255,255,255,0.9);">Programe e envie lembretes de consultas e vacinas automaticamente.</p>
-                                </div>
-                            </div>
-                            <div class="sv-bento-card col-span-4 sv-bento-highlight" style="--bento-bg: var(--sv-turq-brand); --bento-border: var(--sv-turq-brand);">
-                                <div>
-                                    <i data-lucide="smartphone" style="color: white; width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
-                                    <h3 class="sv-h3 text-white">Acesso 100% Cloud</h3>
-                                    <p class="sv-p" style="color: rgba(255,255,255,0.9);">Faça a gestão da clínica do telemóvel, tablet ou computador em qualquer lugar.</p>
-                                </div>
-                            </div>
-                            <div class="sv-bento-card col-span-8">
-                                <div>
-                                    <div style="background: rgba(33, 163, 68, 0.15); width: 70px; height: 70px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
-                                        <i data-lucide="package" style="color: var(--sv-green-success); width: 36px; height: 36px;"></i>
-                                    </div>
-                                    <h3 class="sv-h3">Controlo de Stock Inteligente</h3>
-                                    <p class="sv-p">O único sistema que o alerta sobre validades e lhe diz exatamente a quantidade que precisa comprar para evitar prejuízos na sua clínica.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA Final -->
-                <div class="py-lg bg-primary text-center">
-                    <div class="container" data-aos="fade-up">
-                        <h2 class="sv-h2 text-white">Preparado para simplificar a sua gestão?</h2>
-                        <p class="sv-p text-white mt-2 mb-4">Teste o software que está a revolucionar o mercado veterinário.</p>
-                        <button class="sv-btn sv-btn-secondary" style="color: var(--sv-primary);" onclick="window.scrollTo(0,0)">
-                            Começar Teste Grátis
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==========================================
-                 LANDING PAGE (OPÇÃO 1 - GERAL - LONGA)
+                 LANDING PAGE (PRINCIPAL - ALTA CONVERSÃO)
                  ========================================== -->
             <section id="landing-long" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
                 
-                <!-- Dobra 1: Hero Imersivo + Mockup -->
-                <div class="py-xl" style="background: var(--sv-gray-700); position: relative; overflow: hidden; border-bottom: 1px solid var(--sv-gray-600);">
+                <!-- Dobra 1: Hero Imersivo + Mockup Lado-a-Lado com Glow Tech -->
+                <div class="py-xl" style="background: var(--sv-white); position: relative; overflow: hidden; border-bottom: 1px solid var(--sv-gray-30);">
+                    
+                    <!-- Glow Blur Radial Effect -->
                     <div class="glow-bg anim-appear-zoom anim-delay-1000">
-                        <div class="glow-blob-1" style="background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.2) 10%, transparent 60%); top: -50px;"></div>
+                        <div class="glow-blob-1"></div>
+                        <div class="glow-blob-2"></div>
                     </div>
 
-                    <div class="container text-center relative z-10" style="padding-top: 2rem;">
-                        <div data-aos="fade-up">
-                            <div style="display:inline-flex; align-items:center; gap: 8px; padding: 8px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill); color: white; margin-bottom: 1.5rem; font-weight: 500;">
-                                <span style="background: var(--sv-turq-brand); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span> Nova Versão 10.0 Disponível
+                    <div class="container relative z-10" style="padding-top: 2rem;">
+                        <div class="grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                            
+                            <!-- Esquerda: Texto e CTA -->
+                            <div class="anim-appear" style="padding-right: 1rem;">
+                                <div style="display:inline-flex; align-items:center; gap: 8px; padding: 8px 20px; background: rgba(0, 142, 206, 0.05); border: 1px solid rgba(0, 142, 206, 0.15); border-radius: var(--radius-pill); color: var(--sv-blue-brand); margin-bottom: 1.5rem; font-weight: 600; font-size: 0.85rem;">
+                                    <span style="background: var(--sv-blue-brand); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span> Nova Versão 10.0 Disponível
+                                </div>
+                                <h1 class="sv-h1 text-gradient" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem;">
+                                    A gestão veterinária do futuro, <br><span style="color: var(--sv-blue-brand); -webkit-text-fill-color: var(--sv-blue-brand);">disponível hoje.</span>
+                                </h1>
+                                <p class="sv-p anim-appear anim-delay-150" style="font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--sv-gray-300); margin-bottom: 2.5rem;">
+                                    Simplifique agendamentos, automatize a contabilidade e encante os seus clientes com uma plataforma tudo-em-um.
+                                </p>
+                                <div class="flex flex-wrap gap-4 anim-appear anim-delay-300">
+                                    <button class="sv-btn sv-btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 10px 30px rgba(0,142,206,0.2);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Começar Teste de 7 Dias</button>
+                                    <button class="sv-btn sv-btn-outline" style="padding: 18px 40px;"><i data-lucide="play-circle" style="width: 20px;"></i> Ver Vídeo</button>
+                                </div>
                             </div>
-                            <h1 class="sv-h1 text-white" style="font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.05; max-width: 900px; margin: 0 auto 1rem auto;">
-                                A gestão veterinária do futuro, <span style="color: var(--sv-blue-brand);">disponível hoje.</span>
-                            </h1>
-                            <p class="sv-p text-white" style="font-size: clamp(1.1rem, 2vw, 1.35rem); opacity: 0.8; max-width: 650px; margin: 0 auto 2.5rem auto;">
-                                Simplifique agendamentos, automatize a contabilidade e encante os seus clientes com uma plataforma tudo-em-um.
-                            </p>
-                            <div class="flex flex-wrap justify-center gap-4">
-                                <button class="sv-btn sv-btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 10px 30px rgba(0,142,206,0.3);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Começar Teste de 7 Dias</button>
-                                <button class="sv-btn sv-btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); padding: 18px 40px;"><i data-lucide="play-circle" style="width: 20px;"></i> Ver Vídeo</button>
-                            </div>
-                        </div>
 
-                        <!-- Mockup de Interface Oficial -->
-                        <div class="mt-4 pt-4 anim-float" data-aos="fade-up" data-aos-delay="200" style="margin-top: 3rem;">
-                            <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Dashboard Mockup" style="max-width: 900px; width: 100%; margin: 0 auto; display: block; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));">
+                            <!-- Direita: Mockup de Interface -->
+                            <div class="anim-appear anim-delay-700" style="position: relative;">
+                                <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Dashboard Mockup" style="max-width: 100%; height: auto; display: block; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.15)); transform: scale(1.05);">
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Dobra 2: Formulário de Conversão (Inserido conforme solicitado) -->
+                <!-- Dobra 2: Formulário de Conversão -->
                 <div class="py-lg" id="form-dobra-2" style="background: var(--sv-gray-10); border-bottom: 1px solid var(--sv-gray-30);">
                     <div class="container grid grid-2 items-center gap-4">
                         <div data-aos="fade-right">
@@ -1208,7 +1148,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                     <div class="container text-center">
                         <p class="sv-small font-bold" style="color: var(--sv-gray-200); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">A escolha nº1 de mais de 8.200 clínicas e hospitais veterinários</p>
                         <div class="flex flex-wrap justify-center items-center gap-4" style="opacity: 0.5;">
-                            <!-- Placeholders para Logos (Pode substituir por imagens reais) -->
+                            <!-- Placeholders para Logos -->
                             <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">VETCLINIC</div>
                             <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">PET&CO</div>
                             <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">HOSPITAL PET</div>
@@ -1242,8 +1182,13 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
 
                 <!-- Dobra 5: Ziguezague - Feature 2 (Invertido) -->
                 <div class="py-lg" style="background: var(--sv-gray-10);">
-                    <div class="container grid grid-2 items-center gap-4">
-                        <div data-aos="fade-right" style="order: 2;">
+                    <div class="container grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                        <div data-aos="fade-right">
+                            <div style="background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
+                                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" alt="Gestão de Stock" style="border-radius: var(--radius-sm); width: 100%;">
+                            </div>
+                        </div>
+                        <div data-aos="fade-left">
                             <div style="background: rgba(51, 163, 68, 0.15); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
                                 <i data-lucide="package" style="color: var(--sv-green-success); width: 30px; height: 30px;"></i>
                             </div>
@@ -1255,16 +1200,43 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Gestão de múltiplos armazéns.</li>
                             </ul>
                         </div>
-                        <div data-aos="fade-left" style="order: 1;">
-                            <div style="background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
-                                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" alt="Gestão de Stock" style="border-radius: var(--radius-sm); width: 100%;">
+                    </div>
+                </div>
+
+                <!-- Dobra 6: Bento Grid -->
+                <div class="py-lg" style="background: var(--sv-white);">
+                    <div class="container">
+                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Muito mais do que um sistema de gestão</h2>
+                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Todas as ferramentas que a sua equipa precisa num único local.</p>
+                        
+                        <div class="bento-grid mt-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="sv-bento-card col-span-4" style="padding: 2rem;">
+                                <div>
+                                    <i data-lucide="calendar" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
+                                    <h3 class="sv-h3">Agenda Dinâmica</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Múltiplos calendários, cores por tipo de consulta e vista de equipa intuitiva.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-4" style="padding: 2rem;">
+                                <div>
+                                    <i data-lucide="message-circle" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
+                                    <h3 class="sv-h3">WhatsApp Integrado</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Envie confirmações e lembretes aos tutores de forma 100% automática.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-4" style="padding: 2rem;">
+                                <div>
+                                    <i data-lucide="heart-pulse" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
+                                    <h3 class="sv-h3">Prontuário Eletrónico</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Histórico clínico completo, anexos de exames e evolução de peso em gráficos.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Dobra 6: Depoimentos Swiper -->
-                <div class="py-lg bg-white">
+                <!-- Dobra 7: Depoimentos Swiper -->
+                <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container">
                         <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Histórias de clínicas como a sua</h2>
                         
@@ -1345,8 +1317,8 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                     </div>
                 </div>
 
-                <!-- Dobra 7: Planos de Preços -->
-                <div class="py-lg" style="background: var(--sv-gray-10);">
+                <!-- Dobra 8: Planos de Preços -->
+                <div class="py-lg" style="background: var(--sv-white);">
                     <div class="container">
                         <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Planos simples, sem surpresas</h2>
                         <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Escolha o plano que melhor se adapta à realidade do seu negócio.</p>
@@ -1398,8 +1370,8 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                     </div>
                 </div>
 
-                <!-- Dobra 8: FAQ (Accordion) -->
-                <div class="py-lg" style="background: var(--sv-white);">
+                <!-- Dobra 9: FAQ (Accordion) -->
+                <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container" style="max-width: 900px;">
                         <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Dúvidas Frequentes</h2>
                         <div class="accordion-wrapper" data-aos="fade-up" data-aos-delay="100">
@@ -1439,6 +1411,20 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- CTA Final -->
+                <div class="py-xl bg-primary text-center relative overflow-hidden" style="background: var(--sv-blue-brand);">
+                    <div class="container relative z-10" data-aos="fade-up">
+                        <h2 class="sv-h1 text-white mb-2">Pronto para dar o próximo passo?</h2>
+                        <p class="sv-p text-white mb-4" style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Junte-se a milhares de veterinários que já modernizaram as suas clínicas.</p>
+                        <div class="flex justify-center gap-4 flex-wrap">
+                            <button class="sv-btn sv-btn-white" style="font-size: 1.1rem; padding: 18px 40px;" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">
+                                Começar Teste Grátis
+                            </button>
+                        </div>
+                        <p class="sv-small text-white mt-4" style="opacity: 0.7;">Implementação e configuração incluídas.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- ==========================================
@@ -1447,27 +1433,39 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
             <section id="thank-you" class="ds-section" style="margin: -3rem; padding: 0;">
                 <div class="py-xl" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sv-white); position: relative; overflow: hidden;">
                     
-                    <div style="position:absolute; width: 100%; height: 100%; top:0; left:0; background-image: radial-gradient(var(--sv-blue-100) 2px, transparent 2px); background-size: 60px 60px; opacity: 0.15; z-index: 1;"></div>
+                    <!-- Glow Blur Radial Effect -->
+                    <div class="glow-bg anim-appear-zoom anim-delay-1000">
+                        <div class="glow-blob-1" style="background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.15) 10%, transparent 60%); top: 50%; transform: translate(-50%, -50%) scale(2.5);"></div>
+                        <div class="glow-blob-2" style="background: radial-gradient(ellipse at center, rgba(55, 151, 222, 0.2) 10%, transparent 60%); top: 50%; transform: translate(-50%, -50%) scale(2);"></div>
+                    </div>
 
-                    <div data-aos="zoom-in" style="position: relative; z-index: 10;">
-                        <div style="width: 180px; height: 180px; background: var(--sv-green-success); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin: 0 auto 3rem auto; box-shadow: 0 12px 48px rgba(51, 163, 68, 0.35);">
-                            <i data-lucide="check" style="color: white; width: 90px; height: 90px;"></i>
+                    <div class="container relative z-10">
+                        <div class="grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                            
+                            <!-- Esquerda: Texto e Ações -->
+                            <div class="anim-appear" style="padding-right: 1rem;">
+                                <div style="width: 80px; height: 80px; background: rgba(51, 163, 68, 0.1); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom: 2rem; box-shadow: 0 12px 32px rgba(51, 163, 68, 0.15);">
+                                    <i data-lucide="check" style="color: var(--sv-green-success); width: 40px; height: 40px;"></i>
+                                </div>
+                                
+                                <h1 class="sv-h1 text-gradient" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem;">Registo Concluído!</h1>
+                                
+                                <p class="sv-p anim-appear anim-delay-150" style="max-width: 600px; font-size: 1.25rem; margin-bottom: 2.5rem; color: var(--sv-gray-300);">
+                                    O seu ambiente SimplesVet já está a ser preparado. Enviámos um e-mail com as instruções de acesso ao sistema (verifique a sua pasta de Spam por precaução).
+                                </p>
+                                
+                                <div class="flex flex-wrap gap-4 anim-appear anim-delay-300">
+                                    <button class="sv-btn sv-btn-secondary" onclick="navigate('landing-long')"><i data-lucide="arrow-left"></i> Voltar ao início</button>
+                                    <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Explorar o Blog <i data-lucide="external-link" style="width: 18px;"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Direita: Imagem Estática -->
+                            <div class="anim-appear anim-delay-700">
+                                <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Interface" style="max-width: 100%; width: 100%; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.15)); display: block; margin: 0 auto;">
+                            </div>
+
                         </div>
-                    </div>
-                    
-                    <h1 class="sv-h1 text-center" data-aos="fade-up" data-aos-delay="100" style="position: relative; z-index: 10; font-size: clamp(3rem, 6vw, 5rem);">Registo Concluído!</h1>
-                    
-                    <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="200" style="max-width: 750px; position: relative; z-index: 10; font-size: 1.4rem;">
-                        O seu ambiente SimplesVet já está a ser preparado. Enviámos um e-mail com as instruções de acesso ao sistema (verifique a sua pasta de Spam por precaução).
-                    </p>
-                    
-                    <div class="anim-float" data-aos="fade-up" data-aos-delay="250" style="position: relative; z-index: 10; margin-top: 1rem; margin-bottom: 2rem;">
-                        <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Interface" style="max-width: 500px; width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); margin: 0 auto; display: block;">
-                    </div>
-                    
-                    <div data-aos="fade-up" data-aos-delay="300" style="position: relative; z-index: 10; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
-                        <button class="sv-btn sv-btn-secondary" onclick="navigate('landing')"><i data-lucide="arrow-left"></i> Voltar ao início</button>
-                        <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Explorar o Blog <i data-lucide="external-link" style="width: 18px;"></i></a>
                     </div>
                 </div>
             </section>
@@ -1930,23 +1928,6 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
         // ==========================================
         // 7. FORMULÁRIOS DE DEMONSTRAÇÃO
         // ==========================================
-        const demoForm = document.getElementById('demoForm');
-        if (demoForm) {
-            demoForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btnSubmit = demoForm.querySelector('button[type="submit"]');
-                const originalText = btnSubmit.innerText;
-                btnSubmit.innerText = 'A processar...';
-                btnSubmit.disabled = true;
-                await new Promise(r => setTimeout(r, 1500));
-                demoForm.reset();
-                btnSubmit.innerText = originalText;
-                btnSubmit.disabled = false;
-                document.querySelectorAll('.sv-modal-overlay').forEach(m => m.classList.remove('active'));
-                navigate('thank-you');
-            });
-        }
-
         const demoFormLong = document.getElementById('demoFormLong');
         if (demoFormLong) {
             demoFormLong.addEventListener('submit', async (e) => {
