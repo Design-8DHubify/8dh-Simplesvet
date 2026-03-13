@@ -139,9 +139,9 @@
         /* ==========================================
            3. TIPOGRAFIA FLUIDA E EFEITOS
            ========================================== */
-        .sv-h1 { font-family: var(--font-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
-        .sv-h2 { font-family: var(--font-primary); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; font-size: clamp(2rem, 4vw, 2.75rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
-        .sv-h3 { font-family: var(--font-primary); font-weight: 600; line-height: 1.3; font-size: clamp(1.35rem, 3vw, 1.85rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-xs); }
+        .sv-h1 { font-family: var(--font-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; font-size: clamp(2.2rem, 5vw, 4rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
+        .sv-h2 { font-family: var(--font-primary); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; font-size: clamp(1.8rem, 4vw, 2.75rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm); }
+        .sv-h3 { font-family: var(--font-primary); font-weight: 600; line-height: 1.3; font-size: clamp(1.25rem, 3vw, 1.85rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-xs); }
         .sv-h4 { font-family: var(--font-primary); font-weight: 600; line-height: 1.4; font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--sv-gray-400); }
         .sv-p { font-weight: 300; line-height: 1.8; font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--sv-gray-300); margin-bottom: var(--spacing-sm); }
         .sv-p.lead { font-weight: 400; font-size: clamp(1.125rem, 2vw, 1.35rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-md); }
@@ -154,7 +154,7 @@
         .font-bold { font-weight: 700; }
         .my-2 { margin-top: 1rem; margin-bottom: 1rem; }
 
-        /* --- NOVOS EFEITOS DE BLUR E ANIMAÇÃO --- */
+        /* --- EFEITOS BLUR E ANIMAÇÃO --- */
         .text-gradient {
             background-image: linear-gradient(to bottom, var(--sv-gray-600), var(--sv-gray-400), var(--sv-gray-300));
             -webkit-background-clip: text;
@@ -162,14 +162,8 @@
             color: transparent;
         }
 
-        @keyframes appear {
-            0% { opacity: 0; transform: translateY(16px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes appearZoom {
-            0% { opacity: 0; transform: scale(0.96); }
-            100% { opacity: 1; transform: scale(1); }
-        }
+        @keyframes appear { 0% { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes appearZoom { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
 
         .anim-appear { animation: appear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
         .anim-appear-zoom { animation: appearZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
@@ -179,23 +173,10 @@
         .anim-delay-1000 { animation-delay: 1000ms; }
 
         /* Glow Background Effect */
-        .glow-bg {
-            position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none; z-index: 0;
-        }
-        .glow-blob-1 {
-            position: absolute; left: 50%; top: -128px; height: 256px; width: 60%; 
-            transform: translateX(-50%) scale(2.5); border-radius: 50%; 
-            background: radial-gradient(ellipse at center, rgba(103, 176, 230, 0.3) 10%, transparent 60%); 
-        }
-        .glow-blob-2 {
-            position: absolute; left: 50%; top: -128px; height: 128px; width: 40%; 
-            transform: translateX(-50%) scale(2); border-radius: 50%; 
-            background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.25) 10%, transparent 60%); 
-        }
-        @media (min-width: 640px) { 
-            .glow-blob-1 { height: 512px; } 
-            .glow-blob-2 { height: 256px; } 
-        }
+        .glow-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .glow-blob-1 { position: absolute; left: 50%; top: -128px; height: 256px; width: 60%; transform: translateX(-50%) scale(2.5); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(103, 176, 230, 0.3) 10%, transparent 60%); }
+        .glow-blob-2 { position: absolute; left: 50%; top: -128px; height: 128px; width: 40%; transform: translateX(-50%) scale(2); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.25) 10%, transparent 60%); }
+        @media (min-width: 640px) { .glow-blob-1 { height: 512px; } .glow-blob-2 { height: 256px; } }
 
         /* ==========================================
            4. COMPONENTES DE BOTÕES E INPUTS
@@ -237,15 +218,20 @@
         .sv-card { background: var(--sv-white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-20); box-shadow: var(--shadow-soft); transition: all var(--transition-medium); height: 100%; }
         .sv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); border-color: var(--sv-gray-30); }
 
-        /* Estilos dos Modais */
-        .sv-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(80, 88, 92, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
+        /* Pricing Card Highlight (Responsivo) */
+        .sv-pricing-highlight { border: 2px solid var(--sv-blue-brand); box-shadow: var(--shadow-medium); position: relative; z-index: 10; }
+        @media (min-width: 1025px) { .sv-pricing-highlight { transform: scale(1.04); } }
+
+        /* Modais */
+        .sv-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(80, 88, 92, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all var(--transition-medium); padding: 1rem; }
         .sv-modal-overlay.active { opacity: 1; visibility: visible; }
-        .sv-modal { background: var(--sv-white); border-radius: var(--radius-lg); width: 90%; max-width: 600px; position: relative; transform: translateY(20px) scale(0.95); transition: all var(--transition-medium); box-shadow: var(--shadow-brutal); overflow: hidden; }
+        .sv-modal { background: var(--sv-white); border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 95vh; overflow-y: auto; position: relative; transform: translateY(20px) scale(0.95); transition: all var(--transition-medium); box-shadow: var(--shadow-brutal); }
         .sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
         .sv-modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--sv-gray-10); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sv-gray-400); transition: all var(--transition-fast); z-index: 10; }
         .sv-modal-close:hover { background: var(--sv-gray-30); color: var(--sv-red-danger); }
+        
         .editor-modal-preview { position: relative !important; opacity: 1 !important; visibility: visible !important; min-height: 400px; background: rgba(80, 88, 92, 0.1) !important; border-radius: var(--radius-lg); margin-top: 1rem; z-index: 1 !important; padding: 2rem 1rem; }
-        .editor-modal-preview .sv-modal { transform: translateY(0) scale(1) !important; margin: 0 auto; }
+        .editor-modal-preview .sv-modal { transform: translateY(0) scale(1) !important; margin: 0 auto; overflow: visible; }
 
         .sv-bento-card { position: relative; background: var(--sv-white); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-20); box-shadow: var(--shadow-soft); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all var(--transition-medium); height: 100%; --bento-text: var(--sv-gray-300); --bento-title: var(--sv-gray-400); --bento-icon: var(--sv-blue-brand); --bento-bg: var(--sv-white); --bento-border: var(--sv-gray-20); background-color: var(--bento-bg); border-color: var(--bento-border); }
         .sv-bento-card.sv-bento-highlight { --bento-text: rgba(255, 255, 255, 0.9); --bento-title: var(--sv-white); --bento-icon: var(--sv-white); --bento-bg: var(--sv-blue-brand); --bento-border: var(--sv-blue-brand); box-shadow: var(--shadow-hard); }
@@ -279,7 +265,7 @@
         
         .grid { display: grid; gap: 2.5rem; }
         .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
         
         .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2.5rem; grid-auto-rows: minmax(260px, auto); }
@@ -294,19 +280,19 @@
 
         .bg-primary { background-color: var(--sv-blue-brand); } .bg-white { background-color: var(--sv-white); }
 
-        /* Layout e Especiais de Alinhamento para Mobile */
         .text-left-desktop { text-align: left; }
 
         /* ==========================================
-           6. DESIGN SYSTEM DASHBOARD (APP UI)
+           6. DESIGN SYSTEM DASHBOARD (APP UI E MENUS)
            ========================================== */
-        .ds-layout { display: flex; min-height: 100vh; }
+        .ds-layout { display: flex; min-height: 100vh; position: relative; }
         
         .ds-sidebar { 
             width: 320px; background: var(--sv-white); border-right: 1px solid var(--sv-gray-30); 
             position: fixed; height: 100vh; overflow-y: auto; padding: 3rem 1.5rem; z-index: 100; 
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 4px 0 30px rgba(0,0,0,0.02);
+            left: 0;
         }
         
         .ds-sidebar-logo { margin-bottom: 3.5rem; padding-left: 12px; }
@@ -321,12 +307,27 @@
         .ds-menu-item.active { background: rgba(0, 142, 206, 0.08); color: var(--sv-blue-brand); font-weight: 600; }
         .ds-menu-item.active i { opacity: 1; }
 
-        .ds-content { flex: 1; margin-left: 320px; background: #F9FAFB; min-height: 100vh; }
+        .ds-content { flex: 1; margin-left: 320px; background: #F9FAFB; min-height: 100vh; width: calc(100% - 320px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         
         .ds-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 5rem; }
         .ds-section-inner { max-width: 1080px; margin: 0 auto; }
         .ds-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Lógica para Recolher o Menu na Pré-visualização Larga (Desktop) */
+        @media (min-width: 769px) {
+            body.sidebar-collapsed .ds-sidebar { transform: translateX(-100%); }
+            body.sidebar-collapsed .ds-content { margin-left: 0; width: 100%; }
+            body.sidebar-collapsed .menu-toggle { display: flex !important; }
+        }
+
+        /* Menu Universal Button (Hamburger/Float) */
+        .menu-toggle { display: none; position: fixed; top: 1.5rem; left: 1.5rem; z-index: 1001; background: var(--sv-blue-brand); color: white; border: none; padding: 12px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-medium); transition: transform 0.2s; align-items: center; justify-content: center;}
+        .menu-toggle:active { transform: scale(0.9); }
+        .menu-toggle:hover { background: var(--sv-blue-500); }
+
+        /* Overlay Escuro Mobile */
+        .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); z-index: 99; opacity: 0; transition: opacity 0.3s ease; }
 
         /* Estilos de Cópia UI */
         .color-swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--sv-gray-30); display: flex; flex-direction: column; transition: all 0.3s ease; cursor: pointer; }
@@ -368,22 +369,9 @@
         .editor-only-btn.danger { color: var(--sv-red-danger); border-color: rgba(215, 29, 45, 0.2); }
         .editor-only-btn.danger:hover { background: var(--sv-red-danger); color: white; border-color: var(--sv-red-danger); }
 
-        #editable-accordion .accordion-item, #editable-bento .sv-bento-card, #editable-swiper .swiper-slide > div, #editable-pricing .sv-card, #editable-modal-1 .sv-modal, #editable-modal-2 .sv-modal { position: relative; }
-
-        /* E-mails e Modais Editáveis */
-        .sv-email-wrapper { background: #F4F7F9; padding: 2rem; border-radius: var(--radius-md); font-family: Arial, Helvetica, sans-serif; }
-        .sv-email-body { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-
         /* Toast Feedback Universal */
         #feedback-toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--sv-green-success); color: white; padding: 1.25rem 2.5rem; border-radius: var(--radius-pill); font-weight: 600; box-shadow: var(--shadow-hard); transform: translateY(150px); opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 9999; display: flex; align-items: center; gap: 12px; font-size: 1.1rem; }
         #feedback-toast.show { transform: translateY(0); opacity: 1; }
-
-        /* Mobile Hamburger */
-        .mobile-toggle { display: none; position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; background: var(--sv-blue-brand); color: white; border: none; padding: 12px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-medium); transition: transform 0.2s; }
-        .mobile-toggle:active { transform: scale(0.9); }
-
-        .stats-item { padding: 1rem; }
-        .stats-divider { border-left: 1px solid var(--sv-gray-30); border-right: 1px solid var(--sv-gray-30); }
 
         /* ==========================================
            RESPONSIVIDADE METICULOSA (MEDIA QUERIES)
@@ -393,50 +381,63 @@
             .col-span-8, .col-span-4, .col-span-6 { grid-column: span 2; }
             .ds-section { padding: 3rem 2rem; }
             .ds-sidebar { width: 260px; }
-            .ds-content { margin-left: 260px; }
+            .ds-content { margin-left: 260px; width: calc(100% - 260px); }
         }
         
         @media (max-width: 768px) {
-            .ds-sidebar { transform: translateX(-100%); }
+            /* Mobile Sidebar Overlay mechanics */
+            .sidebar-overlay.active { display: block; opacity: 1; }
+            .ds-sidebar { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
             .ds-sidebar.open { transform: translateX(0); }
-            .ds-content { margin-left: 0; }
-            .ds-section { padding: 6rem 1.5rem 3rem 1.5rem; } 
-            .mobile-toggle { display: block; }
+            .ds-content { margin-left: 0 !important; width: 100% !important; }
+            .ds-section { padding: 5rem 1.5rem 3rem 1.5rem; } 
             
+            /* O Botão de Menu está sempre visível no Mobile */
+            .menu-toggle { display: flex !important; }
+            
+            /* Unified 1-column Grids for Mobile */
             .grid-2, .grid-3, .grid-4, .bento-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); } /* Manteve-se cores/ícones com 2 cols em mobile */
             .col-span-8, .col-span-4, .col-span-6, .col-span-12 { grid-column: span 1; }
             
-            /* Utilitário para inverter a grelha no mobile (Mockup Hero/Thank You) */
+            /* Utilitário Inversão Mobile (Mockup Hero) */
             .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 2.5rem; }
             .text-left-desktop { text-align: center !important; padding-right: 0 !important; }
             .text-left-desktop .flex { justify-content: center; }
 
+            /* Editor Panels */
             .editor-panel { padding: 3rem 1.5rem 2rem 1.5rem; }
             .editor-badge { left: 1rem; }
             .editor-actions { flex-direction: column; align-items: stretch; }
             .editor-actions-group { justify-content: center; width: 100%; }
-            .editor-actions .sv-btn, #demoForm .sv-btn, #demoFormLong .sv-btn { width: 100%; justify-content: center; }
+            .editor-actions .sv-btn, #demoFormLong .sv-btn { width: 100%; justify-content: center; margin-left:0; }
             
+            /* Padding Adjustments Meticulosos */
             .py-lg { padding: 4rem 0 !important; }
             .py-xl { padding: 5rem 0 !important; }
-            .sv-card, .sv-bento-card { padding: 2rem !important; }
+            .sv-card, .sv-bento-card { padding: 1.5rem !important; } /* Mais respiro interno */
             .accordion-header { padding: 1.25rem 1.5rem !important; }
             .accordion-content-inner { padding: 0 1.5rem 1.5rem 1.5rem !important; }
             
-            .stats-grid { grid-template-columns: 1fr !important; }
-            .stats-divider { border-left: none !important; border-right: none !important; border-top: 1px solid var(--sv-gray-30); border-bottom: 1px solid var(--sv-gray-30); padding: 2rem 0 !important; margin: 1rem 0 !important; }
-            
-            #feedback-toast { right: 1rem; left: 1rem; bottom: 1rem; justify-content: center; text-align: center; }
+            /* Toast Feedback Centralizado */
+            #feedback-toast { right: 1rem; left: 1rem; bottom: 1rem; justify-content: center; text-align: center; width: calc(100% - 2rem); box-sizing: border-box; }
+
+            /* Ajustes Modais Mobile */
+            .sv-modal { max-height: 90vh; overflow-y: auto; }
+            .editor-modal-preview .sv-modal { max-height: none; }
+            .sv-modal > div[style*="flex"] { flex-direction: column; }
+            .sv-modal > div[style*="flex"] > div { padding: 2rem !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Toast de Feedback Universal -->
+    <!-- Toast Universal e Overlay Mobile -->
     <div id="feedback-toast"><i data-lucide="check-circle" style="width: 24px; height: 24px;"></i> <span id="toast-message">Copiado com sucesso!</span></div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
-    <!-- Toggle Mobile -->
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu">
+    <!-- Botão Global de Navegação (Hamburger) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
         <i data-lucide="menu"></i>
     </button>
 
@@ -450,21 +451,21 @@
             </div>
             <nav>
                 <div class="sv-small mb-2 mt-4" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Fundação</div>
-                <div class="ds-menu-item active" onclick="navigate('colors')"><i data-lucide="palette"></i> Cores</div>
-                <div class="ds-menu-item" onclick="navigate('typography')"><i data-lucide="type"></i> Tipografia</div>
-                <div class="ds-menu-item" onclick="navigate('effects')"><i data-lucide="layers"></i> Efeitos & Sombras</div>
-                <div class="ds-menu-item" onclick="navigate('icons')"><i data-lucide="image"></i> Gerador de Ícones</div>
-                <div class="ds-menu-item" onclick="navigate('global-css')"><i data-lucide="file-code-2"></i> CSS Global (RD)</div>
+                <div class="ds-menu-item active" onclick="navigate('colors', this)"><i data-lucide="palette"></i> Cores</div>
+                <div class="ds-menu-item" onclick="navigate('typography', this)"><i data-lucide="type"></i> Tipografia</div>
+                <div class="ds-menu-item" onclick="navigate('effects', this)"><i data-lucide="layers"></i> Efeitos & Sombras</div>
+                <div class="ds-menu-item" onclick="navigate('icons', this)"><i data-lucide="image"></i> Gerador de Ícones</div>
+                <div class="ds-menu-item" onclick="navigate('global-css', this)"><i data-lucide="file-code-2"></i> CSS Global (RD)</div>
                 
                 <div class="sv-small mt-5 mb-2" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Design Builder</div>
-                <div class="ds-menu-item" onclick="navigate('components')"><i data-lucide="mouse-pointer-click"></i> Botões & Inputs</div>
-                <div class="ds-menu-item" onclick="navigate('templates')"><i data-lucide="layout-template"></i> Editor de Secções</div>
-                <div class="ds-menu-item" onclick="navigate('popups')"><i data-lucide="message-square-plus"></i> Pop-ups & Modais</div>
-                <div class="ds-menu-item" onclick="navigate('emails')"><i data-lucide="mail"></i> E-mail Marketing</div>
+                <div class="ds-menu-item" onclick="navigate('components', this)"><i data-lucide="mouse-pointer-click"></i> Botões & Inputs</div>
+                <div class="ds-menu-item" onclick="navigate('templates', this)"><i data-lucide="layout-template"></i> Editor de Secções</div>
+                <div class="ds-menu-item" onclick="navigate('popups', this)"><i data-lucide="message-square-plus"></i> Pop-ups & Modais</div>
+                <div class="ds-menu-item" onclick="navigate('emails', this)"><i data-lucide="mail"></i> E-mail Marketing</div>
                 
                 <div class="sv-small mt-5 mb-2" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Páginas (Preview)</div>
-                <div class="ds-menu-item" onclick="navigate('landing-long')"><i data-lucide="monitor-play"></i> Landing Page</div>
-                <div class="ds-menu-item" onclick="navigate('thank-you')"><i data-lucide="check-circle"></i> Página de Sucesso</div>
+                <div class="ds-menu-item" onclick="navigate('landing-long', this)"><i data-lucide="monitor-play"></i> LP de Conversão</div>
+                <div class="ds-menu-item" onclick="navigate('thank-you', this)"><i data-lucide="check-circle"></i> Página de Sucesso</div>
             </nav>
         </aside>
 
@@ -496,49 +497,43 @@
                     <h1 class="sv-h1">Tipografia Fluida</h1>
                     <p class="sv-p lead">A fonte <strong>Exo</strong> é a voz da marca. As classes abaixo ajustam-se automaticamente de mobile para desktop com amplo "respiro" visual. Clique numa linha para copiar a classe CSS.</p>
                     
-                    <div class="sv-card mt-4" style="overflow-x: auto; padding: 3rem;">
+                    <div class="sv-card mt-4" style="overflow-x: auto; padding: 2rem;">
                         <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
                             <tr style="border-bottom: 2px solid var(--sv-gray-30);">
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Exemplo Visual</th>
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Classe HTML</th>
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Mobile (px)</th>
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Desktop (px)</th>
-                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Peso</th>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h1', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
-                                <td style="padding: 2rem 0;"><h1 class="sv-h1" style="margin:0;">Heading 1</h1></td>
+                                <td style="padding: 1.5rem 0;"><h1 class="sv-h1" style="margin:0;">Heading 1</h1></td>
                                 <td class="font-bold text-primary">.sv-h1</td>
                                 <td class="sv-p" style="margin:0;">40px</td>
                                 <td class="sv-p" style="margin:0;">72px</td>
-                                <td class="sv-p" style="margin:0;">700 (Bold)</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h2', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
-                                <td style="padding: 2rem 0;"><h2 class="sv-h2" style="margin:0;">Heading 2</h2></td>
+                                <td style="padding: 1.5rem 0;"><h2 class="sv-h2" style="margin:0;">Heading 2</h2></td>
                                 <td class="font-bold text-primary">.sv-h2</td>
                                 <td class="sv-p" style="margin:0;">32px</td>
                                 <td class="sv-p" style="margin:0;">48px</td>
-                                <td class="sv-p" style="margin:0;">600 (Semi-b)</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h3', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
-                                <td style="padding: 2rem 0;"><h3 class="sv-h3" style="margin:0;">Heading 3</h3></td>
+                                <td style="padding: 1.5rem 0;"><h3 class="sv-h3" style="margin:0;">Heading 3</h3></td>
                                 <td class="font-bold text-primary">.sv-h3</td>
                                 <td class="sv-p" style="margin:0;">22px</td>
                                 <td class="sv-p" style="margin:0;">28px</td>
-                                <td class="sv-p" style="margin:0;">600 (Semi-b)</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-p', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
-                                <td style="padding: 2rem 0;"><p class="sv-p" style="margin:0;">Parágrafo padrão focado em leitura fácil, espaçamento generoso e elegância.</p></td>
+                                <td style="padding: 1.5rem 0;"><p class="sv-p" style="margin:0;">Parágrafo padrão focado em leitura fácil, espaçamento generoso e elegância.</p></td>
                                 <td class="font-bold text-primary">.sv-p</td>
                                 <td class="sv-p" style="margin:0;">16px</td>
                                 <td class="sv-p" style="margin:0;">18px</td>
-                                <td class="sv-p" style="margin:0;">300 (Light)</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-small', this)">
-                                <td style="padding: 2rem 0;"><p class="sv-small" style="margin:0;">Texto descritivo ou para rodapés e notas legais.</p></td>
+                                <td style="padding: 1.5rem 0;"><p class="sv-small" style="margin:0;">Texto descritivo ou para notas.</p></td>
                                 <td class="font-bold text-primary">.sv-small</td>
                                 <td class="sv-p" style="margin:0;">12px</td>
                                 <td class="sv-p" style="margin:0;">14px</td>
-                                <td class="sv-p" style="margin:0;">400 (Regular)</td>
                             </tr>
                         </table>
                     </div>
@@ -583,7 +578,7 @@
                     <h1 class="sv-h1">Gerador de Ícones</h1>
                     <p class="sv-p lead">Esta ferramenta pesquisa em <strong>toda a biblioteca da Lucide (+1000 ícones)</strong>. Digite um nome em inglês (ex: <i>dog, cat, user, check</i>). Descarregue o PNG transparente de alta qualidade ou copie a Tag HTML formatada.</p>
 
-                    <div class="sv-card mb-4 grid grid-3 items-end" style="background: var(--sv-gray-10); padding: 2.5rem;">
+                    <div class="sv-card mb-4 grid grid-3 items-end" style="background: var(--sv-gray-10); padding: 2rem;">
                         <div>
                             <label class="sv-small font-bold block mb-1">Pesquisar Ícone (Inglês):</label>
                             <div style="position:relative;">
@@ -706,7 +701,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
 .sv-modal-close { position: absolute; top: 16px; right: 16px; background: #F2F3F4; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #50585C; transition: all 0.2s ease; z-index: 10; }
 .sv-modal-close:hover { background: #D7DEE4; color: #D71D2D; }
 
-/* EFEITOS BLUR DE FUNDO (HERO) */
+/* EFEITOS BLUR DE FUNDO E ANIMAÇÕES */
 .text-gradient {
     background-image: linear-gradient(to bottom, #222222, #50585C, #5D6C75) !important;
     -webkit-background-clip: text !important;
@@ -724,7 +719,11 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
 @media (min-width: 640px) { .glow-blob-1 { height: 512px; } .glow-blob-2 { height: 256px; } }
 .anim-appear-zoom { animation: appearZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
-/* LAYOUT MOBILE HELPER */
+.sv-pricing-highlight { border: 2px solid #008ECE !important; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08) !important; position: relative !important; z-index: 10 !important; }
+@media (min-width: 1025px) {
+    .sv-pricing-highlight { transform: scale(1.05) !important; }
+}
+
 @media (max-width: 768px) {
     .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 2.5rem; }
     .text-left-desktop { text-align: center !important; }
@@ -742,7 +741,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                     <p class="sv-p lead">Elementos unitários desenhados para fácil interação tátil. Clique na caixa para copiar o HTML exato da estrutura.</p>
 
                     <div class="grid grid-2 mt-4">
-                        <div class="sv-card" style="padding: 3rem;">
+                        <div class="sv-card" style="padding: 2rem;">
                             <h3 class="sv-h3 mb-4">Botões de Ação</h3>
                             <div class="flex flex-col gap-4 items-start">
                                 <div class="copy-action w-100" onclick="copyToClipboard('<button class=\'sv-btn sv-btn-primary\'>Botão Primário</button>', this)" style="width: 100%;">
@@ -762,7 +761,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 </div>
                             </div>
                         </div>
-                        <div class="sv-card" style="padding: 3rem;">
+                        <div class="sv-card" style="padding: 2rem;">
                             <h3 class="sv-h3 mb-4">Inputs de Formulário</h3>
                             <div class="copy-action" onclick="copyToClipboard('<input type=\'text\' class=\'sv-input\' placeholder=\'Nome\'>', this)">
                                 <label class="sv-small mb-1 font-bold block">Input de Texto (Clique para Copiar)</label>
@@ -794,14 +793,14 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                     <button class="editor-only-btn" onclick="editLink(this)" title="Editar Link do Botão"><i data-lucide="link" style="width:14px;"></i> Link</button>
                                     <button class="editor-only-btn danger" onclick="this.closest('.sv-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:14px;"></i></button>
                                 </div>
-                                <h3 class="sv-h3" contenteditable="true">Plano Básico</h3>
+                                <h3 class="sv-h3" contenteditable="true">Lorem</h3>
                                 <h2 class="sv-h1 text-primary my-2" contenteditable="true" style="margin: 1rem 0;">R$ 149<span class="sv-small">,90/mês</span></h2>
                                 <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-1">
-                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">1 Utilizador</span></li>
-                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Módulo Fiscal</span></li>
+                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> <span contenteditable="true" style="word-break: break-word;">Lorem ipsum dolor</span></li>
+                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> <span contenteditable="true" style="word-break: break-word;">Sit amet consectetur</span></li>
                                 </ul>
                                 <div style="margin-top: auto;">
-                                    <a href="#" class="sv-btn sv-btn-outline w-100" contenteditable="true">Escolher Plano</a>
+                                    <a href="#" class="sv-btn sv-btn-outline w-100" contenteditable="true">Lorem Ipsum</a>
                                 </div>
                             </div>
                         </div>
@@ -826,8 +825,8 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 </div>
                                 <div>
                                     <i data-lucide="file-text" style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
-                                    <h3 class="sv-h3" contenteditable="true">Módulo Fiscal Nativo</h3>
-                                    <p class="sv-p" contenteditable="true">Emita faturas em segundos sem sair do sistema. Concentre a sua operação num só lugar de forma segura.</p>
+                                    <h3 class="sv-h3" contenteditable="true">Lorem ipsum dolor</h3>
+                                    <p class="sv-p" contenteditable="true">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </div>
                             </div>
                             <div class="sv-bento-card col-span-4 sv-bento-highlight">
@@ -839,8 +838,8 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 </div>
                                 <div>
                                     <i data-lucide="message-circle" style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
-                                    <h3 class="sv-h3" contenteditable="true">Lembretes WhatsApp</h3>
-                                    <p class="sv-p" contenteditable="true">Agendamentos automáticos e sem esforço da equipa.</p>
+                                    <h3 class="sv-h3" contenteditable="true">Dolor sit amet</h3>
+                                    <p class="sv-p" contenteditable="true">Sed do eiusmod tempor incididunt ut labore.</p>
                                 </div>
                             </div>
                         </div>
@@ -867,14 +866,14 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                         <div class="editor-only-controls">
                                             <button class="editor-only-btn danger" onclick="this.closest('.swiper-slide').remove(); swiperInstancePreview.update();" aria-label="Remover"><i data-lucide="trash-2" style="width:16px;"></i></button>
                                         </div>
-                                        <p class="sv-p" contenteditable="true" style="font-style: italic; font-size: 1.15rem;">"O melhor software que já utilizamos na nossa clínica. A gestão do stock tornou-se uma brincadeira de crianças."</p>
+                                        <p class="sv-p" contenteditable="true" style="font-style: italic; font-size: 1.15rem;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
                                         <div class="mt-4 flex items-center gap-2">
-                                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                                 <i data-lucide="user" style="color: var(--sv-white);"></i>
                                             </div>
                                             <div>
-                                                <p class="font-bold sv-p" contenteditable="true" style="margin:0; line-height: 1.2;">Dr. João Silva</p>
-                                                <p class="sv-small" contenteditable="true" style="margin:0;">Hospital Vet. Centro</p>
+                                                <p class="font-bold sv-p" contenteditable="true" style="margin:0; line-height: 1.2;">Lorem Ipsum</p>
+                                                <p class="sv-small" contenteditable="true" style="margin:0;">Dolor Sit Amet</p>
                                             </div>
                                         </div>
                                     </div>
@@ -898,12 +897,12 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                     <button class="editor-only-btn danger" onclick="this.closest('.accordion-item').remove();" aria-label="Remover"><i data-lucide="trash-2" style="width:16px;"></i> Remover</button>
                                 </div>
                                 <div class="accordion-header">
-                                    <span class="accordion-header-title" contenteditable="true">Como migro os meus dados de outro sistema?</span>
+                                    <span class="accordion-header-title" contenteditable="true">Lorem ipsum dolor sit amet?</span>
                                     <i data-lucide="chevron-down"></i>
                                 </div>
                                 <div class="accordion-content" style="max-height: 200px;">
                                     <div class="accordion-content-inner">
-                                        <p class="sv-p" contenteditable="true" style="margin:0;">A SimplesVet tem mais de 30 conversores gratuitos e uma equipa dedicada a ajudar neste processo sem custos extra.</p>
+                                        <p class="sv-p" contenteditable="true" style="margin:0;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
                                 </div>
                             </div>
@@ -934,17 +933,17 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 <button class="sv-modal-close" onclick="closeModal('editable-modal-1')"><i data-lucide="x"></i></button>
                                 
                                 <div style="flex: 1 1 300px; background: var(--sv-blue-brand); padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
-                                    <h2 class="sv-h2 text-white" contenteditable="true" style="margin-bottom: 1rem;">Ainda com dúvidas?</h2>
-                                    <p class="sv-p text-white" contenteditable="true" style="opacity: 0.9;">Baixe o nosso guia definitivo para a gestão de clínicas veterinárias e aumente a sua margem de lucro.</p>
+                                    <h2 class="sv-h2 text-white" contenteditable="true" style="margin-bottom: 1rem;">Lorem ipsum dolor?</h2>
+                                    <p class="sv-p text-white" contenteditable="true" style="opacity: 0.9;">Consectetur adipiscing elit, sed do eiusmod tempor.</p>
                                 </div>
                                 <div style="flex: 1 1 300px; padding: 3rem;">
-                                    <h3 class="sv-h3 text-center mb-2" contenteditable="true">Descarregar Guia</h3>
+                                    <h3 class="sv-h3 text-center mb-2" contenteditable="true">Lorem Ipsum</h3>
                                     <form class="flex flex-col gap-1">
-                                        <input type="text" placeholder="O seu nome*" class="sv-input" required>
-                                        <input type="email" placeholder="O seu e-mail*" class="sv-input" required>
-                                        <button type="button" class="sv-btn sv-btn-primary mt-2 w-100">Receber Grátis</button>
+                                        <input type="text" placeholder="Lorem*" class="sv-input" required>
+                                        <input type="email" placeholder="Ipsum*" class="sv-input" required>
+                                        <button type="button" class="sv-btn sv-btn-primary mt-2 w-100">Dolor Sit</button>
                                     </form>
-                                    <p class="sv-small text-center mt-2" contenteditable="true">Sem compromissos.</p>
+                                    <p class="sv-small text-center mt-2" contenteditable="true">Amet consectetur.</p>
                                 </div>
                             </div>
                         </div>
@@ -966,11 +965,11 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                 <div style="width: 80px; height: 80px; background: rgba(247, 164, 45, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
                                     <i data-lucide="gift" style="color: var(--sv-mustard-brand); width: 40px; height: 40px;"></i>
                                 </div>
-                                <h2 class="sv-h2" contenteditable="true" style="margin-bottom: 1rem;">Oferta Especial de 30%</h2>
-                                <p class="sv-p" contenteditable="true" style="margin-bottom: 2rem;">Adira hoje a um dos nossos planos anuais e garanta um desconto vitalício enquanto for cliente SimplesVet.</p>
+                                <h2 class="sv-h2" contenteditable="true" style="margin-bottom: 1rem;">Lorem Ipsum 30%</h2>
+                                <p class="sv-p" contenteditable="true" style="margin-bottom: 2rem;">Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
                                 <div class="flex gap-2 justify-center flex-wrap">
-                                    <button class="sv-btn sv-btn-outline" onclick="closeModal('editable-modal-2')">Agora não</button>
-                                    <button class="sv-btn sv-btn-primary">Aproveitar Desconto</button>
+                                    <button class="sv-btn sv-btn-outline" onclick="closeModal('editable-modal-2')">Lorem</button>
+                                    <button class="sv-btn sv-btn-primary">Ipsum</button>
                                 </div>
                             </div>
                         </div>
@@ -995,31 +994,58 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         <div id="editable-email-1" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
                             <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                                 
-                                <!-- Header -->
-                                <div style="background-color: #008ECE; padding: 30px; text-align: center;">
-                                    <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: -0.5px;">SimplesVet</h1>
+                                <!-- Header Oficial -->
+                                <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #008ECE;">
+                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 35px; display: block; margin: 0 auto;">
+                                </div>
+                                
+                                <!-- Hero Image/Color -->
+                                <div style="background-image: linear-gradient(135deg, #008ECE 0%, #134C77 100%); padding: 40px 30px; text-align: center;">
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: -0.5px;" contenteditable="true">Lorem Ipsum! 🎉</h1>
+                                    <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.6; margin-top: 15px; margin-bottom: 0;" contenteditable="true">Dolor sit amet consectetur.</p>
                                 </div>
                                 
                                 <!-- Content -->
                                 <div style="padding: 40px 30px;">
-                                    <h2 style="color: #50585C; margin-top: 0; font-size: 22px;" contenteditable="true">Bem-vindo(a) à SimplesVet! 🎉</h2>
-                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6;" contenteditable="true">
-                                        Olá [Nome do Cliente],<br><br>
-                                        Estamos muito felizes por o ter connosco. A sua conta de teste de 7 dias acaba de ser ativada com sucesso. A partir de agora, pode transformar a gestão da sua clínica.
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6; margin-top: 0;" contenteditable="true">
+                                        Olá <strong>[Lorem Ipsum]</strong>,<br><br>
+                                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                     </p>
                                     
-                                    <div style="text-align: center; margin: 30px 0;">
-                                        <a href="#" style="background-color: #3797DE; color: #ffffff; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Aceder ao meu sistema</a>
+                                    <div style="text-align: center; margin: 35px 0;">
+                                        <a href="#" style="background-color: #008ECE; color: #ffffff; text-decoration: none; padding: 16px 36px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Lorem Ipsum</a>
                                     </div>
                                     
-                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6;" contenteditable="true">Se tiver alguma dúvida, basta responder a este e-mail. A nossa equipa está pronta a ajudar!</p>
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6; margin-bottom: 0;" contenteditable="true">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                                 </div>
                                 
-                                <!-- Footer -->
-                                <div style="background-color: #F2F3F4; padding: 20px; text-align: center; border-top: 1px solid #D7DEE4;">
-                                    <p style="color: #7D8991; font-size: 12px; margin: 0;" contenteditable="true">
-                                        © 2026 SimplesVet. Todos os direitos reservados.<br>
-                                        Rua Minas Gerais, Salvador, Brasil.
+                                <!-- Footer Completo -->
+                                <div style="background-color: #F8F9FA; padding: 30px; text-align: center; border-top: 1px solid #D7DEE4;">
+                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 20px; display: block; margin: 0 auto 20px auto; opacity: 0.6;">
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <a href="https://simples.vet" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Nosso Site</a>
+                                        <span style="color: #D7DEE4;">|</span>
+                                        <a href="https://simples.vet/blog" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Blog</a>
+                                        <span style="color: #D7DEE4;">|</span>
+                                        <a href="#" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Suporte</a>
+                                    </div>
+
+                                    <div style="margin-bottom: 25px;">
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="youtube" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                    </div>
+                                    
+                                    <p style="color: #9FAAB7; font-size: 12px; margin: 0; line-height: 1.5;" contenteditable="true">
+                                        Lorem ipsum dolor sit amet.<br>
+                                        <a href="#" style="color: #9FAAB7; text-decoration: underline;">Lorem ipsum</a>.
                                     </p>
                                 </div>
 
@@ -1038,26 +1064,65 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                         <div id="editable-email-2" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
                             <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                                 
+                                <!-- Header Oficial -->
+                                <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #008ECE;">
+                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 35px; display: block; margin: 0 auto;">
+                                </div>
+
                                 <!-- Promo Hero -->
-                                <div style="background-color: #44BCCB; padding: 50px 30px; text-align: center;">
-                                    <span style="display: inline-block; background: rgba(255,255,255,0.2); color: #ffffff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px;" contenteditable="true">OFERTA DE BLACK FRIDAY</span>
-                                    <h1 style="color: #ffffff; margin: 0; font-size: 32px; letter-spacing: -0.5px;" contenteditable="true">Chegou o momento que esperava.</h1>
+                                <div style="background-color: #121212; padding: 50px 30px; text-align: center; background-image: radial-gradient(circle at center, #222222 0%, #121212 100%);">
+                                    <span style="display: inline-block; background: #008ECE; color: #ffffff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;" contenteditable="true">LOREM IPSUM</span>
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 32px; letter-spacing: -0.5px; word-break: break-word;" contenteditable="true">Dolor sit amet consectetur.</h1>
                                 </div>
                                 
                                 <!-- Content -->
                                 <div style="padding: 40px 30px;">
-                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6; text-align: center;" contenteditable="true">
-                                        Poupe até 40% nos planos anuais da SimplesVet e garanta acesso a todas as novas ferramentas de gestão de stock e integração com WhatsApp de forma vitalícia.
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6; text-align: center; margin-top: 0;" contenteditable="true">
+                                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                     </p>
                                     
-                                    <div style="background: #F8F9FA; border: 1px solid #D7DEE4; border-radius: 8px; padding: 20px; text-align: center; margin: 30px 0;">
-                                        <h3 style="color: #50585C; margin: 0 0 10px 0; font-size: 18px;" contenteditable="true">Use o código abaixo no checkout:</h3>
-                                        <span style="font-family: monospace; font-size: 24px; color: #D71D2D; font-weight: bold; letter-spacing: 2px;" contenteditable="true">SIMPLESVET40</span>
+                                    <div style="background: #F8F9FA; border: 1px solid #D7DEE4; border-radius: 8px; padding: 25px; text-align: left; margin: 30px 0;">
+                                        <h3 style="color: #50585C; margin: 0 0 15px 0; font-size: 18px;" contenteditable="true">Lorem ipsum dolor sit amet:</h3>
+                                        <ul style="color: #5D6C75; font-size: 15px; line-height: 1.6; margin: 0; padding-left: 20px;" contenteditable="true">
+                                            <li style="margin-bottom: 10px;">Adipiscing elit sed do.</li>
+                                            <li style="margin-bottom: 10px;">Eiusmod tempor incididunt.</li>
+                                            <li>Ut labore et dolore.</li>
+                                        </ul>
                                     </div>
 
-                                    <div style="text-align: center; margin: 30px 0;">
-                                        <a href="#" style="background-color: #008ECE; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Resgatar o meu desconto</a>
+                                    <div style="text-align: center; margin: 35px 0;">
+                                        <a href="#" style="background-color: #008ECE; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Lorem Ipsum</a>
                                     </div>
+                                </div>
+                                
+                                <!-- Footer Completo -->
+                                <div style="background-color: #F8F9FA; padding: 30px; text-align: center; border-top: 1px solid #D7DEE4;">
+                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 20px; display: block; margin: 0 auto 20px auto; opacity: 0.6;">
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <a href="https://simples.vet" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Nosso Site</a>
+                                        <span style="color: #D7DEE4;">|</span>
+                                        <a href="https://simples.vet/blog" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Blog</a>
+                                        <span style="color: #D7DEE4;">|</span>
+                                        <a href="#" style="color: #008ECE; text-decoration: none; font-size: 13px; font-weight: bold; margin: 0 8px;" contenteditable="true">Suporte</a>
+                                    </div>
+
+                                    <div style="margin-bottom: 25px;">
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                        <a href="#" style="color: #50585C; text-decoration: none; margin: 0 10px; display: inline-block;">
+                                            <i data-lucide="youtube" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                    </div>
+                                    
+                                    <p style="color: #9FAAB7; font-size: 12px; margin: 0; line-height: 1.5;" contenteditable="true">
+                                        Lorem ipsum dolor sit amet.<br>
+                                        <a href="#" style="color: #9FAAB7; text-decoration: underline;">Lorem ipsum</a>.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1089,17 +1154,17 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                             <!-- Esquerda: Texto e CTA -->
                             <div class="anim-appear" style="padding-right: 1rem;">
                                 <div style="display:inline-flex; align-items:center; gap: 8px; padding: 8px 20px; background: rgba(0, 142, 206, 0.05); border: 1px solid rgba(0, 142, 206, 0.15); border-radius: var(--radius-pill); color: var(--sv-blue-brand); margin-bottom: 1.5rem; font-weight: 600; font-size: 0.85rem;">
-                                    <span style="background: var(--sv-blue-brand); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span> Nova Versão 10.0 Disponível
+                                    <span style="background: var(--sv-blue-brand); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span> Lorem ipsum dolor
                                 </div>
                                 <h1 class="sv-h1 text-gradient" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem;">
-                                    A gestão veterinária do futuro, <br><span style="color: var(--sv-blue-brand); -webkit-text-fill-color: var(--sv-blue-brand);">disponível hoje.</span>
+                                    Lorem ipsum dolor sit amet, <br><span style="color: var(--sv-blue-brand); -webkit-text-fill-color: var(--sv-blue-brand);">consectetur adipiscing elit.</span>
                                 </h1>
                                 <p class="sv-p anim-appear anim-delay-150" style="font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--sv-gray-300); margin-bottom: 2.5rem;">
-                                    Simplifique agendamentos, automatize a contabilidade e encante os seus clientes com uma plataforma tudo-em-um.
+                                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                 </p>
                                 <div class="flex flex-wrap gap-4 anim-appear anim-delay-300">
-                                    <button class="sv-btn sv-btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 10px 30px rgba(0,142,206,0.2);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Começar Teste de 7 Dias</button>
-                                    <button class="sv-btn sv-btn-outline" style="padding: 18px 40px;"><i data-lucide="play-circle" style="width: 20px;"></i> Ver Vídeo</button>
+                                    <button class="sv-btn sv-btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 10px 30px rgba(0,142,206,0.2);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
+                                    <button class="sv-btn sv-btn-outline" style="padding: 18px 40px;"><i data-lucide="play-circle" style="width: 20px;"></i> Dolor Sit</button>
                                 </div>
                             </div>
 
@@ -1116,28 +1181,28 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <div class="py-lg" id="form-dobra-2" style="background: var(--sv-gray-10); border-bottom: 1px solid var(--sv-gray-30);">
                     <div class="container grid grid-2 items-center gap-4">
                         <div data-aos="fade-right">
-                            <h2 class="sv-h2">Experimente a SimplesVet na sua clínica hoje.</h2>
-                            <p class="sv-p lead">Crie a sua conta gratuita de 7 dias e descubra como podemos ajudar a sua equipa a poupar horas de trabalho operacional.</p>
+                            <h2 class="sv-h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                            <p class="sv-p lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             <ul style="list-style:none; padding:0; margin-top:1.5rem;" class="flex flex-col gap-2">
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Sem qualquer compromisso de fidelização.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Não requer inserção de cartão de crédito.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Suporte especializado (Vetlovers) incluído no teste.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px; flex-shrink: 0;"></i> Duis aute irure dolor in reprehenderit.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px; flex-shrink: 0;"></i> Excepteur sint occaecat cupidatat non proident.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px; flex-shrink: 0;"></i> Sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
                             </ul>
                         </div>
                         <div class="sv-card" data-aos="fade-left" style="box-shadow: var(--shadow-brutal); border-top: 8px solid var(--sv-blue-brand); padding: 3rem;">
-                            <h3 class="sv-h3 text-center mb-1">Crie a sua conta gratuita</h3>
-                            <p class="sv-small text-center mb-4">Acesso imediato e seguro à plataforma.</p>
+                            <h3 class="sv-h3 text-center mb-1">Lorem Ipsum Dolor</h3>
+                            <p class="sv-small text-center mb-4">Sit amet consectetur adipiscing elit.</p>
                             <form id="demoFormLong" class="flex flex-col">
-                                <input type="text" name="name" placeholder="O seu nome completo" class="sv-input" required>
-                                <input type="email" name="email" placeholder="O seu e-mail profissional" class="sv-input" required>
-                                <input type="tel" name="phone" placeholder="Telemóvel (WhatsApp)" class="sv-input" required>
+                                <input type="text" name="name" placeholder="Lorem Ipsum" class="sv-input" required>
+                                <input type="email" name="email" placeholder="Dolor Sit Amet" class="sv-input" required>
+                                <input type="tel" name="phone" placeholder="Consectetur Adipiscing" class="sv-input" required>
                                 <select class="sv-input" required>
-                                    <option value="" disabled selected>Qual é a sua função na clínica?</option>
-                                    <option>Gestor / Proprietário</option>
-                                    <option>Médico Veterinário</option>
-                                    <option>Rececionista / Atendimento</option>
+                                    <option value="" disabled selected>Sed do eiusmod tempor?</option>
+                                    <option>Incididunt ut labore</option>
+                                    <option>Dolore magna aliqua</option>
+                                    <option>Ut enim ad minim veniam</option>
                                 </select>
-                                <button type="submit" class="sv-btn sv-btn-primary w-100 mt-2" style="font-size: 1.1rem; padding: 20px;">Começar o Teste Agora</button>
+                                <button type="submit" class="sv-btn sv-btn-primary w-100 mt-2" style="font-size: 1.1rem; padding: 20px;">Lorem Ipsum</button>
                             </form>
                         </div>
                     </div>
@@ -1146,13 +1211,12 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- Dobra 3: Prova Social -->
                 <div style="background: var(--sv-white); padding: 3rem 0; border-bottom: 1px solid var(--sv-gray-30);">
                     <div class="container text-center">
-                        <p class="sv-small font-bold" style="color: var(--sv-gray-200); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">A escolha nº1 de mais de 8.200 clínicas e hospitais veterinários</p>
+                        <p class="sv-small font-bold" style="color: var(--sv-gray-200); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">LOREM IPSUM DOLOR SIT AMET</p>
                         <div class="flex flex-wrap justify-center items-center gap-4" style="opacity: 0.5;">
-                            <!-- Placeholders para Logos -->
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">VETCLINIC</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">PET&CO</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">HOSPITAL PET</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">ANIMALCARE</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">LOREM</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">IPSUM</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">DOLOR</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">SIT AMET</div>
                         </div>
                     </div>
                 </div>
@@ -1164,12 +1228,12 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                             <div style="background: var(--sv-blue-100); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
                                 <i data-lucide="calculator" style="color: var(--sv-primary); width: 30px; height: 30px;"></i>
                             </div>
-                            <h2 class="sv-h2">Gestão Financeira e Fiscal Automática</h2>
-                            <p class="sv-p lead">Diga adeus ao trabalho manual e aos erros de contabilidade. A SimplesVet sincroniza o seu fluxo de caixa em tempo real e emite faturas com um clique.</p>
+                            <h2 class="sv-h2">Lorem ipsum dolor sit amet</h2>
+                            <p class="sv-p lead">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                             <ul style="list-style:none; padding:0; margin-top:2rem;" class="flex flex-col gap-2">
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Emissão de documentos certificada.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Relatórios de lucros e despesas detalhados.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Integração direta com terminais de pagamento.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Quis nostrud exercitation ullamco laboris.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Nisi ut aliquip ex ea commodo consequat.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Duis aute irure dolor in reprehenderit in voluptate.</li>
                             </ul>
                         </div>
                         <div data-aos="fade-left">
@@ -1189,15 +1253,15 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                             </div>
                         </div>
                         <div data-aos="fade-left">
-                            <div style="background: rgba(51, 163, 68, 0.15); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+                            <div style="background: rgba(51, 163, 68, 0.15); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem; display:inline-flex;">
                                 <i data-lucide="package" style="color: var(--sv-green-success); width: 30px; height: 30px;"></i>
                             </div>
-                            <h2 class="sv-h2">Controlo de Stock com Inteligência</h2>
-                            <p class="sv-p lead">Evite ruturas de stock e prejuízos com medicamentos expirados. O sistema avisa-o precisamente do que precisa de encomendar e quando.</p>
+                            <h2 class="sv-h2">Consectetur adipiscing elit</h2>
+                            <p class="sv-p lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                             <ul style="list-style:none; padding:0; margin-top:2rem;" class="flex flex-col gap-2">
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Alertas automáticos de validade.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Sugestões de compras baseadas no histórico.</li>
-                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Gestão de múltiplos armazéns.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Quis nostrud exercitation ullamco laboris.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Nisi ut aliquip ex ea commodo consequat.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary" style="flex-shrink:0;"></i> Duis aute irure dolor in reprehenderit in voluptate.</li>
                             </ul>
                         </div>
                     </div>
@@ -1206,29 +1270,29 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- Dobra 6: Bento Grid -->
                 <div class="py-lg" style="background: var(--sv-white);">
                     <div class="container">
-                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Muito mais do que um sistema de gestão</h2>
-                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Todas as ferramentas que a sua equipa precisa num único local.</p>
+                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Lorem ipsum dolor sit amet</h2>
+                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                         
                         <div class="bento-grid mt-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="sv-bento-card col-span-4" style="padding: 2rem;">
                                 <div>
                                     <i data-lucide="calendar" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
-                                    <h3 class="sv-h3">Agenda Dinâmica</h3>
-                                    <p class="sv-p" style="font-size: 1rem;">Múltiplos calendários, cores por tipo de consulta e vista de equipa intuitiva.</p>
+                                    <h3 class="sv-h3">Lorem Ipsum</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
                             </div>
                             <div class="sv-bento-card col-span-4" style="padding: 2rem;">
                                 <div>
                                     <i data-lucide="message-circle" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
-                                    <h3 class="sv-h3">WhatsApp Integrado</h3>
-                                    <p class="sv-p" style="font-size: 1rem;">Envie confirmações e lembretes aos tutores de forma 100% automática.</p>
+                                    <h3 class="sv-h3">Dolor Sit</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                                 </div>
                             </div>
                             <div class="sv-bento-card col-span-4" style="padding: 2rem;">
                                 <div>
                                     <i data-lucide="heart-pulse" style="width: 36px; height: 36px; margin-bottom: 1.5rem; color: var(--sv-primary);"></i>
-                                    <h3 class="sv-h3">Prontuário Eletrónico</h3>
-                                    <p class="sv-p" style="font-size: 1rem;">Histórico clínico completo, anexos de exames e evolução de peso em gráficos.</p>
+                                    <h3 class="sv-h3">Amet Consectetur</h3>
+                                    <p class="sv-p" style="font-size: 1rem;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 </div>
                             </div>
                         </div>
@@ -1238,7 +1302,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- Dobra 7: Depoimentos Swiper -->
                 <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container">
-                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Histórias de clínicas como a sua</h2>
+                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Lorem ipsum dolor sit amet</h2>
                         
                         <div class="swiper testimonialsSwiper" data-aos="zoom-in" data-aos-delay="100">
                             <div class="swiper-wrapper">
@@ -1252,15 +1316,15 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                             </div>
-                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"Ganhámos cerca de 2 horas por dia na receção apenas com a automação do WhatsApp. O sistema pagou-se a si mesmo na primeira semana."</p>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
                                         </div>
                                         <div class="mt-4 flex items-center gap-2">
-                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                                 <i data-lucide="user" style="color: var(--sv-white);"></i>
                                             </div>
                                             <div>
-                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Dr. Rui Costa</p>
-                                                <p class="sv-small" style="margin:0;">Vet Prime Clinic</p>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Lorem Ipsum</p>
+                                                <p class="sv-small" style="margin:0;">Dolor Sit Amet</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1275,15 +1339,15 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                             </div>
-                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"O controlo de vacinas alertou-nos para imensos pacientes atrasados. O retorno do investimento é incrivelmente transparente e rápido."</p>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
                                         </div>
                                         <div class="mt-4 flex items-center gap-2">
-                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                                 <i data-lucide="user" style="color: var(--sv-white);"></i>
                                             </div>
                                             <div>
-                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Dra. Ana Silva</p>
-                                                <p class="sv-small" style="margin:0;">Hospital Animalia</p>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Lorem Ipsum</p>
+                                                <p class="sv-small" style="margin:0;">Dolor Sit Amet</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1298,15 +1362,15 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                                 <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
                                             </div>
-                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"A migração dos dados antigos foi feita pela equipa da SimplesVet de forma impecável. Não perdemos uma única ficha clínica."</p>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
                                         </div>
                                         <div class="mt-4 flex items-center gap-2">
-                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                                 <i data-lucide="user" style="color: var(--sv-white);"></i>
                                             </div>
                                             <div>
-                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Tiago Mendes</p>
-                                                <p class="sv-small" style="margin:0;">Clínica São Francisco</p>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Lorem Ipsum</p>
+                                                <p class="sv-small" style="margin:0;">Dolor Sit Amet</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1320,50 +1384,50 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- Dobra 8: Planos de Preços -->
                 <div class="py-lg" style="background: var(--sv-white);">
                     <div class="container">
-                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Planos simples, sem surpresas</h2>
-                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Escolha o plano que melhor se adapta à realidade do seu negócio.</p>
+                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Lorem ipsum dolor sit amet</h2>
+                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                         
                         <div class="grid grid-3 mt-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem;">
-                                <h3 class="sv-h3">Início</h3>
-                                <p class="sv-small mb-2">Para clínicas em crescimento</p>
+                                <h3 class="sv-h3">Lorem</h3>
+                                <p class="sv-small mb-2">Sit amet consectetur</p>
                                 <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 149<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
                                 <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Até 2 Utilizadores</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Agenda Base</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Faturação Integrada</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Adipiscing elit</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Sed do eiusmod</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tempor incididunt</li>
                                 </ul>
                                 <div style="margin-top: auto; padding-top: 2rem;">
-                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Teste Grátis</button>
+                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
                                 </div>
                             </div>
-                            <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem; border: 2px solid var(--sv-blue-brand); box-shadow: var(--shadow-medium); transform: scale(1.02); z-index: 10; position: relative;">
-                                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sv-blue-brand); color: white; padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">MAIS POPULAR</div>
-                                <h3 class="sv-h3">Pro</h3>
-                                <p class="sv-small mb-2">Para operações otimizadas</p>
+                            <div class="sv-card sv-pricing-highlight flex flex-col text-center" style="padding: 3rem 2rem;">
+                                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sv-blue-brand); color: white; padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">LOREM IPSUM</div>
+                                <h3 class="sv-h3">Ipsum</h3>
+                                <p class="sv-small mb-2">Sit amet consectetur</p>
                                 <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 289<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
                                 <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
-                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tudo do plano Início</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Lembretes WhatsApp</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Controlo de Stock Inteligente</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Até 5 Utilizadores</li>
+                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Adipiscing elit</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Sed do eiusmod</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tempor incididunt</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Ut labore et dolore</li>
                                 </ul>
                                 <div style="margin-top: auto; padding-top: 2rem;">
-                                    <button class="sv-btn sv-btn-primary w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Teste Grátis</button>
+                                    <button class="sv-btn sv-btn-primary w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
                                 </div>
                             </div>
                             <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem;">
-                                <h3 class="sv-h3">Hospital</h3>
-                                <p class="sv-small mb-2">Estruturas complexas (24h)</p>
+                                <h3 class="sv-h3">Dolor</h3>
+                                <p class="sv-small mb-2">Sit amet consectetur</p>
                                 <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 549<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
                                 <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
-                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tudo do plano Pro</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Utilizadores Ilimitados</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Gestão de Internamento</li>
-                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> API Personalizada</li>
+                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Adipiscing elit</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Sed do eiusmod</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tempor incididunt</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Ut labore et dolore</li>
                                 </ul>
                                 <div style="margin-top: auto; padding-top: 2rem;">
-                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Falar com Consultor</button>
+                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
                                 </div>
                             </div>
                         </div>
@@ -1373,38 +1437,38 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- Dobra 9: FAQ (Accordion) -->
                 <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container" style="max-width: 900px;">
-                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Dúvidas Frequentes</h2>
+                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Lorem ipsum dolor sit amet</h2>
                         <div class="accordion-wrapper" data-aos="fade-up" data-aos-delay="100">
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <span class="accordion-header-title">Preciso de inserir um cartão de crédito para testar?</span>
+                                    <span class="accordion-header-title">Lorem ipsum dolor sit amet?</span>
                                     <i data-lucide="chevron-down"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <div class="accordion-content-inner">
-                                        <p class="sv-p" style="margin:0;">Não. Os 7 dias de teste são totalmente gratuitos e não exigem a inserção de qualquer método de pagamento prévio.</p>
+                                        <p class="sv-p" style="margin:0;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <span class="accordion-header-title">Consigo aceder no telemóvel?</span>
+                                    <span class="accordion-header-title">Lorem ipsum dolor sit amet?</span>
                                     <i data-lucide="chevron-down"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <div class="accordion-content-inner">
-                                        <p class="sv-p" style="margin:0;">Sim! A SimplesVet é uma plataforma 100% cloud responsiva. Pode aceder através do navegador do seu telemóvel, tablet ou computador.</p>
+                                        <p class="sv-p" style="margin:0;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <span class="accordion-header-title">O suporte está incluído?</span>
+                                    <span class="accordion-header-title">Lorem ipsum dolor sit amet?</span>
                                     <i data-lucide="chevron-down"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <div class="accordion-content-inner">
-                                        <p class="sv-p" style="margin:0;">Sim. Todos os nossos planos incluem acesso à nossa equipa de suporte especializado (Vetlovers) via chat diretamente no sistema, sem custos adicionais.</p>
+                                        <p class="sv-p" style="margin:0;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1415,14 +1479,14 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <!-- CTA Final -->
                 <div class="py-xl bg-primary text-center relative overflow-hidden" style="background: var(--sv-blue-brand);">
                     <div class="container relative z-10" data-aos="fade-up">
-                        <h2 class="sv-h1 text-white mb-2">Pronto para dar o próximo passo?</h2>
-                        <p class="sv-p text-white mb-4" style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Junte-se a milhares de veterinários que já modernizaram as suas clínicas.</p>
+                        <h2 class="sv-h1 text-white mb-2">Lorem ipsum dolor sit amet?</h2>
+                        <p class="sv-p text-white mb-4" style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <div class="flex justify-center gap-4 flex-wrap">
                             <button class="sv-btn sv-btn-white" style="font-size: 1.1rem; padding: 18px 40px;" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">
-                                Começar Teste Grátis
+                                Lorem Ipsum
                             </button>
                         </div>
-                        <p class="sv-small text-white mt-4" style="opacity: 0.7;">Implementação e configuração incluídas.</p>
+                        <p class="sv-small text-white mt-4" style="opacity: 0.7;">Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
             </section>
@@ -1444,19 +1508,19 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                             
                             <!-- Esquerda: Texto e Ações -->
                             <div class="anim-appear" style="padding-right: 1rem;">
-                                <div style="width: 80px; height: 80px; background: rgba(51, 163, 68, 0.1); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom: 2rem; box-shadow: 0 12px 32px rgba(51, 163, 68, 0.15);">
+                                <div style="width: 80px; height: 80px; background: rgba(51, 163, 68, 0.1); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom: 2rem; box-shadow: 0 12px 32px rgba(51, 163, 68, 0.15); display: inline-flex;">
                                     <i data-lucide="check" style="color: var(--sv-green-success); width: 40px; height: 40px;"></i>
                                 </div>
                                 
-                                <h1 class="sv-h1 text-gradient" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem;">Registo Concluído!</h1>
+                                <h1 class="sv-h1 text-gradient" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem;">Lorem Ipsum!</h1>
                                 
                                 <p class="sv-p anim-appear anim-delay-150" style="max-width: 600px; font-size: 1.25rem; margin-bottom: 2.5rem; color: var(--sv-gray-300);">
-                                    O seu ambiente SimplesVet já está a ser preparado. Enviámos um e-mail com as instruções de acesso ao sistema (verifique a sua pasta de Spam por precaução).
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                                 </p>
                                 
                                 <div class="flex flex-wrap gap-4 anim-appear anim-delay-300">
-                                    <button class="sv-btn sv-btn-secondary" onclick="navigate('landing-long')"><i data-lucide="arrow-left"></i> Voltar ao início</button>
-                                    <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Explorar o Blog <i data-lucide="external-link" style="width: 18px;"></i></a>
+                                    <button class="sv-btn sv-btn-secondary" onclick="navigate('landing-long', document.querySelector('[onclick*=\'landing-long\']'))"><i data-lucide="arrow-left"></i> Lorem Ipsum</button>
+                                    <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Dolor Sit <i data-lucide="external-link" style="width: 18px;"></i></a>
                                 </div>
                             </div>
 
@@ -1779,8 +1843,8 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 <h3 class="sv-h3" contenteditable="true">Novo Plano</h3>
                 <h2 class="sv-h1 text-primary my-2" contenteditable="true" style="margin: 1.5rem 0;">R$ 0<span class="sv-small">,00/mês</span></h2>
                 <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-1">
-                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Nova Feature</span></li>
-                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Nova Feature 2</span></li>
+                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true" style="word-break: break-word;">Nova Feature</span></li>
+                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true" style="word-break: break-word;">Nova Feature 2</span></li>
                 </ul>
                 <div style="margin-top: auto;">
                     <a href="#" class="sv-btn sv-btn-outline w-100" contenteditable="true">Escolher Plano</a>
@@ -1838,7 +1902,7 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                     </div>
                     <p class="sv-p" contenteditable="true" style="font-style: italic; font-size: 1.15rem;">"Insira um novo depoimento incrivel de um cliente aqui."</p>
                     <div class="mt-4 flex items-center gap-2">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i data-lucide="user" style="color: var(--sv-white);"></i>
                         </div>
                         <div>
@@ -1902,26 +1966,67 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
         }
 
         // ==========================================
-        // 6. NAVEGAÇÃO DA APLICAÇÃO (SPA)
+        // 6. NAVEGAÇÃO DA APLICAÇÃO (SPA) E AUTO-COLLAPSE
         // ==========================================
-        function navigate(sectionId) {
+        function navigate(sectionId, clickedElement) {
+            // Esconder todas as secções e remover classe active do menu
             document.querySelectorAll('.ds-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.ds-menu-item').forEach(i => i.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            event.currentTarget.classList.add('active');
             
+            // Mostrar a secção clicada
+            document.getElementById(sectionId).classList.add('active');
+            
+            if (clickedElement && clickedElement.classList) {
+                clickedElement.classList.add('active');
+            }
+
+            // Lógica Auto-Collapse para Páginas de Preview (LP e Thank You)
+            const isPreviewPage = sectionId === 'landing-long' || sectionId === 'thank-you';
+            if (isPreviewPage && window.innerWidth > 768) {
+                document.body.classList.add('sidebar-collapsed');
+            } else {
+                document.body.classList.remove('sidebar-collapsed');
+            }
+            
+            // Fechar menu no Mobile após clique
             const sidebar = document.getElementById('sidebar');
-            if(sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                if (overlay) overlay.classList.remove('active');
+            }
+            
             window.scrollTo(0,0);
             AOS.refresh();
             initEditableSwiper(); 
         }
 
-        const mobileToggle = document.getElementById('mobileToggle');
-        if(mobileToggle){
-            mobileToggle.addEventListener('click', () => {
+        // Configuração Overlay Mobile
+        const overlay = document.getElementById('sidebar-overlay');
+        if(overlay){
+            overlay.addEventListener('click', () => {
                 const sidebar = document.getElementById('sidebar');
-                if(sidebar) sidebar.classList.toggle('open');
+                if(sidebar) sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
+
+        // Configuração Botão Toggle Universal (Mobile + Desktop Collapsed)
+        const menuToggle = document.getElementById('menuToggle');
+        if(menuToggle){
+            menuToggle.addEventListener('click', () => {
+                const sidebar = document.getElementById('sidebar');
+                
+                if (window.innerWidth <= 768) {
+                    // Comportamento Mobile
+                    if(sidebar) {
+                        sidebar.classList.toggle('open');
+                        if (overlay) overlay.classList.toggle('active');
+                    }
+                } else {
+                    // Comportamento Desktop (Sair do Modo Imersivo)
+                    document.body.classList.remove('sidebar-collapsed');
+                }
             });
         }
 
@@ -1936,11 +2041,15 @@ p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
                 const originalText = btnSubmit.innerText;
                 btnSubmit.innerText = 'A processar...';
                 btnSubmit.disabled = true;
+                
                 await new Promise(r => setTimeout(r, 1500));
+                
                 demoFormLong.reset();
                 btnSubmit.innerText = originalText;
                 btnSubmit.disabled = false;
-                navigate('thank-you');
+                
+                // Redirecionar para Thank You usando a função de navegação que gere a barra lateral
+                navigate('thank-you', document.querySelector('.ds-menu-item[onclick*="thank-you"]'));
             });
         }
     </script>
