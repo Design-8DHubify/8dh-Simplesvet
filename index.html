@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimplesVet - Design System (Premium & Responsive)</title>
+
+    <!-- ==========================================
+         CDN IMPORTS
+         ========================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <style>
+        /* ==========================================
+           1. CSS VARIABLES (TOKENS)
+           ========================================== */
+        :root {
+            /* --- ESCALA DE CINZAS --- */
+            --sv-white: #FFFFFF;
+            --sv-gray-10: #F8F9FA;
+            --sv-gray-20: #F2F3F4;
+            --sv-gray-30: #D7DEE4;
+            --sv-gray-100: #9FAAB7;
+            --sv-gray-200: #7D8991;
+            --sv-gray-300: #5D6C75;
+            --sv-gray-400: #50585C;
+            --sv-gray-500: #333333;
+            --sv-gray-600: #222222;
+            --sv-gray-700: #121212;
+
+            /* --- AZUL (Marca) --- */
+            --sv-blue-100: #67B0E6;
+            --sv-blue-200: #3797DE;
+            --sv-blue-300: #1F7BC1;
+            --sv-blue-400: #185C91;
+            --sv-blue-500: #134C77;
+            --sv-blue-brand: #008ECE;
+
+            /* --- CORES FUNCIONAIS --- */
+            --sv-turq-100: #63D4DD;
+            --sv-turq-200: #26A0AB;
+            --sv-turq-300: #1E818A;
+            --sv-turq-400: #165F64;
+            --sv-turq-500: #135358;
+            --sv-turq-brand: #44BCCB;
+
+            --sv-green-100: #65BE73;
+            --sv-green-200: #33A344;
+            --sv-green-300: #2A8439;
+            --sv-green-400: #20652B;
+            --sv-green-500: #1C5926;
+            --sv-green-success: #33A344;
+
+            --sv-mustard-100: #F1BD62;
+            --sv-mustard-200: #CA8612;
+            --sv-mustard-300: #A06A0E;
+            --sv-mustard-400: #79510B;
+            --sv-mustard-500: #6C4809;
+            --sv-mustard-brand: #F7A42D;
+
+            --sv-red-100: #ED7982;
+            --sv-red-200: #E53E4C;
+            --sv-red-300: #D71D2D;
+            --sv-red-400: #AF1822;
+            --sv-red-500: #94141D;
+            --sv-red-danger: #D71D2D;
+
+            --sv-purple-100: #AA70C2;
+            --sv-purple-200: #8F43AF;
+            --sv-purple-300: #72358D;
+            --sv-purple-400: #592970;
+            --sv-purple-500: #4A235C;
+            --sv-purple-brand: #8C4493;
+
+            /* --- TIPOGRAFIA --- */
+            --font-primary: 'Exo', sans-serif;
+
+            /* --- ESPAÇAMENTOS REFINADOS --- */
+            --spacing-xs: 0.75rem;   
+            --spacing-sm: 1.5rem;    
+            --spacing-md: 2.5rem;    
+            --spacing-lg: 5rem;      
+            --spacing-xl: 8rem;      
+
+            /* --- BORDAS & RADIUS --- */
+            --radius-none: 0;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-pill: 999px;
+
+            /* --- SOMBRAS SOFISTICADAS --- */
+            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 16px 40px rgba(0, 0, 0, 0.08);
+            --shadow-hard: 4px 4px 0 rgba(0, 142, 206, 0.2);
+            --shadow-brutal: 8px 8px 0 rgba(0, 142, 206, 0.3);
+
+            /* --- TRANSIÇÕES --- */
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==========================================
+           2. RESET & BASE
+           ========================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--sv-gray-10);
+            color: var(--sv-gray-300);
+            line-height: 1.7;
+            font-weight: 300; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--sv-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--sv-gray-100); border-radius: var(--radius-pill); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--sv-gray-200); }
+
+        img, svg { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
+
+        /* ==========================================
+           3. TIPOGRAFIA FLUIDA
+           ========================================== */
+        .sv-h1 {
+            font-family: var(--font-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+            font-size: clamp(2.5rem, 5vw, 4rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm);
+        }
+        .sv-h2 {
+            font-family: var(--font-primary); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em;
+            font-size: clamp(2rem, 4vw, 2.75rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-sm);
+        }
+        .sv-h3 {
+            font-family: var(--font-primary); font-weight: 600; line-height: 1.3;
+            font-size: clamp(1.35rem, 3vw, 1.85rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-xs);
+        }
+        .sv-h4 {
+            font-family: var(--font-primary); font-weight: 600; line-height: 1.4;
+            font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--sv-gray-400);
+        }
+        .sv-p {
+            font-weight: 300; line-height: 1.8;
+            font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--sv-gray-300); margin-bottom: var(--spacing-sm);
+        }
+        .sv-p.lead { font-weight: 400; font-size: clamp(1.125rem, 2vw, 1.35rem); color: var(--sv-gray-400); margin-bottom: var(--spacing-md); }
+        .sv-small { font-weight: 400; line-height: 1.5; font-size: 0.875rem; color: var(--sv-gray-200); }
+
+        .text-primary { color: var(--sv-blue-brand); }
+        .text-accent { color: var(--sv-accent); }
+        .text-white { color: var(--sv-white) !important; }
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .my-2 { margin-top: 1rem; margin-bottom: 1rem; }
+
+        /* ==========================================
+           4. COMPONENTES DE BOTÕES E INPUTS
+           ========================================== */
+        
+        .sv-btn { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; 
+            padding: 14px 32px; min-height: 52px; 
+            font-family: var(--font-primary); font-weight: 600; font-size: 1rem; 
+            cursor: pointer; border: 2px solid transparent; border-radius: var(--radius-pill); 
+            transition: all var(--transition-fast); text-decoration: none; 
+            position: relative; overflow: hidden; 
+        }
+        .sv-btn:active { transform: scale(0.98); }
+        .w-100 { width: 100%; }
+        
+        /* Botão Primário */
+        .sv-btn-primary { background: var(--sv-blue-brand); color: var(--sv-white) !important; border-color: var(--sv-blue-brand); box-shadow: var(--shadow-soft); }
+        .sv-btn-primary:hover { background: var(--sv-blue-500); border-color: var(--sv-blue-500); box-shadow: var(--shadow-medium); transform: translateY(-2px); color: var(--sv-white) !important; }
+        
+        /* Botão Secundário */
+        .sv-btn-secondary { background: var(--sv-white); color: var(--sv-blue-brand) !important; border-color: var(--sv-gray-30); }
+        .sv-btn-secondary:hover { background: var(--sv-gray-10); border-color: var(--sv-blue-brand); transform: translateY(-2px); color: var(--sv-blue-brand) !important; }
+
+        /* Botão Outline */
+        .sv-btn-outline { background: transparent; color: var(--sv-blue-brand) !important; border-color: var(--sv-blue-brand); }
+        .sv-btn-outline:hover { background: var(--sv-blue-brand); color: var(--sv-white) !important; border-color: var(--sv-blue-brand); transform: translateY(-2px); }
+
+        /* Botão Branco (Para secções escuras/Hero) */
+        .sv-btn-white { background: var(--sv-white); color: var(--sv-blue-brand) !important; border-color: var(--sv-white); box-shadow: var(--shadow-medium); }
+        .sv-btn-white:hover { background: var(--sv-gray-10); border-color: var(--sv-gray-10); transform: translateY(-2px); box-shadow: var(--shadow-hard); color: var(--sv-blue-brand) !important; }
+        
+        /* Inputs */
+        .sv-input { width: 100%; padding: 16px 24px; min-height: 56px; font-family: var(--font-primary); font-size: 1rem; color: var(--sv-gray-500); background: var(--sv-white); border: 1.5px solid var(--sv-gray-30); border-radius: var(--radius-md); transition: all var(--transition-fast); margin-bottom: 1.5rem; }
+        .sv-input:focus { outline: none; border-color: var(--sv-blue-brand); box-shadow: 0 0 0 4px rgba(0, 142, 206, 0.1); }
+        select.sv-input { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2350585C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 1.2em; }
+
+        /* Cards & Bento Grid */
+        .sv-card { background: var(--sv-white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-20); box-shadow: var(--shadow-soft); transition: all var(--transition-medium); height: 100%; }
+        .sv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); border-color: var(--sv-gray-30); }
+
+        /* Estilos dos Modais (Preview) */
+        .sv-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(80, 88, 92, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
+        .sv-modal-overlay.active { opacity: 1; visibility: visible; }
+        .sv-modal { background: var(--sv-white); border-radius: var(--radius-lg); width: 90%; max-width: 600px; position: relative; transform: translateY(20px) scale(0.95); transition: all var(--transition-medium); box-shadow: var(--shadow-brutal); overflow: hidden; }
+        .sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
+        .sv-modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--sv-gray-10); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sv-gray-400); transition: all var(--transition-fast); z-index: 10; }
+        .sv-modal-close:hover { background: var(--sv-gray-30); color: var(--sv-red-danger); }
+
+        /* Preview Inline de Modais no Editor */
+        .editor-modal-preview { position: relative !important; opacity: 1 !important; visibility: visible !important; min-height: 400px; background: rgba(80, 88, 92, 0.1) !important; border-radius: var(--radius-lg); margin-top: 1rem; z-index: 1 !important; padding: 2rem 1rem; }
+        .editor-modal-preview .sv-modal { transform: translateY(0) scale(1) !important; margin: 0 auto; }
+
+        .sv-bento-card { position: relative; background: var(--sv-white); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-20); box-shadow: var(--shadow-soft); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all var(--transition-medium); height: 100%; --bento-text: var(--sv-gray-300); --bento-title: var(--sv-gray-400); --bento-icon: var(--sv-blue-brand); --bento-bg: var(--sv-white); --bento-border: var(--sv-gray-20); background-color: var(--bento-bg); border-color: var(--bento-border); }
+        .sv-bento-card.sv-bento-highlight { --bento-text: rgba(255, 255, 255, 0.9); --bento-title: var(--sv-white); --bento-icon: var(--sv-white); --bento-bg: var(--sv-blue-brand); --bento-border: var(--sv-blue-brand); box-shadow: var(--shadow-hard); }
+        .sv-bento-card .sv-h3 { color: var(--bento-title); transition: color var(--transition-fast); }
+        .sv-bento-card .sv-p { color: var(--bento-text); transition: color var(--transition-fast); }
+        .sv-bento-card svg { color: var(--bento-icon) !important; transition: color var(--transition-fast); }
+        .sv-bento-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, transparent, rgba(0, 142, 206, 0.03)); opacity: 0; transition: opacity var(--transition-medium); z-index: 0; pointer-events: none; }
+        .sv-bento-card:hover { border-color: var(--sv-blue-200); box-shadow: var(--shadow-medium); transform: translateY(-8px); }
+        .sv-bento-card:hover::before { opacity: 1; }
+        .sv-bento-card > * { position: relative; z-index: 1; }
+
+        /* Accordion FAQ */
+        .accordion-wrapper { display: flex; flex-direction: column; gap: 1rem; }
+        .accordion-item { background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); transition: all var(--transition-fast); }
+        .accordion-header { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all var(--transition-fast); position: relative; }
+        .accordion-header:hover { background: var(--sv-gray-10); }
+        .accordion-header-title { font-weight: 500; font-size: 1.125rem; color: var(--sv-gray-400); transition: color var(--transition-fast); flex-grow: 1; padding-right: 1rem; }
+        .accordion-header i { transition: transform var(--transition-medium); color: var(--sv-gray-200); flex-shrink: 0; }
+        .accordion-item.active { border-color: var(--sv-blue-brand); box-shadow: var(--shadow-medium); }
+        .accordion-item.active .accordion-header-title { color: var(--sv-blue-brand); }
+        .accordion-item.active .accordion-header i { transform: rotate(180deg); color: var(--sv-blue-brand); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-medium); background: var(--sv-white); }
+        .accordion-content-inner { padding: 0 2rem 2rem 2rem; }
+        .accordion-header-title[contenteditable="true"] { display: inline-block; min-width: 50%; }
+
+        /* ==========================================
+           5. UTILITÁRIOS E GRID
+           ========================================== */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .container-sm { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+        
+        .grid { display: grid; gap: 2.5rem; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2.5rem; grid-auto-rows: minmax(260px, auto); }
+        .col-span-12 { grid-column: span 12; } .col-span-8 { grid-column: span 8; } .col-span-6 { grid-column: span 6; } .col-span-4 { grid-column: span 4; }
+
+        .flex { display: flex; } .flex-col { flex-direction: column; } .items-center { align-items: center; } .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; } .gap-1 { gap: 0.5rem; } .gap-2 { gap: 1.5rem; } .gap-4 { gap: 3rem; } .flex-wrap { flex-wrap: wrap; }
+        
+        .mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 2rem; } .mt-4 { margin-top: 4rem; }
+        .mb-1 { margin-bottom: 1rem; } .mb-2 { margin-bottom: 2rem; }
+        .py-lg { padding: 6rem 0; } .py-xl { padding: 10rem 0; }
+
+        .bg-primary { background-color: var(--sv-blue-brand); } .bg-white { background-color: var(--sv-white); }
+
+        /* ==========================================
+           6. DESIGN SYSTEM DASHBOARD (APP UI)
+           ========================================== */
+        .ds-layout { display: flex; min-height: 100vh; }
+        
+        .ds-sidebar { 
+            width: 320px; background: var(--sv-white); border-right: 1px solid var(--sv-gray-30); 
+            position: fixed; height: 100vh; overflow-y: auto; padding: 3rem 1.5rem; z-index: 100; 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 4px 0 30px rgba(0,0,0,0.02);
+        }
+        
+        .ds-sidebar-logo { margin-bottom: 3.5rem; padding-left: 12px; }
+        
+        .ds-menu-item { 
+            display: flex; align-items: center; gap: 14px; padding: 14px 20px; 
+            border-radius: var(--radius-md); color: var(--sv-gray-300); font-weight: 500; font-size: 1rem;
+            cursor: pointer; transition: all var(--transition-fast); margin-bottom: 8px; 
+        }
+        .ds-menu-item i { width: 20px; height: 20px; opacity: 0.6; transition: opacity var(--transition-fast); }
+        .ds-menu-item:hover { background: var(--sv-gray-10); color: var(--sv-blue-brand); transform: translateX(4px); }
+        .ds-menu-item.active { background: rgba(0, 142, 206, 0.08); color: var(--sv-blue-brand); font-weight: 600; }
+        .ds-menu-item.active i { opacity: 1; }
+
+        .ds-content { flex: 1; margin-left: 320px; background: #F9FAFB; min-height: 100vh; }
+        
+        .ds-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 5rem; }
+        .ds-section-inner { max-width: 1080px; margin: 0 auto; }
+        .ds-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilos de Cópia UI */
+        .color-swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--sv-gray-30); display: flex; flex-direction: column; transition: all 0.3s ease; cursor: pointer; }
+        .color-swatch:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); border-color: var(--sv-blue-200); }
+        .color-box { height: 120px; width: 100%; transition: opacity 0.3s; }
+        .color-swatch:hover .color-box { opacity: 0.9; }
+        .color-info { padding: 1.5rem; background: var(--sv-white); }
+        
+        .copy-action { position: relative; cursor: pointer; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .copy-action:active { transform: scale(0.96) !important; }
+
+        /* Blocos de Código */
+        .code-block { background: var(--sv-gray-700); border-radius: var(--radius-lg); margin-bottom: 2.5rem; box-shadow: var(--shadow-medium); overflow: hidden; }
+        .code-header { background: var(--sv-gray-600); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .code-dots { display: flex; gap: 8px; }
+        .code-dots span { width: 12px; height: 12px; border-radius: 50%; background: #ED7982; }
+        .code-dots span:nth-child(2) { background: #F1BD62; }
+        .code-dots span:nth-child(3) { background: #65BE73; }
+        .code-block pre { padding: 2.5rem; margin: 0; overflow-x: auto; color: var(--sv-white); font-family: monospace; font-size: 0.95rem; line-height: 1.7; }
+        .copy-btn { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 8px 20px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.85rem; font-family: var(--font-primary); transition: all 0.2s; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .copy-btn:hover { background: var(--sv-blue-brand); border-color: var(--sv-blue-brand); }
+        .copy-btn.success { background: var(--sv-green-success); border-color: var(--sv-green-success); }
+
+        /* ==========================================
+           7. EDITOR VISUAL NO-CODE
+           ========================================== */
+        [contenteditable="true"] { outline: 2px dashed transparent; padding: 4px 8px; border-radius: var(--radius-sm); transition: all 0.2s; cursor: text; position: relative; }
+        [contenteditable="true"]:hover { outline-color: var(--sv-blue-200); background: rgba(0,142,206,0.05); }
+        [contenteditable="true"]:focus { outline-color: var(--sv-blue-brand); outline-style: solid; background: var(--sv-white); }
+        
+        .editor-panel { background: #F8F9FB; border: 2px dashed var(--sv-gray-100); padding: 4rem 3rem 3rem 3rem; border-radius: var(--radius-lg); margin-bottom: 4rem; position: relative; }
+        .editor-badge { position: absolute; top: -14px; left: 3rem; background: var(--sv-blue-brand); color: white; font-size: 0.85rem; font-weight: 700; padding: 6px 20px; border-radius: var(--radius-pill); letter-spacing: 0.05em; box-shadow: var(--shadow-soft); }
+        .editor-actions { display: flex; gap: 16px; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--sv-gray-30); flex-wrap: wrap; }
+        .editor-actions-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        .editor-only-controls { position: absolute; top: 15px; right: 15px; z-index: 20; display: flex; gap: 8px; }
+        .editor-only-btn { background: var(--sv-white); color: var(--sv-gray-400); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-sm); padding: 8px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; font-family: var(--font-primary); box-shadow: var(--shadow-soft); }
+        .editor-only-btn:hover { background: var(--sv-gray-20); color: var(--sv-primary); border-color: var(--sv-primary); }
+        .editor-only-btn.danger { color: var(--sv-red-danger); border-color: rgba(215, 29, 45, 0.2); }
+        .editor-only-btn.danger:hover { background: var(--sv-red-danger); color: white; border-color: var(--sv-red-danger); }
+
+        #editable-accordion .accordion-item, #editable-bento .sv-bento-card, #editable-swiper .swiper-slide > div, #editable-pricing .sv-card, #editable-modal-1 .sv-modal, #editable-modal-2 .sv-modal { position: relative; }
+
+        /* E-mails e Modais Editáveis */
+        .sv-email-wrapper { background: #F4F7F9; padding: 2rem; border-radius: var(--radius-md); font-family: Arial, Helvetica, sans-serif; }
+        .sv-email-body { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        /* Toast Feedback Universal */
+        #feedback-toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--sv-green-success); color: white; padding: 1.25rem 2.5rem; border-radius: var(--radius-pill); font-weight: 600; box-shadow: var(--shadow-hard); transform: translateY(150px); opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 9999; display: flex; align-items: center; gap: 12px; font-size: 1.1rem; }
+        #feedback-toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Mobile Hamburger */
+        .mobile-toggle { display: none; position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; background: var(--sv-blue-brand); color: white; border: none; padding: 12px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-medium); transition: transform 0.2s; }
+        .mobile-toggle:active { transform: scale(0.9); }
+
+        /* Efeitos LP Original */
+        .hero-gradient { background: linear-gradient(135deg, #007AB0 0%, #0F3D60 100%); }
+        .shape-blob { position: absolute; filter: blur(120px); opacity: 0.4; z-index: 0; border-radius: 50%; }
+
+        @keyframes floatMockup { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        .anim-float { animation: floatMockup 6s ease-in-out infinite; }
+
+        .stats-item { padding: 1rem; }
+        .stats-divider { border-left: 1px solid var(--sv-gray-30); border-right: 1px solid var(--sv-gray-30); }
+
+        /* ==========================================
+           RESPONSIVIDADE METICULOSA (MEDIA QUERIES)
+           ========================================== */
+        @media (max-width: 1024px) {
+            .grid-4, .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .col-span-8, .col-span-4, .col-span-6 { grid-column: span 2; }
+            .ds-section { padding: 3rem 2rem; }
+            .ds-sidebar { width: 260px; }
+            .ds-content { margin-left: 260px; }
+        }
+        
+        @media (max-width: 768px) {
+            .ds-sidebar { transform: translateX(-100%); }
+            .ds-sidebar.open { transform: translateX(0); }
+            .ds-content { margin-left: 0; }
+            .ds-section { padding: 6rem 1.5rem 3rem 1.5rem; } 
+            .mobile-toggle { display: block; }
+            
+            .grid-2, .grid-3, .grid-4, .bento-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .col-span-8, .col-span-4, .col-span-6, .col-span-12 { grid-column: span 1; }
+            
+            .editor-panel { padding: 3rem 1.5rem 2rem 1.5rem; }
+            .editor-badge { left: 1rem; }
+            .editor-actions { flex-direction: column; align-items: stretch; }
+            .editor-actions-group { justify-content: center; width: 100%; }
+            .editor-actions .sv-btn, #demoForm .sv-btn, #demoFormLong .sv-btn { width: 100%; justify-content: center; }
+            
+            .py-lg { padding: 4rem 0 !important; }
+            .py-xl { padding: 5rem 0 !important; }
+            .sv-card, .sv-bento-card { padding: 2rem !important; }
+            .accordion-header { padding: 1.25rem 1.5rem !important; }
+            .accordion-content-inner { padding: 0 1.5rem 1.5rem 1.5rem !important; }
+            
+            .stats-grid { grid-template-columns: 1fr !important; }
+            .stats-divider { border-left: none !important; border-right: none !important; border-top: 1px solid var(--sv-gray-30); border-bottom: 1px solid var(--sv-gray-30); padding: 2rem 0 !important; margin: 1rem 0 !important; }
+            
+            #feedback-toast { right: 1rem; left: 1rem; bottom: 1rem; justify-content: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast de Feedback Universal -->
+    <div id="feedback-toast"><i data-lucide="check-circle" style="width: 24px; height: 24px;"></i> <span id="toast-message">Copiado com sucesso!</span></div>
+
+    <!-- Toggle Mobile -->
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu">
+        <i data-lucide="menu"></i>
+    </button>
+
+    <div class="ds-layout">
+        <!-- ==========================================
+             SIDEBAR NAVEGAÇÃO
+             ========================================== -->
+        <aside class="ds-sidebar" id="sidebar">
+            <div class="ds-sidebar-logo">
+                <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet Logo" style="max-width: 100%; height: 40px; display: block;">
+            </div>
+            <nav>
+                <div class="sv-small mb-2 mt-4" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Fundação</div>
+                <div class="ds-menu-item active" onclick="navigate('colors')"><i data-lucide="palette"></i> Cores</div>
+                <div class="ds-menu-item" onclick="navigate('typography')"><i data-lucide="type"></i> Tipografia</div>
+                <div class="ds-menu-item" onclick="navigate('effects')"><i data-lucide="layers"></i> Efeitos & Sombras</div>
+                <div class="ds-menu-item" onclick="navigate('icons')"><i data-lucide="image"></i> Gerador de Ícones</div>
+                <div class="ds-menu-item" onclick="navigate('global-css')"><i data-lucide="file-code-2"></i> CSS Global (RD)</div>
+                
+                <div class="sv-small mt-5 mb-2" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Design Builder</div>
+                <div class="ds-menu-item" onclick="navigate('components')"><i data-lucide="mouse-pointer-click"></i> Botões & Inputs</div>
+                <div class="ds-menu-item" onclick="navigate('templates')"><i data-lucide="layout-template"></i> Editor de Secções</div>
+                <div class="ds-menu-item" onclick="navigate('popups')"><i data-lucide="message-square-plus"></i> Pop-ups & Modais</div>
+                <div class="ds-menu-item" onclick="navigate('emails')"><i data-lucide="mail"></i> E-mail Marketing</div>
+                
+                <div class="sv-small mt-5 mb-2" style="padding-left: 16px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase;">Páginas (Preview)</div>
+                <div class="ds-menu-item" onclick="navigate('landing')"><i data-lucide="monitor-play"></i> LP (Curta)</div>
+                <div class="ds-menu-item" onclick="navigate('landing-long')"><i data-lucide="scroll-text"></i> LP (Longa / Form)</div>
+                <div class="ds-menu-item" onclick="navigate('thank-you')"><i data-lucide="check-circle"></i> Página de Sucesso</div>
+            </nav>
+        </aside>
+
+        <!-- ==========================================
+             CONTEÚDO PRINCIPAL
+             ========================================== -->
+        <main class="ds-content">
+            
+            <!-- 1. CORES -->
+            <section id="colors" class="ds-section active">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Cores da Marca</h1>
+                    <p class="sv-p lead">A paleta oficial da SimplesVet. Clique em qualquer cartão para copiar imediatamente o código Hexadecimal.</p>
+
+                    <h2 class="sv-h2 mt-4">Azul (Base da Marca)</h2>
+                    <div class="grid grid-4" id="color-grid-blue"></div>
+
+                    <h2 class="sv-h2 mt-4 mb-2">Cores Funcionais</h2>
+                    <div class="grid grid-4" id="color-grid-functional"></div>
+
+                    <h2 class="sv-h2 mt-4 mb-2">Escala de Cinzentos</h2>
+                    <div class="grid grid-4" id="color-grid-gray"></div>
+                </div>
+            </section>
+
+            <!-- 2. TIPOGRAFIA -->
+            <section id="typography" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Tipografia Fluida</h1>
+                    <p class="sv-p lead">A fonte <strong>Exo</strong> é a voz da marca. As classes abaixo ajustam-se automaticamente de mobile para desktop com amplo "respiro" visual. Clique numa linha para copiar a classe CSS.</p>
+                    
+                    <div class="sv-card mt-4" style="overflow-x: auto; padding: 3rem;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                            <tr style="border-bottom: 2px solid var(--sv-gray-30);">
+                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Exemplo Visual</th>
+                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Classe HTML</th>
+                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Mobile (px)</th>
+                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Desktop (px)</th>
+                                <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1.5rem;">Peso</th>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h1', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 2rem 0;"><h1 class="sv-h1" style="margin:0;">Heading 1</h1></td>
+                                <td class="font-bold text-primary">.sv-h1</td>
+                                <td class="sv-p" style="margin:0;">40px</td>
+                                <td class="sv-p" style="margin:0;">72px</td>
+                                <td class="sv-p" style="margin:0;">700 (Bold)</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h2', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 2rem 0;"><h2 class="sv-h2" style="margin:0;">Heading 2</h2></td>
+                                <td class="font-bold text-primary">.sv-h2</td>
+                                <td class="sv-p" style="margin:0;">32px</td>
+                                <td class="sv-p" style="margin:0;">48px</td>
+                                <td class="sv-p" style="margin:0;">600 (Semi-b)</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h3', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 2rem 0;"><h3 class="sv-h3" style="margin:0;">Heading 3</h3></td>
+                                <td class="font-bold text-primary">.sv-h3</td>
+                                <td class="sv-p" style="margin:0;">22px</td>
+                                <td class="sv-p" style="margin:0;">28px</td>
+                                <td class="sv-p" style="margin:0;">600 (Semi-b)</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-p', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 2rem 0;"><p class="sv-p" style="margin:0;">Parágrafo padrão focado em leitura fácil, espaçamento generoso e elegância.</p></td>
+                                <td class="font-bold text-primary">.sv-p</td>
+                                <td class="sv-p" style="margin:0;">16px</td>
+                                <td class="sv-p" style="margin:0;">18px</td>
+                                <td class="sv-p" style="margin:0;">300 (Light)</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-small', this)">
+                                <td style="padding: 2rem 0;"><p class="sv-small" style="margin:0;">Texto descritivo ou para rodapés e notas legais.</p></td>
+                                <td class="font-bold text-primary">.sv-small</td>
+                                <td class="sv-p" style="margin:0;">12px</td>
+                                <td class="sv-p" style="margin:0;">14px</td>
+                                <td class="sv-p" style="margin:0;">400 (Regular)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. EFEITOS E TOKENS -->
+            <section id="effects" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Sombras e Bordas</h1>
+                    <p class="sv-p lead">Valores predefinidos com bastante "respiro" para garantir a consistência de profundidade da interface. Clique para copiar a regra CSS.</p>
+
+                    <h2 class="sv-h2 mt-4 mb-2">Elevações (Box Shadows)</h2>
+                    <div class="grid grid-3">
+                        <div class="sv-card copy-action flex flex-col items-center justify-center text-center" style="box-shadow: var(--shadow-soft); border:none; height: 180px;" onclick="copyToClipboard('box-shadow: var(--shadow-soft);', this)">
+                            <p class="font-bold mb-1">--shadow-soft</p>
+                            <p class="sv-small">Hover de cartões secundários</p>
+                        </div>
+                        <div class="sv-card copy-action flex flex-col items-center justify-center text-center" style="box-shadow: var(--shadow-medium); border:none; height: 180px;" onclick="copyToClipboard('box-shadow: var(--shadow-medium);', this)">
+                            <p class="font-bold mb-1">--shadow-medium</p>
+                            <p class="sv-small" style="margin:0;">Destaque de blocos principais</p>
+                        </div>
+                        <div class="sv-card copy-action flex flex-col items-center justify-center text-center" style="box-shadow: var(--shadow-hard); border:none; height: 180px;" onclick="copyToClipboard('box-shadow: var(--shadow-hard);', this)">
+                            <p class="font-bold mb-1 text-primary">--shadow-hard</p>
+                            <p class="sv-small">Sombra direcional colorida</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="sv-h2 mt-4 mb-2">Arredondamento (Border Radius)</h2>
+                    <div class="grid grid-4 text-center">
+                        <div class="sv-card copy-action flex items-center justify-center" style="border-radius: var(--radius-sm); height: 120px;" onclick="copyToClipboard('border-radius: var(--radius-sm);', this)">--radius-sm</div>
+                        <div class="sv-card copy-action flex items-center justify-center" style="border-radius: var(--radius-md); height: 120px;" onclick="copyToClipboard('border-radius: var(--radius-md);', this)">--radius-md</div>
+                        <div class="sv-card copy-action flex items-center justify-center" style="border-radius: var(--radius-lg); height: 120px;" onclick="copyToClipboard('border-radius: var(--radius-lg);', this)">--radius-lg</div>
+                        <div class="sv-card copy-action flex items-center justify-center" style="border-radius: var(--radius-pill); height: 120px;" onclick="copyToClipboard('border-radius: var(--radius-pill);', this)">--radius-pill</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. ÍCONES -->
+            <section id="icons" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Gerador de Ícones</h1>
+                    <p class="sv-p lead">Esta ferramenta pesquisa em <strong>toda a biblioteca da Lucide (+1000 ícones)</strong>. Digite um nome em inglês (ex: <i>dog, cat, user, check</i>). Descarregue o PNG transparente de alta qualidade ou copie a Tag HTML formatada.</p>
+
+                    <div class="sv-card mb-4 grid grid-3 items-end" style="background: var(--sv-gray-10); padding: 2.5rem;">
+                        <div>
+                            <label class="sv-small font-bold block mb-1">Pesquisar Ícone (Inglês):</label>
+                            <div style="position:relative;">
+                                <i data-lucide="search" style="position:absolute; left:16px; top:18px; color:var(--sv-gray-200); width:20px;"></i>
+                                <input type="text" id="icon-search" placeholder="Ex: dog, calendar, star..." class="sv-input" style="margin:0; padding-left:48px;" onkeyup="filterIcons()">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="sv-small font-bold block mb-1">Cor Hexadecimal:</label>
+                            <div class="flex gap-1">
+                                <input type="color" id="icon-color-picker" value="#008ECE" class="sv-input" style="height: 56px; padding: 5px; width: 70px; margin:0; cursor:pointer;" onchange="updateIconsPreview()">
+                                <input type="text" id="icon-color-text" value="#008ECE" class="sv-input" style="margin:0; font-family: monospace;" oninput="document.getElementById('icon-color-picker').value=this.value; updateIconsPreview();">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="sv-small font-bold block mb-1">Tamanho (px):</label>
+                            <input type="number" id="icon-size-picker" value="48" min="16" max="512" class="sv-input" style="margin:0;" onchange="updateIconsPreview()">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-4" id="icons-grid">
+                        <!-- Gerado via JS (Pesquisa Total da Biblioteca) -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. CSS GLOBAL (RD STATION) -->
+            <section id="global-css" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">CSS Global para RD Station</h1>
+                    <p class="sv-p lead">Cole este bloco de código nas configurações de CSS avançado do seu CRM/Landing Page. Ele garante que a identidade da SimplesVet sobrepõe-se aos estilos padrão (graças ao <code>!important</code>).</p>
+                    
+                    <div class="code-block mt-4">
+                        <div class="code-header">
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                            <button class="copy-btn" onclick="copyCodeTemplate(this)"><i data-lucide="copy" style="width:16px;"></i> Copiar CSS Completo</button>
+                        </div>
+<pre><code>/* --- SISTEMA SIMPLESVET GLOBAL v1.0 (RD STATION READY) --- */
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css');
+
+h1, h2, h3, h4, h5, h6 { 
+    font-family: 'Exo', sans-serif !important; 
+    font-weight: 600 !important; 
+    color: #50585C !important; 
+}
+p, li, span, a, label, input, select { 
+    font-family: 'Exo', sans-serif !important; 
+    font-weight: 300 !important; 
+    color: #5D6C75 !important; 
+}
+strong, b { font-weight: 600 !important; }
+
+/* BOTÕES BASE */
+.rd-button, .sv-btn {
+    font-family: 'Exo', sans-serif !important;
+    font-weight: 600 !important;
+    border-radius: 56px !important; 
+    border: 2px solid transparent !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    padding: 16px 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+}
+
+/* VARIAÇÕES DE BOTÕES */
+.sv-btn-primary { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; }
+.sv-btn-primary:hover { background-color: #134C77 !important; border-color: #134C77 !important; color: #FFFFFF !important; }
+
+.sv-btn-secondary { background-color: #FFFFFF !important; color: #008ECE !important; border-color: #D7DEE4 !important; }
+.sv-btn-secondary:hover { border-color: #008ECE !important; background-color: #F8F9FA !important; color: #008ECE !important; }
+
+.sv-btn-outline { background-color: transparent !important; color: #008ECE !important; border-color: #008ECE !important; }
+.sv-btn-outline:hover { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; }
+
+.sv-btn-white { background-color: #FFFFFF !important; color: #008ECE !important; border-color: #FFFFFF !important; box-shadow: 0 12px 32px rgba(0,0,0,0.06) !important; }
+.sv-btn-white:hover { background-color: #F8F9FA !important; border-color: #F8F9FA !important; color: #008ECE !important; }
+
+/* MOBILE FIRST (Até 639px) */
+h1, h1 * { font-size: 35px !important; line-height: 1.15 !important; margin-bottom: 16px !important; font-weight: 700 !important; }
+h2, h2 * { font-size: 28px !important; line-height: 1.2 !important; margin-bottom: 16px !important; }
+h3, h3 * { font-size: 20px !important; line-height: 1.3 !important; margin-bottom: 12px !important; }
+p, li, p * { font-size: 16px !important; line-height: 1.7 !important; }
+
+/* TABLET (640px+) */
+@media (min-width: 640px) {
+    h1, h1 * { font-size: 45px !important; margin-bottom: 20px !important; }
+    h2, h2 * { font-size: 34px !important; margin-bottom: 16px !important; }
+}
+
+/* DESKTOP (1024px+) */
+@media (min-width: 1024px) {
+    h1, h1 * { font-size: 56px !important; margin-bottom: 24px !important; }
+    h2, h2 * { font-size: 40px !important; margin-bottom: 24px !important; }
+}
+
+/* CARDS & BENTO */
+.rd-card, .sv-card, .sv-bento-card {
+    border-radius: 16px !important;
+    border: 1px solid #D7DEE4 !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    padding: 32px !important;
+}
+.rd-card:hover, .sv-card:hover, .sv-bento-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08) !important;
+    border-color: #008ECE !important;
+}
+
+/* MODAIS E POP-UPS (GLOBAL) */
+.sv-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(80, 88, 92, 0.8); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.sv-modal-overlay.active { opacity: 1; visibility: visible; }
+.sv-modal { background: #FFFFFF; border-radius: 16px; width: 90%; max-width: 600px; position: relative; transform: translateY(20px) scale(0.95); transition: all 0.3s ease; box-shadow: 0 24px 64px rgba(0, 142, 206, 0.2); overflow: hidden; }
+.sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
+.sv-modal-close { position: absolute; top: 16px; right: 16px; background: #F2F3F4; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #50585C; transition: all 0.2s ease; z-index: 10; }
+.sv-modal-close:hover { background: #D7DEE4; color: #D71D2D; }
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. COMPONENTES BASE (BOTÕES) -->
+            <section id="components" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Botões e Inputs</h1>
+                    <p class="sv-p lead">Elementos unitários desenhados para fácil interação tátil. Clique na caixa para copiar o HTML exato da estrutura.</p>
+
+                    <div class="grid grid-2 mt-4">
+                        <div class="sv-card" style="padding: 3rem;">
+                            <h3 class="sv-h3 mb-4">Botões de Ação</h3>
+                            <div class="flex flex-col gap-4 items-start">
+                                <div class="copy-action w-100" onclick="copyToClipboard('<button class=\'sv-btn sv-btn-primary\'>Botão Primário</button>', this)" style="width: 100%;">
+                                    <button class="sv-btn sv-btn-primary" style="width: 100%; pointer-events: none;">
+                                        <i data-lucide="mouse-pointer-click" style="width:20px;"></i> Botão Primário
+                                    </button>
+                                </div>
+                                <div class="copy-action w-100" onclick="copyToClipboard('<button class=\'sv-btn sv-btn-secondary\'>Botão Secundário</button>', this)" style="width: 100%;">
+                                    <button class="sv-btn sv-btn-secondary" style="width: 100%; pointer-events: none;">
+                                        Botão Secundário
+                                    </button>
+                                </div>
+                                <div class="copy-action w-100" onclick="copyToClipboard('<button class=\'sv-btn sv-btn-outline\'>Botão Outline</button>', this)" style="width: 100%;">
+                                    <button class="sv-btn sv-btn-outline" style="width: 100%; pointer-events: none;">
+                                        Botão Outline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sv-card" style="padding: 3rem;">
+                            <h3 class="sv-h3 mb-4">Inputs de Formulário</h3>
+                            <div class="copy-action" onclick="copyToClipboard('<input type=\'text\' class=\'sv-input\' placeholder=\'Nome\'>', this)">
+                                <label class="sv-small mb-1 font-bold block">Input de Texto (Clique para Copiar)</label>
+                                <input type="text" class="sv-input" placeholder="Ex: João Silva" readonly style="pointer-events:none;">
+                            </div>
+                            <div class="copy-action mt-2" onclick="copyToClipboard('<select class=\'sv-input\'><option>Opção</option></select>', this)">
+                                <label class="sv-small mb-1 font-bold block">Dropdown Select</label>
+                                <select class="sv-input" style="pointer-events:none;">
+                                    <option>Selecionar especialidade...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. EDITOR VISUAL NO-CODE (COM REMOÇÃO, LINKS E ADIÇÃO) -->
+            <section id="templates" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Editor de Secções (No-Code)</h1>
+                    <p class="sv-p lead">Apenas clique no texto para editar o conteúdo. <b>Pode adicionar, reorganizar ou remover os blocos livremente.</b> Quando estiver perfeito, clique em <b>"Exportar HTML Limpo"</b> para copiar o código perfeitamente higienizado para o RD Station.</p>
+
+                    <!-- A: Hero Section -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">EDITAR: SECÇÃO HERO (TOPO)</div>
+                        <div class="py-lg text-center bg-primary" id="editable-hero" style="border-radius: var(--radius-lg); position: relative; margin-top: 1rem;">
+                            <div class="container-sm">
+                                <h1 class="sv-h1 text-white" contenteditable="true" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">Título Principal de Impacto</h1>
+                                <p class="sv-p text-white" contenteditable="true" style="font-size: 1.2rem; opacity:0.9;">Subtítulo descritivo com a proposta de valor. Teste gratuitamente.</p>
+                                <div class="mt-4">
+                                    <a href="#" class="sv-btn sv-btn-white" contenteditable="true">Botão de Ação Principal</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-hero', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML Limpo</button>
+                        </div>
+                    </div>
+
+                    <!-- B: Tabela de Preços -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">EDITAR: PLANOS DE PREÇOS (EM R$)</div>
+                        <div class="grid grid-3 mt-2" id="editable-pricing">
+                            <div class="sv-card flex flex-col text-center" style="position: relative;">
+                                <div class="editor-only-controls">
+                                    <button class="editor-only-btn" onclick="editLink(this)" title="Editar Link do Botão"><i data-lucide="link" style="width:14px;"></i> Link</button>
+                                    <button class="editor-only-btn danger" onclick="this.closest('.sv-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:14px;"></i></button>
+                                </div>
+                                <h3 class="sv-h3" contenteditable="true">Plano Básico</h3>
+                                <h2 class="sv-h1 text-primary my-2" contenteditable="true" style="margin: 1rem 0;">R$ 149<span class="sv-small">,90/mês</span></h2>
+                                <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-1">
+                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">1 Utilizador</span></li>
+                                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Módulo Fiscal</span></li>
+                                </ul>
+                                <div style="margin-top: auto;">
+                                    <a href="#" class="sv-btn sv-btn-outline w-100" contenteditable="true">Escolher Plano</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-actions">
+                            <div class="editor-actions-group">
+                                <button class="sv-btn sv-btn-secondary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="addPricingCard()"><i data-lucide="plus" style="width:18px;"></i> Adicionar Plano</button>
+                            </div>
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-pricing', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML</button>
+                        </div>
+                    </div>
+
+                    <!-- C: Bento Grid Editável -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">EDITAR E REORGANIZAR: BENTO GRID</div>
+                        <div class="bento-grid mt-2" id="editable-bento">
+                            <div class="sv-bento-card col-span-8">
+                                <div class="editor-only-controls">
+                                    <button class="editor-only-btn" onclick="moveBentoCard(this, -1)" title="Mover para a Esquerda/Cima"><i data-lucide="arrow-left" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn" onclick="moveBentoCard(this, 1)" title="Mover para a Direita/Baixo"><i data-lucide="arrow-right" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn" onclick="toggleBentoHighlight(this)" title="Alternar Cor"><i data-lucide="star" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn danger" onclick="this.closest('.sv-bento-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:14px;"></i></button>
+                                </div>
+                                <div>
+                                    <i data-lucide="file-text" style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+                                    <h3 class="sv-h3" contenteditable="true">Módulo Fiscal Nativo</h3>
+                                    <p class="sv-p" contenteditable="true">Emita faturas em segundos sem sair do sistema. Concentre a sua operação num só lugar de forma segura.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-4 sv-bento-highlight">
+                                <div class="editor-only-controls">
+                                    <button class="editor-only-btn" onclick="moveBentoCard(this, -1)" title="Mover para a Esquerda/Cima"><i data-lucide="arrow-left" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn" onclick="moveBentoCard(this, 1)" title="Mover para a Direita/Baixo"><i data-lucide="arrow-right" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn" onclick="toggleBentoHighlight(this)" title="Alternar Cor"><i data-lucide="star" style="width:14px;"></i></button>
+                                    <button class="editor-only-btn danger" onclick="this.closest('.sv-bento-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:14px;"></i></button>
+                                </div>
+                                <div>
+                                    <i data-lucide="message-circle" style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+                                    <h3 class="sv-h3" contenteditable="true">Lembretes WhatsApp</h3>
+                                    <p class="sv-p" contenteditable="true">Agendamentos automáticos e sem esforço da equipa.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-actions">
+                            <div class="flex gap-2 items-center flex-wrap editor-actions-group">
+                                <span class="sv-small font-bold">Inserir Novo Cartão:</span>
+                                <button class="sv-btn sv-btn-secondary" style="padding: 8px 16px; min-height:0; font-size:12px;" onclick="addBentoCard('col-span-4')">Pequeno (4)</button>
+                                <button class="sv-btn sv-btn-secondary" style="padding: 8px 16px; min-height:0; font-size:12px;" onclick="addBentoCard('col-span-6')">Médio (6)</button>
+                                <button class="sv-btn sv-btn-secondary" style="padding: 8px 16px; min-height:0; font-size:12px;" onclick="addBentoCard('col-span-8')">Largo (8)</button>
+                                <button class="sv-btn sv-btn-secondary" style="padding: 8px 16px; min-height:0; font-size:12px;" onclick="addBentoCard('col-span-12')">Total (12)</button>
+                            </div>
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-bento', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML</button>
+                        </div>
+                    </div>
+
+                    <!-- D: Swiper Carrossel Editável -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">EDITAR: CARROSSEL (DEPOIMENTOS)</div>
+                        <p class="sv-small mb-4 mt-2">O movimento automático do carrossel será ativado na Landing Page final (exportada).</p>
+                        <div class="swiper" id="editable-swiper" style="padding-bottom: 50px;">
+                            <div class="swiper-wrapper" id="editable-swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="sv-card flex flex-col justify-between" style="min-height: 260px; position:relative;">
+                                        <div class="editor-only-controls">
+                                            <button class="editor-only-btn danger" onclick="this.closest('.swiper-slide').remove(); swiperInstancePreview.update();" aria-label="Remover"><i data-lucide="trash-2" style="width:16px;"></i></button>
+                                        </div>
+                                        <p class="sv-p" contenteditable="true" style="font-style: italic; font-size: 1.15rem;">"O melhor software que já utilizamos na nossa clínica. A gestão do stock tornou-se uma brincadeira de crianças."</p>
+                                        <div class="mt-4 flex items-center gap-2">
+                                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                                <i data-lucide="user" style="color: var(--sv-white);"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold sv-p" contenteditable="true" style="margin:0; line-height: 1.2;">Dr. João Silva</p>
+                                                <p class="sv-small" contenteditable="true" style="margin:0;">Hospital Vet. Centro</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-actions">
+                            <div class="editor-actions-group">
+                                <button class="sv-btn sv-btn-secondary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="addSwiperSlide()"><i data-lucide="plus" style="width:18px;"></i> Adicionar Slide</button>
+                            </div>
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-swiper', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML Limpo</button>
+                        </div>
+                    </div>
+
+                    <!-- E: Accordion Editável -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">EDITAR: ACORDEÃO (FAQ)</div>
+                        <div class="accordion-wrapper mt-2" id="editable-accordion">
+                            <div class="accordion-item active">
+                                <div class="editor-only-controls">
+                                    <button class="editor-only-btn danger" onclick="this.closest('.accordion-item').remove();" aria-label="Remover"><i data-lucide="trash-2" style="width:16px;"></i> Remover</button>
+                                </div>
+                                <div class="accordion-header">
+                                    <span class="accordion-header-title" contenteditable="true">Como migro os meus dados de outro sistema?</span>
+                                    <i data-lucide="chevron-down"></i>
+                                </div>
+                                <div class="accordion-content" style="max-height: 200px;">
+                                    <div class="accordion-content-inner">
+                                        <p class="sv-p" contenteditable="true" style="margin:0;">A SimplesVet tem mais de 30 conversores gratuitos e uma equipa dedicada a ajudar neste processo sem custos extra.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-actions">
+                            <div class="editor-actions-group">
+                                <button class="sv-btn sv-btn-secondary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="addAccordionItem()"><i data-lucide="plus" style="width:18px;"></i> Adicionar Pergunta</button>
+                            </div>
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-accordion', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML Limpo</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. MODAIS E POP-UPS -->
+            <section id="popups" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Pop-ups e Modais</h1>
+                    <p class="sv-p lead">Edite o conteúdo destes pop-ups de conversão e exporte o HTML para usar em campanhas de retenção (Exit Intent) ou anúncios na página.</p>
+                    
+                    <!-- Pop-up Captura -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">MODAL DE CAPTURA (E-BOOK / NEWSLETTER)</div>
+                        <p class="sv-small mb-4 mt-2">Edite o conteúdo diretamente no pop-up abaixo.</p>
+                        
+                        <div id="editable-modal-1" class="sv-modal-overlay editor-modal-preview">
+                            <div class="sv-modal" style="display: flex; max-width: 800px; flex-wrap: wrap;">
+                                <button class="sv-modal-close" onclick="closeModal('editable-modal-1')"><i data-lucide="x"></i></button>
+                                
+                                <div style="flex: 1 1 300px; background: var(--sv-blue-brand); padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
+                                    <h2 class="sv-h2 text-white" contenteditable="true" style="margin-bottom: 1rem;">Ainda com dúvidas?</h2>
+                                    <p class="sv-p text-white" contenteditable="true" style="opacity: 0.9;">Baixe o nosso guia definitivo para a gestão de clínicas veterinárias e aumente a sua margem de lucro.</p>
+                                </div>
+                                <div style="flex: 1 1 300px; padding: 3rem;">
+                                    <h3 class="sv-h3 text-center mb-2" contenteditable="true">Descarregar Guia</h3>
+                                    <form class="flex flex-col gap-1">
+                                        <input type="text" placeholder="O seu nome*" class="sv-input" required>
+                                        <input type="email" placeholder="O seu e-mail*" class="sv-input" required>
+                                        <button type="button" class="sv-btn sv-btn-primary mt-2 w-100">Receber Grátis</button>
+                                    </form>
+                                    <p class="sv-small text-center mt-2" contenteditable="true">Sem compromissos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-modal-1', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML do Pop-up</button>
+                        </div>
+                    </div>
+
+                    <!-- Pop-up Oferta Simples -->
+                    <div class="editor-panel mt-4">
+                        <div class="editor-badge">MODAL DE AVISO / OFERTA DIRETA</div>
+                        <p class="sv-small mb-4 mt-2">Edite o conteúdo diretamente no pop-up abaixo.</p>
+                        
+                        <div id="editable-modal-2" class="sv-modal-overlay editor-modal-preview">
+                            <div class="sv-modal" style="padding: 3rem; text-align: center; max-width: 500px;">
+                                <button class="sv-modal-close" onclick="closeModal('editable-modal-2')"><i data-lucide="x"></i></button>
+                                
+                                <div style="width: 80px; height: 80px; background: rgba(247, 164, 45, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+                                    <i data-lucide="gift" style="color: var(--sv-mustard-brand); width: 40px; height: 40px;"></i>
+                                </div>
+                                <h2 class="sv-h2" contenteditable="true" style="margin-bottom: 1rem;">Oferta Especial de 30%</h2>
+                                <p class="sv-p" contenteditable="true" style="margin-bottom: 2rem;">Adira hoje a um dos nossos planos anuais e garanta um desconto vitalício enquanto for cliente SimplesVet.</p>
+                                <div class="flex gap-2 justify-center flex-wrap">
+                                    <button class="sv-btn sv-btn-outline" onclick="closeModal('editable-modal-2')">Agora não</button>
+                                    <button class="sv-btn sv-btn-primary">Aproveitar Desconto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-modal-2', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML do Pop-up</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. E-MAIL TEMPLATES -->
+            <section id="emails" class="ds-section">
+                <div class="ds-section-inner">
+                    <h1 class="sv-h1">Templates de E-mail</h1>
+                    <p class="sv-p lead">Como os e-mails funcionam de forma diferente (muitos leitores bloqueiam CSS e fontes web), estes templates foram construídos com <b>estilos embutidos seguros</b> e fontes <i>fallback</i> (Arial/Helvetica). Pode editar o texto e exportar.</p>
+                    
+                    <!-- E-mail Boas Vindas -->
+                    <div class="editor-panel mt-4" style="background: #e9ecef;">
+                        <div class="editor-badge">E-MAIL: BOAS VINDAS</div>
+                        
+                        <div id="editable-email-1" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
+                            <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+                                
+                                <!-- Header -->
+                                <div style="background-color: #008ECE; padding: 30px; text-align: center;">
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: -0.5px;">SimplesVet</h1>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div style="padding: 40px 30px;">
+                                    <h2 style="color: #50585C; margin-top: 0; font-size: 22px;" contenteditable="true">Bem-vindo(a) à SimplesVet! 🎉</h2>
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6;" contenteditable="true">
+                                        Olá [Nome do Cliente],<br><br>
+                                        Estamos muito felizes por o ter connosco. A sua conta de teste de 7 dias acaba de ser ativada com sucesso. A partir de agora, pode transformar a gestão da sua clínica.
+                                    </p>
+                                    
+                                    <div style="text-align: center; margin: 30px 0;">
+                                        <a href="#" style="background-color: #3797DE; color: #ffffff; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Aceder ao meu sistema</a>
+                                    </div>
+                                    
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6;" contenteditable="true">Se tiver alguma dúvida, basta responder a este e-mail. A nossa equipa está pronta a ajudar!</p>
+                                </div>
+                                
+                                <!-- Footer -->
+                                <div style="background-color: #F2F3F4; padding: 20px; text-align: center; border-top: 1px solid #D7DEE4;">
+                                    <p style="color: #7D8991; font-size: 12px; margin: 0;" contenteditable="true">
+                                        © 2026 SimplesVet. Todos os direitos reservados.<br>
+                                        Rua Minas Gerais, Salvador, Brasil.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-email-1', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML do E-mail</button>
+                        </div>
+                    </div>
+
+                    <!-- E-mail Lançamento Promo -->
+                    <div class="editor-panel mt-4" style="background: #e9ecef;">
+                        <div class="editor-badge">E-MAIL: PROMOÇÃO / NEWSLETTER</div>
+                        
+                        <div id="editable-email-2" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
+                            <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+                                
+                                <!-- Promo Hero -->
+                                <div style="background-color: #44BCCB; padding: 50px 30px; text-align: center;">
+                                    <span style="display: inline-block; background: rgba(255,255,255,0.2); color: #ffffff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px;" contenteditable="true">OFERTA DE BLACK FRIDAY</span>
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 32px; letter-spacing: -0.5px;" contenteditable="true">Chegou o momento que esperava.</h1>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div style="padding: 40px 30px;">
+                                    <p style="color: #5D6C75; font-size: 16px; line-height: 1.6; text-align: center;" contenteditable="true">
+                                        Poupe até 40% nos planos anuais da SimplesVet e garanta acesso a todas as novas ferramentas de gestão de stock e integração com WhatsApp de forma vitalícia.
+                                    </p>
+                                    
+                                    <div style="background: #F8F9FA; border: 1px solid #D7DEE4; border-radius: 8px; padding: 20px; text-align: center; margin: 30px 0;">
+                                        <h3 style="color: #50585C; margin: 0 0 10px 0; font-size: 18px;" contenteditable="true">Use o código abaixo no checkout:</h3>
+                                        <span style="font-family: monospace; font-size: 24px; color: #D71D2D; font-weight: bold; letter-spacing: 2px;" contenteditable="true">SIMPLESVET40</span>
+                                    </div>
+
+                                    <div style="text-align: center; margin: 30px 0;">
+                                        <a href="#" style="background-color: #008ECE; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-weight: bold; font-size: 16px; display: inline-block;" contenteditable="true">Resgatar o meu desconto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" style="padding: 12px 24px; min-height:0; font-size:14px;" onclick="exportVisualHTML('editable-email-2', this)"><i data-lucide="code" style="width:18px;"></i> Exportar HTML do E-mail</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 LANDING PAGE (OPÇÃO 1 - GERAL - CURTA)
+                 ========================================== -->
+            <section id="landing" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
+                
+                <!-- Hero -->
+                <div class="py-xl hero-gradient" style="position: relative; overflow: hidden;">
+                    <div class="shape-blob" style="width: 700px; height: 700px; background: var(--sv-turq-brand); top: -300px; right: -150px;"></div>
+                    <div class="shape-blob" style="width: 500px; height: 500px; background: var(--sv-primary); bottom: -200px; left: -150px; opacity: 0.6;"></div>
+
+                    <div class="container" style="position: relative; z-index: 10;">
+                        <div class="grid grid-2 items-center gap-4">
+                            <div data-aos="fade-right">
+                                <div style="display:inline-flex; align-items:center; gap: 8px; padding: 10px 24px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-pill); color: white; margin-bottom: 2rem; font-weight: 500; backdrop-filter: blur(10px);">
+                                    <i data-lucide="star" style="width: 18px; fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand);"></i> O Software Nº1 do Mercado Pet
+                                </div>
+                                <h1 class="sv-h1 text-white" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.1;">
+                                    A gestão da sua clínica <span style="color: var(--sv-turq-brand);">nunca foi tão simples.</span>
+                                </h1>
+                                <p class="sv-p text-white mt-4" style="font-size: clamp(1.1rem, 2vw, 1.25rem); opacity: 0.9;">
+                                    Aumente a rentabilidade e liberte o seu tempo para cuidar do que realmente importa: os animais. 
+                                </p>
+                            </div>
+                            
+                            <!-- Formulário Floating -->
+                            <div class="sv-card" data-aos="fade-left" data-aos-delay="100" style="box-shadow: var(--shadow-brutal); border: none; padding: 3.5rem; border-top: 8px solid var(--sv-turq-brand);">
+                                <h3 class="sv-h3 text-center mb-1">Comece o seu teste grátis</h3>
+                                <p class="sv-small text-center mb-4">7 dias de acesso total. Sem cartão de crédito.</p>
+                                
+                                <form id="demoForm" class="flex flex-col">
+                                    <input type="text" name="name" placeholder="O seu nome completo" class="sv-input" required>
+                                    <input type="email" name="email" placeholder="O seu e-mail profissional" class="sv-input" required>
+                                    <input type="tel" name="phone" placeholder="Telemóvel (WhatsApp)" class="sv-input" required>
+                                    <select class="sv-input" required>
+                                        <option value="" disabled selected>Qual é a sua função?</option>
+                                        <option>Gestor / Proprietário</option>
+                                        <option>Médico Veterinário</option>
+                                        <option>Rececionista</option>
+                                    </select>
+                                    <button type="submit" class="sv-btn sv-btn-primary mt-2 w-100" style="font-size: 1.1rem; padding: 20px;">Criar a minha conta agora</button>
+                                    <p class="sv-small text-center mt-4 flex items-center justify-center gap-1" style="opacity: 0.8;">
+                                        <i data-lucide="lock" style="width: 14px;"></i> Os seus dados estão totalmente seguros.
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefícios Bento Grid -->
+                <div class="py-lg" style="background: var(--sv-bg);">
+                    <div class="container">
+                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Tudo integrado no mesmo ecossistema</h2>
+                        <div class="bento-grid mt-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="sv-bento-card col-span-8">
+                                <div>
+                                    <div style="background: var(--sv-blue-100); width: 70px; height: 70px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+                                        <i data-lucide="file-text" style="color: var(--sv-primary); width: 36px; height: 36px;"></i>
+                                    </div>
+                                    <h3 class="sv-h3">Módulo Fiscal Automático</h3>
+                                    <p class="sv-p">Emita faturas e recibos diretamente no sistema, ganhando tempo para si e para os seus clientes, sem stress com as Finanças.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-4 sv-bento-highlight" style="--bento-bg: var(--sv-purple-brand); --bento-border: var(--sv-purple-brand);">
+                                <div>
+                                    <i data-lucide="message-circle" style="color: white; width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+                                    <h3 class="sv-h3 text-white">WhatsApp Nativo</h3>
+                                    <p class="sv-p" style="color: rgba(255,255,255,0.9);">Programe e envie lembretes de consultas e vacinas automaticamente.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-4 sv-bento-highlight" style="--bento-bg: var(--sv-turq-brand); --bento-border: var(--sv-turq-brand);">
+                                <div>
+                                    <i data-lucide="smartphone" style="color: white; width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+                                    <h3 class="sv-h3 text-white">Acesso 100% Cloud</h3>
+                                    <p class="sv-p" style="color: rgba(255,255,255,0.9);">Faça a gestão da clínica do telemóvel, tablet ou computador em qualquer lugar.</p>
+                                </div>
+                            </div>
+                            <div class="sv-bento-card col-span-8">
+                                <div>
+                                    <div style="background: rgba(33, 163, 68, 0.15); width: 70px; height: 70px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+                                        <i data-lucide="package" style="color: var(--sv-green-success); width: 36px; height: 36px;"></i>
+                                    </div>
+                                    <h3 class="sv-h3">Controlo de Stock Inteligente</h3>
+                                    <p class="sv-p">O único sistema que o alerta sobre validades e lhe diz exatamente a quantidade que precisa comprar para evitar prejuízos na sua clínica.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Final -->
+                <div class="py-lg bg-primary text-center">
+                    <div class="container" data-aos="fade-up">
+                        <h2 class="sv-h2 text-white">Preparado para simplificar a sua gestão?</h2>
+                        <p class="sv-p text-white mt-2 mb-4">Teste o software que está a revolucionar o mercado veterinário.</p>
+                        <button class="sv-btn sv-btn-secondary" style="color: var(--sv-primary);" onclick="window.scrollTo(0,0)">
+                            Começar Teste Grátis
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 LANDING PAGE (OPÇÃO 1 - GERAL - LONGA)
+                 ========================================== -->
+            <section id="landing-long" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
+                
+                <!-- Dobra 1: Hero Imersivo + Mockup -->
+                <div class="py-xl" style="background: var(--sv-gray-700); position: relative; overflow: hidden; border-bottom: 1px solid var(--sv-gray-600);">
+                    <div class="glow-bg anim-appear-zoom anim-delay-1000">
+                        <div class="glow-blob-1" style="background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.2) 10%, transparent 60%); top: -50px;"></div>
+                    </div>
+
+                    <div class="container text-center relative z-10" style="padding-top: 2rem;">
+                        <div data-aos="fade-up">
+                            <div style="display:inline-flex; align-items:center; gap: 8px; padding: 8px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill); color: white; margin-bottom: 1.5rem; font-weight: 500;">
+                                <span style="background: var(--sv-turq-brand); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span> Nova Versão 10.0 Disponível
+                            </div>
+                            <h1 class="sv-h1 text-white" style="font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.05; max-width: 900px; margin: 0 auto 1rem auto;">
+                                A gestão veterinária do futuro, <span style="color: var(--sv-blue-brand);">disponível hoje.</span>
+                            </h1>
+                            <p class="sv-p text-white" style="font-size: clamp(1.1rem, 2vw, 1.35rem); opacity: 0.8; max-width: 650px; margin: 0 auto 2.5rem auto;">
+                                Simplifique agendamentos, automatize a contabilidade e encante os seus clientes com uma plataforma tudo-em-um.
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <button class="sv-btn sv-btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 10px 30px rgba(0,142,206,0.3);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Começar Teste de 7 Dias</button>
+                                <button class="sv-btn sv-btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); padding: 18px 40px;"><i data-lucide="play-circle" style="width: 20px;"></i> Ver Vídeo</button>
+                            </div>
+                        </div>
+
+                        <!-- Mockup de Interface Oficial -->
+                        <div class="mt-4 pt-4 anim-float" data-aos="fade-up" data-aos-delay="200" style="margin-top: 3rem;">
+                            <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Dashboard Mockup" style="max-width: 900px; width: 100%; margin: 0 auto; display: block; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 2: Formulário de Conversão (Inserido conforme solicitado) -->
+                <div class="py-lg" id="form-dobra-2" style="background: var(--sv-gray-10); border-bottom: 1px solid var(--sv-gray-30);">
+                    <div class="container grid grid-2 items-center gap-4">
+                        <div data-aos="fade-right">
+                            <h2 class="sv-h2">Experimente a SimplesVet na sua clínica hoje.</h2>
+                            <p class="sv-p lead">Crie a sua conta gratuita de 7 dias e descubra como podemos ajudar a sua equipa a poupar horas de trabalho operacional.</p>
+                            <ul style="list-style:none; padding:0; margin-top:1.5rem;" class="flex flex-col gap-2">
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Sem qualquer compromisso de fidelização.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Não requer inserção de cartão de crédito.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check-circle" class="text-primary" style="width:20px;"></i> Suporte especializado (Vetlovers) incluído no teste.</li>
+                            </ul>
+                        </div>
+                        <div class="sv-card" data-aos="fade-left" style="box-shadow: var(--shadow-brutal); border-top: 8px solid var(--sv-blue-brand); padding: 3rem;">
+                            <h3 class="sv-h3 text-center mb-1">Crie a sua conta gratuita</h3>
+                            <p class="sv-small text-center mb-4">Acesso imediato e seguro à plataforma.</p>
+                            <form id="demoFormLong" class="flex flex-col">
+                                <input type="text" name="name" placeholder="O seu nome completo" class="sv-input" required>
+                                <input type="email" name="email" placeholder="O seu e-mail profissional" class="sv-input" required>
+                                <input type="tel" name="phone" placeholder="Telemóvel (WhatsApp)" class="sv-input" required>
+                                <select class="sv-input" required>
+                                    <option value="" disabled selected>Qual é a sua função na clínica?</option>
+                                    <option>Gestor / Proprietário</option>
+                                    <option>Médico Veterinário</option>
+                                    <option>Rececionista / Atendimento</option>
+                                </select>
+                                <button type="submit" class="sv-btn sv-btn-primary w-100 mt-2" style="font-size: 1.1rem; padding: 20px;">Começar o Teste Agora</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 3: Prova Social -->
+                <div style="background: var(--sv-white); padding: 3rem 0; border-bottom: 1px solid var(--sv-gray-30);">
+                    <div class="container text-center">
+                        <p class="sv-small font-bold" style="color: var(--sv-gray-200); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">A escolha nº1 de mais de 8.200 clínicas e hospitais veterinários</p>
+                        <div class="flex flex-wrap justify-center items-center gap-4" style="opacity: 0.5;">
+                            <!-- Placeholders para Logos (Pode substituir por imagens reais) -->
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">VETCLINIC</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">PET&CO</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">HOSPITAL PET</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.5rem; font-weight: 800; padding: 0 20px;">ANIMALCARE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 4: Ziguezague - Feature 1 -->
+                <div class="py-lg" style="background: var(--sv-white);">
+                    <div class="container grid grid-2 items-center gap-4">
+                        <div data-aos="fade-right">
+                            <div style="background: var(--sv-blue-100); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+                                <i data-lucide="calculator" style="color: var(--sv-primary); width: 30px; height: 30px;"></i>
+                            </div>
+                            <h2 class="sv-h2">Gestão Financeira e Fiscal Automática</h2>
+                            <p class="sv-p lead">Diga adeus ao trabalho manual e aos erros de contabilidade. A SimplesVet sincroniza o seu fluxo de caixa em tempo real e emite faturas com um clique.</p>
+                            <ul style="list-style:none; padding:0; margin-top:2rem;" class="flex flex-col gap-2">
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Emissão de documentos certificada.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Relatórios de lucros e despesas detalhados.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Integração direta com terminais de pagamento.</li>
+                            </ul>
+                        </div>
+                        <div data-aos="fade-left">
+                            <div style="background: var(--sv-gray-10); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Gráficos Financeiros" style="border-radius: var(--radius-sm); width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 5: Ziguezague - Feature 2 (Invertido) -->
+                <div class="py-lg" style="background: var(--sv-gray-10);">
+                    <div class="container grid grid-2 items-center gap-4">
+                        <div data-aos="fade-right" style="order: 2;">
+                            <div style="background: rgba(51, 163, 68, 0.15); width: 60px; height: 60px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+                                <i data-lucide="package" style="color: var(--sv-green-success); width: 30px; height: 30px;"></i>
+                            </div>
+                            <h2 class="sv-h2">Controlo de Stock com Inteligência</h2>
+                            <p class="sv-p lead">Evite ruturas de stock e prejuízos com medicamentos expirados. O sistema avisa-o precisamente do que precisa de encomendar e quando.</p>
+                            <ul style="list-style:none; padding:0; margin-top:2rem;" class="flex flex-col gap-2">
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Alertas automáticos de validade.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Sugestões de compras baseadas no histórico.</li>
+                                <li class="flex items-center gap-2 sv-p"><i data-lucide="check" class="text-primary"></i> Gestão de múltiplos armazéns.</li>
+                            </ul>
+                        </div>
+                        <div data-aos="fade-left" style="order: 1;">
+                            <div style="background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
+                                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" alt="Gestão de Stock" style="border-radius: var(--radius-sm); width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 6: Depoimentos Swiper -->
+                <div class="py-lg bg-white">
+                    <div class="container">
+                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Histórias de clínicas como a sua</h2>
+                        
+                        <div class="swiper testimonialsSwiper" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" style="height: auto;">
+                                    <div class="sv-card flex flex-col justify-between" style="padding: 3rem;">
+                                        <div>
+                                            <div class="flex gap-1 mb-4">
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                            </div>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"Ganhámos cerca de 2 horas por dia na receção apenas com a automação do WhatsApp. O sistema pagou-se a si mesmo na primeira semana."</p>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-2">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                                <i data-lucide="user" style="color: var(--sv-white);"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Dr. Rui Costa</p>
+                                                <p class="sv-small" style="margin:0;">Vet Prime Clinic</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="height: auto;">
+                                    <div class="sv-card flex flex-col justify-between" style="padding: 3rem;">
+                                        <div>
+                                            <div class="flex gap-1 mb-4">
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                            </div>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"O controlo de vacinas alertou-nos para imensos pacientes atrasados. O retorno do investimento é incrivelmente transparente e rápido."</p>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-2">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                                <i data-lucide="user" style="color: var(--sv-white);"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Dra. Ana Silva</p>
+                                                <p class="sv-small" style="margin:0;">Hospital Animalia</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="height: auto;">
+                                    <div class="sv-card flex flex-col justify-between" style="padding: 3rem;">
+                                        <div>
+                                            <div class="flex gap-1 mb-4">
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                                <i data-lucide="star" style="fill: var(--sv-mustard-brand); color: var(--sv-mustard-brand); width: 20px;"></i>
+                                            </div>
+                                            <p class="sv-p" style="font-style: italic; font-size: 1.15rem;">"A migração dos dados antigos foi feita pela equipa da SimplesVet de forma impecável. Não perdemos uma única ficha clínica."</p>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-2">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                                                <i data-lucide="user" style="color: var(--sv-white);"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold sv-p" style="margin:0; line-height: 1.2;">Tiago Mendes</p>
+                                                <p class="sv-small" style="margin:0;">Clínica São Francisco</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination" style="position: relative; margin-top: 3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 7: Planos de Preços -->
+                <div class="py-lg" style="background: var(--sv-gray-10);">
+                    <div class="container">
+                        <h2 class="sv-h2 text-center mb-1" data-aos="fade-up">Planos simples, sem surpresas</h2>
+                        <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="100">Escolha o plano que melhor se adapta à realidade do seu negócio.</p>
+                        
+                        <div class="grid grid-3 mt-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem;">
+                                <h3 class="sv-h3">Início</h3>
+                                <p class="sv-small mb-2">Para clínicas em crescimento</p>
+                                <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 149<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
+                                <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Até 2 Utilizadores</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Agenda Base</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Faturação Integrada</li>
+                                </ul>
+                                <div style="margin-top: auto; padding-top: 2rem;">
+                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Teste Grátis</button>
+                                </div>
+                            </div>
+                            <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem; border: 2px solid var(--sv-blue-brand); box-shadow: var(--shadow-medium); transform: scale(1.02); z-index: 10; position: relative;">
+                                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sv-blue-brand); color: white; padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">MAIS POPULAR</div>
+                                <h3 class="sv-h3">Pro</h3>
+                                <p class="sv-small mb-2">Para operações otimizadas</p>
+                                <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 289<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
+                                <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
+                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tudo do plano Início</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Lembretes WhatsApp</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Controlo de Stock Inteligente</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Até 5 Utilizadores</li>
+                                </ul>
+                                <div style="margin-top: auto; padding-top: 2rem;">
+                                    <button class="sv-btn sv-btn-primary w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Teste Grátis</button>
+                                </div>
+                            </div>
+                            <div class="sv-card flex flex-col text-center" style="padding: 3rem 2rem;">
+                                <h3 class="sv-h3">Hospital</h3>
+                                <p class="sv-small mb-2">Estruturas complexas (24h)</p>
+                                <h2 class="sv-h1 text-primary my-2" style="margin: 1rem 0;">R$ 549<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
+                                <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-2">
+                                    <li class="flex gap-2 items-center sv-p font-bold" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Tudo do plano Pro</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Utilizadores Ilimitados</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> Gestão de Internamento</li>
+                                    <li class="flex gap-2 items-center sv-p" style="font-size: 1rem; margin:0;"><i data-lucide="check" class="text-primary" style="width:18px; flex-shrink:0;"></i> API Personalizada</li>
+                                </ul>
+                                <div style="margin-top: auto; padding-top: 2rem;">
+                                    <button class="sv-btn sv-btn-outline w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Falar com Consultor</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dobra 8: FAQ (Accordion) -->
+                <div class="py-lg" style="background: var(--sv-white);">
+                    <div class="container" style="max-width: 900px;">
+                        <h2 class="sv-h2 text-center mb-4" data-aos="fade-up">Dúvidas Frequentes</h2>
+                        <div class="accordion-wrapper" data-aos="fade-up" data-aos-delay="100">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="accordion-header-title">Preciso de inserir um cartão de crédito para testar?</span>
+                                    <i data-lucide="chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p class="sv-p" style="margin:0;">Não. Os 7 dias de teste são totalmente gratuitos e não exigem a inserção de qualquer método de pagamento prévio.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="accordion-header-title">Consigo aceder no telemóvel?</span>
+                                    <i data-lucide="chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p class="sv-p" style="margin:0;">Sim! A SimplesVet é uma plataforma 100% cloud responsiva. Pode aceder através do navegador do seu telemóvel, tablet ou computador.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <span class="accordion-header-title">O suporte está incluído?</span>
+                                    <i data-lucide="chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p class="sv-p" style="margin:0;">Sim. Todos os nossos planos incluem acesso à nossa equipa de suporte especializado (Vetlovers) via chat diretamente no sistema, sem custos adicionais.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 VIEW: THANK YOU PAGE
+                 ========================================== -->
+            <section id="thank-you" class="ds-section" style="margin: -3rem; padding: 0;">
+                <div class="py-xl" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sv-white); position: relative; overflow: hidden;">
+                    
+                    <div style="position:absolute; width: 100%; height: 100%; top:0; left:0; background-image: radial-gradient(var(--sv-blue-100) 2px, transparent 2px); background-size: 60px 60px; opacity: 0.15; z-index: 1;"></div>
+
+                    <div data-aos="zoom-in" style="position: relative; z-index: 10;">
+                        <div style="width: 180px; height: 180px; background: var(--sv-green-success); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin: 0 auto 3rem auto; box-shadow: 0 12px 48px rgba(51, 163, 68, 0.35);">
+                            <i data-lucide="check" style="color: white; width: 90px; height: 90px;"></i>
+                        </div>
+                    </div>
+                    
+                    <h1 class="sv-h1 text-center" data-aos="fade-up" data-aos-delay="100" style="position: relative; z-index: 10; font-size: clamp(3rem, 6vw, 5rem);">Registo Concluído!</h1>
+                    
+                    <p class="sv-p lead text-center mb-4" data-aos="fade-up" data-aos-delay="200" style="max-width: 750px; position: relative; z-index: 10; font-size: 1.4rem;">
+                        O seu ambiente SimplesVet já está a ser preparado. Enviámos um e-mail com as instruções de acesso ao sistema (verifique a sua pasta de Spam por precaução).
+                    </p>
+                    
+                    <div class="anim-float" data-aos="fade-up" data-aos-delay="250" style="position: relative; z-index: 10; margin-top: 1rem; margin-bottom: 2rem;">
+                        <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2024/04/Group-476-1024x958-1.png" alt="SimplesVet Interface" style="max-width: 500px; width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); margin: 0 auto; display: block;">
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="300" style="position: relative; z-index: 10; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+                        <button class="sv-btn sv-btn-secondary" onclick="navigate('landing')"><i data-lucide="arrow-left"></i> Voltar ao início</button>
+                        <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Explorar o Blog <i data-lucide="external-link" style="width: 18px;"></i></a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ==========================================
+         SCRIPTS FUNCIONAIS GERAIS E EDITOR NO-CODE
+         ========================================== -->
+    <script>
+        // 1. INIT GLOBAL (LUCIDE & AOS)
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) {
+                lucide.createIcons();
+            }
+            AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 50 });
+            initAccordionEvents(); // Ligar acordiões no editor
+            if(window.lucide) fetchAllLucideIcons(); // Busca todos os ícones dinamicamente
+        });
+
+        // Modais Toggle Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // 2. FUNÇÃO ROBUSTA DE CÓPIA UNIVERSAL
+        function copyToClipboard(textToCopy, element) {
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast("Copiado com sucesso!"); 
+                
+                if(element && element.classList) {
+                    const isCard = element.classList.contains('sv-card') || element.classList.contains('copy-action');
+                    const originalHTML = element.innerHTML;
+                    
+                    if (element.classList.contains('sv-btn')) {
+                        element.innerHTML = '<i data-lucide="check" style="width:18px;"></i> Copiado!';
+                        element.classList.add('success', 'sv-btn-primary');
+                    } else if (isCard) {
+                        element.style.background = 'var(--sv-green-success)';
+                        element.style.color = 'white';
+                    }
+                    
+                    if(window.lucide) lucide.createIcons();
+
+                    setTimeout(() => {
+                        element.innerHTML = originalHTML;
+                        element.style.background = '';
+                        element.style.color = '';
+                        element.classList.remove('success', 'sv-btn-primary');
+                        if(window.lucide) lucide.createIcons(); 
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Erro ao copiar', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function copyCodeTemplate(buttonEl) {
+            const preElement = buttonEl.parentNode.nextElementSibling;
+            if(!preElement) return;
+            const code = preElement.innerText;
+            copyToClipboard(code, buttonEl);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('feedback-toast');
+            if(toast) {
+                const textSpan = toast.querySelector('span');
+                if (textSpan && message) textSpan.innerText = message;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2500);
+            }
+        }
+
+        // 3. GERADOR DINÂMICO DE CORES DA MARCA
+        const colorPalette = {
+            gray: [
+                { name: 'Gray 10', hex: '#FAFAFA' }, { name: 'Gray 20 (Bg)', hex: '#F2F3F4' },
+                { name: 'Gray 30 (Lines)', hex: '#D7DEE4' }, { name: 'Gray 100', hex: '#9FAAB7' },
+                { name: 'Gray 200', hex: '#7D8991' }, { name: 'Gray 300 (Text)', hex: '#5D6C75' },
+                { name: 'Gray 400 (Titles)', hex: '#50585C' }, { name: 'Gray 500', hex: '#333333' },
+                { name: 'Gray 600', hex: '#222222' }, { name: 'Gray 700', hex: '#121212' }
+            ],
+            blue: [
+                { name: 'Blue Brand', hex: '#008ECE' }, { name: 'Blue 100', hex: '#67B0E6' },
+                { name: 'Blue 200', hex: '#3797DE' }, { name: 'Blue 300', hex: '#1F7BC1' },
+                { name: 'Blue 400', hex: '#185C91' }, { name: 'Blue 500', hex: '#134C77' }
+            ],
+            functional: [
+                { name: 'Turquoise Brand', hex: '#44BCCB' }, { name: 'Green Success', hex: '#33A344' }, 
+                { name: 'Mustard Brand', hex: '#F7A42D' }, { name: 'Red Danger', hex: '#D71D2D' }, 
+                { name: 'Purple Brand', hex: '#8C4493' }
+            ]
+        };
+
+        function renderColorSwatches(containerId, colorArray) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            colorArray.forEach(c => {
+                const hexStr = c.hex.replace('#', '');
+                const r = parseInt(hexStr.substr(0, 2), 16);
+                const g = parseInt(hexStr.substr(2, 2), 16);
+                const b = parseInt(hexStr.substr(4, 2), 16);
+                const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+                const textColor = (yiq >= 128) ? 'var(--sv-gray-600)' : 'white';
+
+                container.innerHTML += `
+                    <div class="color-swatch copy-action" onclick="copyToClipboard('${c.hex}', this)">
+                        <div class="color-box flex items-center justify-center" style="background-color: ${c.hex}; color: ${textColor}; font-weight: 600; font-size: 0.95rem;">Copiar Hex</div>
+                        <div class="color-info">
+                            <p class="font-bold sv-small" style="margin:0;">${c.name}</p>
+                            <p class="sv-small" style="margin:0; font-family: monospace;">${c.hex}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        renderColorSwatches('color-grid-gray', colorPalette.gray);
+        renderColorSwatches('color-grid-blue', colorPalette.blue);
+        renderColorSwatches('color-grid-functional', colorPalette.functional);
+
+        // 4. PESQUISA GLOBAL DE ÍCONES (TODA A BIBLIOTECA LUCIDE)
+        let fullIconDatabase = [];
+        
+        function fetchAllLucideIcons() {
+            fullIconDatabase = Object.keys(lucide.icons).map(name => 
+                name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+            );
+            renderIconGallery();
+        }
+        
+        function renderIconGallery(filterText = '') {
+            const grid = document.getElementById('icons-grid');
+            if(!grid || fullIconDatabase.length === 0) return;
+            grid.innerHTML = '';
+            
+            const size = document.getElementById('icon-size-picker').value || 48;
+            const color = document.getElementById('icon-color-picker').value || '#008ECE';
+            
+            const filteredIcons = fullIconDatabase.filter(name => name.includes(filterText.toLowerCase().trim()));
+            
+            const maxRender = 60;
+            const iconsToDisplay = filteredIcons.slice(0, maxRender);
+
+            if (filteredIcons.length === 0) {
+                grid.innerHTML = '<p class="sv-p col-span-4 text-center py-4">Nenhum ícone encontrado com essa palavra-chave.</p>';
+                return;
+            }
+
+            iconsToDisplay.forEach(name => {
+                grid.innerHTML += `
+                    <div class="sv-card text-center flex flex-col items-center justify-between">
+                        <div style="margin-bottom: 1.5rem; display:flex; justify-content:center; align-items:center; height: 60px;" id="icon-wrap-${name}">
+                            <i data-lucide="${name}" color="${color}" width="${size}" height="${size}" stroke-width="1.5"></i>
+                        </div>
+                        <p class="sv-small font-bold" style="margin-bottom: 16px; font-family: monospace; word-break: break-all;">${name}</p>
+                        <div class="flex flex-col gap-1 w-100" style="width: 100%;">
+                            <button class="sv-btn sv-btn-outline w-100" style="padding: 8px; min-height: 0; font-size: 0.8rem; width: 100%; border-radius: var(--radius-sm);" onclick="copyIconSVG('${name}', this)"><i data-lucide="code" style="width:14px;"></i> Copiar HTML</button>
+                            <button class="sv-btn sv-btn-primary w-100" style="padding: 8px; min-height: 0; font-size: 0.8rem; width: 100%; border-radius: var(--radius-sm);" onclick="downloadIconPNG('${name}')"><i data-lucide="download" style="width:14px;"></i> Baixar PNG</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (filteredIcons.length > maxRender) {
+                grid.innerHTML += `<p class="sv-small col-span-4 text-center py-4">Mostrando ${maxRender} de ${filteredIcons.length} ícones. Use a pesquisa para refinar os resultados.</p>`;
+            }
+            
+            if(window.lucide) lucide.createIcons();
+        }
+
+        let searchTimeout;
+        function filterIcons() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const val = document.getElementById('icon-search').value;
+                renderIconGallery(val);
+            }, 300); // Debounce
+        }
+
+        function updateIconsPreview() { 
+            const val = document.getElementById('icon-search').value;
+            renderIconGallery(val); 
+        }
+
+        function copyIconSVG(iconName, btn) {
+            const size = document.getElementById('icon-size-picker').value || 48;
+            const color = document.getElementById('icon-color-picker').value || '#008ECE';
+            const htmlString = `<i data-lucide="${iconName}" style="color: ${color}; width: ${size}px; height: ${size}px;"></i>`;
+            copyToClipboard(htmlString, btn);
+        }
+
+        function downloadIconPNG(iconName) {
+            const svgElement = document.querySelector(`#icon-wrap-${iconName} svg`);
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            const canvas = document.createElement("canvas");
+            const svgSize = svgElement.getBoundingClientRect();
+            
+            // Resolução X2 para PNG Perfeito
+            canvas.width = svgSize.width * 2;
+            canvas.height = svgSize.height * 2;
+            const ctx = canvas.getContext("2d");
+            ctx.scale(2,2);
+            
+            const img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                const a = document.createElement("a");
+                a.download = `sv-icon-${iconName}.png`;
+                a.href = canvas.toDataURL("image/png");
+                a.click();
+                showToast("Ícone descarregado com sucesso!");
+            };
+            img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        // ==========================================
+        // 5. EDITOR VISUAL NO-CODE E INTERATIVIDADE
+        // ==========================================
+        
+        function addAccordionItem() {
+            const container = document.getElementById('editable-accordion');
+            const newItem = document.createElement('div');
+            newItem.className = 'accordion-item';
+            newItem.innerHTML = `
+                <div class="editor-only-controls">
+                    <button class="editor-only-btn danger" onclick="this.closest('.accordion-item').remove();" aria-label="Remover"><i data-lucide="trash-2" style="width:14px;"></i> Remover</button>
+                </div>
+                <div class="accordion-header">
+                    <span class="accordion-header-title" contenteditable="true">Nova Pergunta (Escreva aqui)</span>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+                <div class="accordion-content" style="max-height: 200px;">
+                    <div class="accordion-content-inner">
+                        <p class="sv-p" contenteditable="true" style="margin:0;">Resposta detalhada inserida pelo designer.</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(newItem);
+            if(window.lucide) lucide.createIcons();
+            initAccordionEvents();
+        }
+
+        function initAccordionEvents() {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                const newHeader = header.cloneNode(true);
+                header.parentNode.replaceChild(newHeader, header);
+                
+                newHeader.addEventListener('click', function(e) {
+                    if (e.target.hasAttribute('contenteditable') || e.target.closest('.editor-only-btn')) return;
+                    const item = this.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const isOpen = item.classList.contains('active');
+                    const parentAccordion = item.closest('.accordion-wrapper') || item.closest('.accordion');
+                    
+                    if (parentAccordion) {
+                        parentAccordion.querySelectorAll('.accordion-item').forEach(i => {
+                            i.classList.remove('active');
+                            if(i.querySelector('.accordion-content')) i.querySelector('.accordion-content').style.maxHeight = null;
+                        });
+                    }
+                    
+                    if (!isOpen) {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+
+        // Funções para Editar Links
+        function editLink(buttonEl) {
+            const card = buttonEl.closest('.sv-card');
+            const linkEl = card.querySelector('a.sv-btn');
+            if(linkEl) {
+                const currentHref = linkEl.getAttribute('href') || '#';
+                const newHref = prompt("Insira o link completo de destino para este botão:", currentHref);
+                if(newHref !== null && newHref.trim() !== '') {
+                    linkEl.setAttribute('href', newHref);
+                    showToast("Link atualizado!");
+                }
+            }
+        }
+
+        function addPricingCard() {
+            const container = document.getElementById('editable-pricing');
+            const newCard = document.createElement('div');
+            newCard.className = 'sv-card flex flex-col text-center';
+            newCard.style.position = 'relative';
+            newCard.innerHTML = `
+                <div class="editor-only-controls">
+                    <button class="editor-only-btn" onclick="editLink(this)" title="Editar Link do Botão"><i data-lucide="link" style="width:14px;"></i> Link</button>
+                    <button class="editor-only-btn danger" onclick="this.closest('.sv-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:14px;"></i></button>
+                </div>
+                <h3 class="sv-h3" contenteditable="true">Novo Plano</h3>
+                <h2 class="sv-h1 text-primary my-2" contenteditable="true" style="margin: 1.5rem 0;">R$ 0<span class="sv-small">,00/mês</span></h2>
+                <ul style="list-style: none; text-align: left; margin: 1.5rem 0;" class="flex flex-col gap-1">
+                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Nova Feature</span></li>
+                    <li class="flex gap-2 items-center"><i data-lucide="check" class="text-primary" style="width:18px;"></i> <span contenteditable="true">Nova Feature 2</span></li>
+                </ul>
+                <div style="margin-top: auto;">
+                    <a href="#" class="sv-btn sv-btn-outline w-100" contenteditable="true">Escolher Plano</a>
+                </div>
+            `;
+            container.appendChild(newCard);
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function toggleBentoHighlight(buttonEl) {
+            const card = buttonEl.closest('.sv-bento-card');
+            if(card) card.classList.toggle('sv-bento-highlight');
+        }
+
+        function moveBentoCard(btn, direction) {
+            const card = btn.closest('.sv-bento-card');
+            const parent = card.parentNode;
+            if (direction === -1 && card.previousElementSibling) {
+                parent.insertBefore(card, card.previousElementSibling);
+            } else if (direction === 1 && card.nextElementSibling) {
+                parent.insertBefore(card.nextElementSibling, card);
+            }
+        }
+
+        function addBentoCard(colClass) {
+            const container = document.getElementById('editable-bento');
+            const newCard = document.createElement('div');
+            newCard.className = `sv-bento-card ${colClass}`; 
+            newCard.innerHTML = `
+                <div class="editor-only-controls">
+                    <button class="editor-only-btn" onclick="moveBentoCard(this, -1)" title="Mover para a Esquerda/Cima"><i data-lucide="arrow-left" style="width:14px;"></i></button>
+                    <button class="editor-only-btn" onclick="moveBentoCard(this, 1)" title="Mover para a Direita/Baixo"><i data-lucide="arrow-right" style="width:14px;"></i></button>
+                    <button class="editor-only-btn" onclick="toggleBentoHighlight(this)" title="Alternar Cor"><i data-lucide="star" style="width:16px;"></i></button>
+                    <button class="editor-only-btn danger" onclick="this.closest('.sv-bento-card').remove();" title="Remover"><i data-lucide="trash-2" style="width:16px;"></i></button>
+                </div>
+                <div>
+                    <i data-lucide="star" style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+                    <h3 class="sv-h3" contenteditable="true">Nova Funcionalidade</h3>
+                    <p class="sv-p" contenteditable="true">Edite esta descrição diretamente no ecrã.</p>
+                </div>
+            `;
+            container.appendChild(newCard);
+            if(window.lucide) lucide.createIcons();
+        }
+
+        let swiperInstancePreview;
+        function addSwiperSlide() {
+            const wrapper = document.getElementById('editable-swiper-wrapper');
+            const newSlide = document.createElement('div');
+            newSlide.className = 'swiper-slide';
+            newSlide.innerHTML = `
+                <div class="sv-card flex flex-col justify-between" style="min-height: 260px; position:relative;">
+                    <div class="editor-only-controls">
+                        <button class="editor-only-btn danger" onclick="this.closest('.swiper-slide').remove(); swiperInstancePreview.update();" aria-label="Remover"><i data-lucide="trash-2" style="width:16px;"></i></button>
+                    </div>
+                    <p class="sv-p" contenteditable="true" style="font-style: italic; font-size: 1.15rem;">"Insira um novo depoimento incrivel de um cliente aqui."</p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center;">
+                            <i data-lucide="user" style="color: var(--sv-white);"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold sv-p" contenteditable="true" style="margin:0; line-height: 1.2;">Nome do Cliente</p>
+                            <p class="sv-small" contenteditable="true" style="margin:0;">Empresa Lda.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            wrapper.appendChild(newSlide);
+            if(swiperInstancePreview) swiperInstancePreview.destroy();
+            initEditableSwiper();
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function initEditableSwiper() {
+            swiperInstancePreview = new Swiper('#editable-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                breakpoints: { 768: { slidesPerView: 2 } }
+            });
+            
+            if(document.querySelector('.testimonialsSwiper')) {
+                new Swiper('.testimonialsSwiper', {
+                    slidesPerView: 1, spaceBetween: 30, loop: true,
+                    autoplay: { delay: 4000, disableOnInteraction: false },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+                });
+            }
+        }
+        setTimeout(initEditableSwiper, 500);
+
+        function exportVisualHTML(containerId, buttonEl) {
+            const originalNode = document.getElementById(containerId);
+            const clone = originalNode.cloneNode(true);
+
+            clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+            clone.querySelectorAll('.editor-only-controls').forEach(el => el.remove());
+            clone.querySelectorAll('.editor-only-btn').forEach(el => el.remove());
+            
+            clone.classList.remove('editor-modal-preview');
+            clone.querySelectorAll('.editor-modal-preview').forEach(el => el.classList.remove('editor-modal-preview'));
+            
+            if(containerId === 'editable-accordion') {
+                clone.querySelectorAll('.accordion-content').forEach(el => el.style.maxHeight = null);
+                clone.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+            }
+
+            if(containerId === 'editable-swiper') {
+                clone.classList.remove('swiper-initialized', 'swiper-horizontal', 'swiper-backface-hidden');
+                clone.querySelectorAll('.swiper-slide').forEach(el => {
+                    el.classList.remove('swiper-slide-active', 'swiper-slide-next', 'swiper-slide-prev');
+                    el.removeAttribute('style'); el.removeAttribute('role'); el.removeAttribute('aria-label');
+                });
+                clone.querySelector('.swiper-wrapper').removeAttribute('style');
+            }
+
+            const finalHTML = `<!-- Template Gerado pelo SimplesVet Design System -->\n${clone.outerHTML}`;
+            copyToClipboard(finalHTML, buttonEl);
+        }
+
+        // ==========================================
+        // 6. NAVEGAÇÃO DA APLICAÇÃO (SPA)
+        // ==========================================
+        function navigate(sectionId) {
+            document.querySelectorAll('.ds-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.ds-menu-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            const sidebar = document.getElementById('sidebar');
+            if(sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
+            window.scrollTo(0,0);
+            AOS.refresh();
+            initEditableSwiper(); 
+        }
+
+        const mobileToggle = document.getElementById('mobileToggle');
+        if(mobileToggle){
+            mobileToggle.addEventListener('click', () => {
+                const sidebar = document.getElementById('sidebar');
+                if(sidebar) sidebar.classList.toggle('open');
+            });
+        }
+
+        // ==========================================
+        // 7. FORMULÁRIOS DE DEMONSTRAÇÃO
+        // ==========================================
+        const demoForm = document.getElementById('demoForm');
+        if (demoForm) {
+            demoForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btnSubmit = demoForm.querySelector('button[type="submit"]');
+                const originalText = btnSubmit.innerText;
+                btnSubmit.innerText = 'A processar...';
+                btnSubmit.disabled = true;
+                await new Promise(r => setTimeout(r, 1500));
+                demoForm.reset();
+                btnSubmit.innerText = originalText;
+                btnSubmit.disabled = false;
+                document.querySelectorAll('.sv-modal-overlay').forEach(m => m.classList.remove('active'));
+                navigate('thank-you');
+            });
+        }
+
+        const demoFormLong = document.getElementById('demoFormLong');
+        if (demoFormLong) {
+            demoFormLong.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btnSubmit = demoFormLong.querySelector('button[type="submit"]');
+                const originalText = btnSubmit.innerText;
+                btnSubmit.innerText = 'A processar...';
+                btnSubmit.disabled = true;
+                await new Promise(r => setTimeout(r, 1500));
+                demoFormLong.reset();
+                btnSubmit.innerText = originalText;
+                btnSubmit.disabled = false;
+                navigate('thank-you');
+            });
+        }
+    </script>
+</body>
+</html>
