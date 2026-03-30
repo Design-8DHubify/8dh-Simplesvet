@@ -54,12 +54,15 @@
             --sv-red-danger: #D71D2D;
             --sv-purple-brand: #8C4493;
 
-            /* --- TIPOGRAFIA (ESCALA SAAS COMPACTA) --- */
+            /* --- TIPOGRAFIA (ESCALA RESPONSIVA PRO) --- */
             --font-primary: 'Exo', sans-serif;
-            --size-h1: clamp(1.5rem, 3vw, 2rem);      /* 24px a 32px */
-            --size-h2: clamp(1.25rem, 2.5vw, 1.5rem); /* 20px a 24px */
-            --size-h3: clamp(1rem, 2vw, 1.125rem);    /* 16px a 18px */
-            --size-p: 0.875rem;                       /* 14px */
+            --size-h1: clamp(2.25rem, 5vw, 3rem);      /* 36px a 48px */
+            --size-h2: clamp(1.875rem, 4vw, 2.25rem);  /* 30px a 36px */
+            --size-h3: clamp(1.5rem, 3vw, 1.875rem);   /* 24px a 30px */
+            --size-h4: clamp(1.25rem, 2vw, 1.5rem);    /* 20px a 24px */
+            --size-h5: clamp(1.125rem, 1.5vw, 1.25rem);/* 18px a 20px */
+            --size-h6: clamp(1rem, 1.2vw, 1.125rem);   /* 16px a 18px */
+            --size-p:  clamp(1rem, 1.2vw, 1.125rem);   /* 16px a 18px (Leitura) */
 
             /* --- BORDAS & RADIUS --- */
             --radius-sm: 6px;
@@ -104,16 +107,21 @@
            3. TIPOGRAFIA & EFEITOS
            ========================================== */
         .sv-h1 { font-size: var(--size-h1); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--sv-gray-400); margin-bottom: 0.75rem; }
-        .sv-h2 { font-size: var(--size-h2); font-weight: 600; line-height: 1.3; color: var(--sv-gray-400); margin-bottom: 0.75rem; }
-        .sv-h3 { font-size: var(--size-h3); font-weight: 600; line-height: 1.4; color: var(--sv-gray-400); margin-bottom: 0.5rem; }
+        .sv-h2 { font-size: var(--size-h2); font-weight: 700; line-height: 1.2; color: var(--sv-gray-400); margin-bottom: 0.75rem; }
+        .sv-h3 { font-size: var(--size-h3); font-weight: 600; line-height: 1.3; color: var(--sv-gray-400); margin-bottom: 0.5rem; }
+        .sv-h4 { font-size: var(--size-h4); font-weight: 600; line-height: 1.4; color: var(--sv-gray-400); margin-bottom: 0.5rem; }
+        .sv-h5 { font-size: var(--size-h5); font-weight: 600; line-height: 1.4; color: var(--sv-gray-400); margin-bottom: 0.5rem; }
+        .sv-h6 { font-size: var(--size-h6); font-weight: 600; line-height: 1.5; color: var(--sv-gray-400); margin-bottom: 0.5rem; }
+        
         .sv-p { font-size: var(--size-p); font-weight: 400; line-height: 1.6; color: var(--sv-gray-300); margin-bottom: 1rem; }
-        .sv-p.lead { font-size: 1rem; color: var(--sv-gray-400); margin-bottom: 1.5rem; }
-        .sv-small { font-size: 0.75rem; color: var(--sv-gray-200); }
+        .sv-p.lead { font-size: 1.125rem; color: var(--sv-gray-400); margin-bottom: 1.5rem; }
+        .sv-small { font-size: 0.875rem; color: var(--sv-gray-200); }
 
         .text-primary { color: var(--sv-blue-brand); }
         .text-white { color: var(--sv-white) !important; }
         .text-center { text-align: center; }
         .font-bold { font-weight: 700; }
+        strong, b { font-weight: 800; }
 
         /* Text Gradient (Refined) */
         .text-gradient {
@@ -126,6 +134,7 @@
         /* Animations */
         @keyframes appear { 0% { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: translateY(0); } }
         @keyframes appearZoom { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
         
         .anim-appear { animation: appear 0.6s var(--transition-medium) forwards; opacity: 0; }
         .anim-appear-zoom { animation: appearZoom 0.8s var(--transition-medium) forwards; opacity: 0; }
@@ -133,6 +142,7 @@
         .anim-delay-300 { animation-delay: 300ms; }
         .anim-delay-700 { animation-delay: 700ms; }
         .anim-delay-1000 { animation-delay: 1000ms; }
+        .spin { animation: spin 1s linear infinite; }
 
         /* Glow Blur Background */
         .glow-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none; z-index: 0; }
@@ -144,8 +154,8 @@
            ========================================== */
         .sv-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
-            padding: 10px 20px; min-height: 40px;
-            font-family: var(--font-primary); font-weight: 600; font-size: 0.875rem;
+            padding: 12px 24px; min-height: 48px;
+            font-family: var(--font-primary); font-weight: 600; font-size: 1rem;
             cursor: pointer; border: 2px solid transparent; border-radius: var(--radius-pill);
             transition: var(--transition-medium); text-decoration: none;
         }
@@ -165,8 +175,8 @@
         .sv-btn-white:hover { background: var(--sv-gray-10); transform: translateY(-2px); box-shadow: var(--shadow-brutal); color: var(--sv-blue-brand) !important; }
         
         .sv-input {
-            width: 100%; padding: 10px 16px; min-height: 44px;
-            font-family: var(--font-primary); font-size: 0.875rem; color: var(--sv-gray-500);
+            width: 100%; padding: 12px 16px; min-height: 48px;
+            font-family: var(--font-primary); font-size: 1rem; color: var(--sv-gray-500);
             background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-sm);
             transition: var(--transition-fast); margin-bottom: 1rem;
         }
@@ -204,13 +214,42 @@
         .accordion-item { background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition-fast); }
         .accordion-header { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: var(--transition-fast); }
         .accordion-header:hover { background: var(--sv-gray-10); }
-        .accordion-header-title { font-weight: 500; font-size: 0.95rem; color: var(--sv-gray-400); flex-grow: 1; padding-right: 1rem; }
+        .accordion-header-title { font-weight: 500; font-size: 1rem; color: var(--sv-gray-400); flex-grow: 1; padding-right: 1rem; }
         .accordion-header i { transition: transform var(--transition-medium); color: var(--sv-gray-200); width: 16px; }
         .accordion-item.active { border-color: var(--sv-blue-brand); box-shadow: var(--shadow-medium); }
         .accordion-item.active .accordion-header-title { color: var(--sv-blue-brand); }
         .accordion-item.active .accordion-header i { transform: rotate(180deg); color: var(--sv-blue-brand); }
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-medium); background: var(--sv-white); }
         .accordion-content-inner { padding: 0 1.5rem 1.5rem 1.5rem; }
+
+        /* Ícones UX */
+        .icon-card { transition: all 0.2s; border: 2px solid transparent; user-select: none; }
+        .icon-card:hover { border-color: var(--sv-gray-30); transform: translateY(-2px); }
+        .icon-card.selected { border-color: var(--sv-blue-brand); background: rgba(0, 142, 206, 0.05); box-shadow: var(--shadow-medium); transform: translateY(-2px); }
+        .icon-check-badge { position: absolute; top: 12px; right: 12px; background: var(--sv-blue-brand); color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.5); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .icon-card.selected .icon-check-badge { opacity: 1; transform: scale(1); }
+        
+        .icon-action-bar {
+            position: sticky;
+            bottom: 2rem;
+            background: var(--sv-white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-brutal);
+            border: 1px solid var(--sv-blue-brand);
+            z-index: 100;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; justify-content: space-between; align-items: center; width: 100%;
+        }
+        .icon-action-bar.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
         /* ==========================================
            5. UTILITÁRIOS DE LAYOUT (GRELHAS)
@@ -222,6 +261,7 @@
         .grid-2 { grid-template-columns: repeat(2, 1fr); }
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-5 { grid-template-columns: repeat(5, 1fr); }
         
         .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
         .col-span-12 { grid-column: span 12; } .col-span-8 { grid-column: span 8; } .col-span-6 { grid-column: span 6; } .col-span-4 { grid-column: span 4; }
@@ -269,7 +309,7 @@
         .ds-menu-item.active i { opacity: 1; }
 
         .ds-section { display: none; animation: fadeIn 0.4s ease-out forwards; padding: 3rem 2rem; }
-        .ds-section-inner { max-width: 1080px; margin: 0 auto; }
+        .ds-section-inner { max-width: 1080px; margin: 0 auto; position: relative; }
         .ds-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -301,7 +341,7 @@
         .copy-action:active { transform: scale(0.98); }
 
         .editor-panel { background: #fdfdfd; border: 2px dashed var(--sv-gray-100); padding: 2.5rem 2rem 2rem 2rem; border-radius: var(--radius-lg); margin-bottom: 3rem; position: relative; }
-        .editor-badge { position: absolute; top: -10px; left: 1.5rem; background: var(--sv-blue-brand); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.5px; }
+        .editor-badge { position: absolute; top: -10px; left: 1.5rem; background: var(--sv-blue-brand); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.5px; z-index: 2; }
         .editor-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--sv-gray-30); flex-wrap: wrap; gap: 1rem; }
         .editor-actions-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -337,7 +377,7 @@
             .ds-section { padding: 2.5rem 1.5rem; }
             
             /* Ajustes de Grelha Tablet */
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-4, .grid-5 { grid-template-columns: repeat(3, 1fr); }
             .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .col-span-8, .col-span-6 { grid-column: span 2; }
             .col-span-4 { grid-column: span 1; }
@@ -360,7 +400,7 @@
             
             /* Colapso Total de Grelhas para 1 Coluna no Telemóvel */
             .grid-2, .grid-3, .bento-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1rem; } /* Manter cores e ícones 2 a 2 */
+            .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 1rem; } /* Manter cores e ícones 2 a 2 */
             .col-span-12, .col-span-8, .col-span-6, .col-span-4 { grid-column: span 1; }
             
             /* Utilitário Inversão Mobile (Hero Lado a Lado) */
@@ -386,6 +426,11 @@
             .sv-modal { max-height: 90vh; overflow-y: auto; }
             .sv-modal > div[style*="flex"] { flex-direction: column; }
             .sv-modal > div[style*="flex"] > div { padding: 1.5rem !important; flex: none !important; }
+
+            /* Action bar mobile */
+            .icon-action-bar { flex-direction: column; gap: 1rem; padding: 1rem; }
+            .icon-action-bar .flex { width: 100%; justify-content: space-between; }
+            .icon-action-bar .sv-btn { width: 100%; }
 
             /* Toast Mobile Centralizado */
             #feedback-toast { right: 1rem; left: 1rem; bottom: 1rem; justify-content: center; text-align: center; width: calc(100% - 2rem); box-sizing: border-box; }
@@ -458,11 +503,11 @@
             <!-- 2. TIPOGRAFIA -->
             <section id="typography" class="ds-section">
                 <div class="ds-section-inner">
-                    <h1 class="sv-h1">Tipografia SaaS (Compacta)</h1>
-                    <p class="sv-p lead">A escala foi ajustada para um visual mais técnico e profissional. Valores responsivos automáticos.</p>
+                    <h1 class="sv-h1">Tipografia Responsiva Pro</h1>
+                    <p class="sv-p lead">A escala foi ajustada para proporcionar hierarquia clara e legibilidade perfeita. Valores responsivos escalam fluídamente (Clamp) entre as larguras do dispositivo.</p>
                     
                     <div class="sv-card mt-4" style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 650px;">
                             <tr style="border-bottom: 1px solid var(--sv-gray-30);">
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1rem;">Exemplo Visual</th>
                                 <th class="sv-small p-2" style="font-weight: 600; padding-bottom: 1rem;">Classe HTML</th>
@@ -472,26 +517,44 @@
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h1', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
                                 <td style="padding: 1rem 0;"><h1 class="sv-h1" style="margin:0;">Heading 1</h1></td>
                                 <td class="font-bold text-primary">.sv-h1</td>
-                                <td class="sv-p" style="margin:0;">32px</td>
-                                <td class="sv-p" style="margin:0;">24px</td>
+                                <td class="sv-p" style="margin:0;">48px</td>
+                                <td class="sv-p" style="margin:0;">36px</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h2', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
                                 <td style="padding: 1rem 0;"><h2 class="sv-h2" style="margin:0;">Heading 2</h2></td>
                                 <td class="font-bold text-primary">.sv-h2</td>
-                                <td class="sv-p" style="margin:0;">24px</td>
-                                <td class="sv-p" style="margin:0;">20px</td>
+                                <td class="sv-p" style="margin:0;">36px</td>
+                                <td class="sv-p" style="margin:0;">30px</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-h3', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
                                 <td style="padding: 1rem 0;"><h3 class="sv-h3" style="margin:0;">Heading 3</h3></td>
                                 <td class="font-bold text-primary">.sv-h3</td>
+                                <td class="sv-p" style="margin:0;">30px</td>
+                                <td class="sv-p" style="margin:0;">24px</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h4', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 1rem 0;"><h4 class="sv-h4" style="margin:0;">Heading 4</h4></td>
+                                <td class="font-bold text-primary">.sv-h4</td>
+                                <td class="sv-p" style="margin:0;">24px</td>
+                                <td class="sv-p" style="margin:0;">20px</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h5', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 1rem 0;"><h5 class="sv-h5" style="margin:0;">Heading 5</h5></td>
+                                <td class="font-bold text-primary">.sv-h5</td>
+                                <td class="sv-p" style="margin:0;">20px</td>
+                                <td class="sv-p" style="margin:0;">18px</td>
+                            </tr>
+                            <tr class="copy-action" onclick="copyToClipboard('.sv-h6', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
+                                <td style="padding: 1rem 0;"><h6 class="sv-h6" style="margin:0;">Heading 6</h6></td>
+                                <td class="font-bold text-primary">.sv-h6</td>
                                 <td class="sv-p" style="margin:0;">18px</td>
                                 <td class="sv-p" style="margin:0;">16px</td>
                             </tr>
                             <tr class="copy-action" onclick="copyToClipboard('.sv-p', this)" style="border-bottom: 1px solid var(--sv-gray-20);">
-                                <td style="padding: 1rem 0;"><p class="sv-p" style="margin:0;">Parágrafo padrão para leitura limpa e eficiente.</p></td>
+                                <td style="padding: 1rem 0;"><p class="sv-p" style="margin:0;">Parágrafo padrão focado na legibilidade e clareza.</p></td>
                                 <td class="font-bold text-primary">.sv-p</td>
-                                <td class="sv-p" style="margin:0;">14px</td>
-                                <td class="sv-p" style="margin:0;">14px</td>
+                                <td class="sv-p" style="margin:0;">16px a 18px</td>
+                                <td class="sv-p" style="margin:0;">16px</td>
                             </tr>
                         </table>
                     </div>
@@ -534,7 +597,7 @@
             <section id="icons" class="ds-section">
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">Gerador de Ícones</h1>
-                    <p class="sv-p lead">Pesquisa instantânea em <strong>toda a biblioteca Lucide</strong>. Descarregue o PNG ou copie o código HTML.</p>
+                    <p class="sv-p lead">Pesquisa instantânea em <strong>toda a biblioteca Lucide</strong>. Defina a cor e clique nos ícones para selecionar e descarregar em lote.</p>
 
                     <div class="sv-card mb-4 grid grid-3 items-end" style="background: var(--sv-gray-10);">
                         <div>
@@ -547,18 +610,30 @@
                         <div>
                             <label class="sv-small font-bold block mb-1">Cor Hexadecimal:</label>
                             <div class="flex gap-1">
-                                <input type="color" id="icon-color-picker" value="#008ECE" class="sv-input" style="height: 44px; padding: 4px; width: 60px; margin:0; cursor:pointer;" onchange="updateIconsPreview()">
+                                <input type="color" id="icon-color-picker" value="#008ECE" class="sv-input" style="height: 48px; padding: 4px; width: 60px; margin:0; cursor:pointer;" onchange="updateIconsPreview()">
                                 <input type="text" id="icon-color-text" value="#008ECE" class="sv-input" style="margin:0; font-family: monospace;" oninput="document.getElementById('icon-color-picker').value=this.value; updateIconsPreview();">
                             </div>
                         </div>
                         <div>
-                            <label class="sv-small font-bold block mb-1">Tamanho (px):</label>
-                            <input type="number" id="icon-size-picker" value="32" min="16" max="512" class="sv-input" style="margin:0;" onchange="updateIconsPreview()">
+                            <label class="sv-small font-bold block mb-1">Tamanho da Exportação (px):</label>
+                            <input type="number" id="icon-size-picker" value="512" min="16" max="1024" class="sv-input" style="margin:0;" onchange="updateIconsPreview()">
                         </div>
                     </div>
 
-                    <div class="grid grid-4" id="icons-grid">
+                    <div class="grid grid-5" id="icons-grid">
                         <!-- Gerado via JS -->
+                    </div>
+
+                    <!-- Action Bar Flutuante para Multi-seleção -->
+                    <div id="icon-action-bar" class="icon-action-bar">
+                        <div class="flex items-center gap-2">
+                            <div style="background: var(--sv-blue-brand); color: white; padding: 6px 16px; border-radius: var(--radius-pill); font-weight: 700; font-size: 0.9rem;" id="icon-selected-count">0 selecionados</div>
+                            <button class="sv-btn sv-btn-outline sv-small" style="min-height:36px; padding: 4px 12px; border-color: var(--sv-gray-100); color: var(--sv-gray-300) !important;" onclick="clearIconSelection()">Limpar</button>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="sv-btn sv-btn-outline" style="background: var(--sv-white);" onclick="copySelectedIconsSVG(this)"><i data-lucide="code" style="width:16px;"></i> Copiar Códigos</button>
+                            <button class="sv-btn sv-btn-primary" id="btn-download-bulk" onclick="downloadSelectedIconsPNG()"><i data-lucide="download" style="width:16px;"></i> Baixar PNG(s)</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -567,30 +642,40 @@
             <section id="global-css" class="ds-section">
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">CSS Global para RD Station</h1>
-                    <p class="sv-p lead">Código higienizado para importar a fundação do Design System em Landing Pages e CRMs.</p>
+                    <p class="sv-p lead">Código higienizado para importar a fundação do Design System em Landing Pages e CRMs. Sem definições de cores ou espaçamentos para a tipografia padrão para não quebrar estilos herdados.</p>
                     
                     <div class="code-block mt-4">
                         <div class="code-header">
                             <div class="code-dots"><span></span><span></span><span></span></div>
                             <button class="copy-btn" onclick="copyCodeTemplate(this)"><i data-lucide="copy" style="width:14px;"></i> Copiar CSS</button>
                         </div>
-<pre><code>/* --- SISTEMA SIMPLESVET GLOBAL v1.2 --- */
+<pre><code>/* --- SISTEMA SIMPLESVET GLOBAL v1.4 --- */
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css');
 
-h1, h2, h3, h4, h5, h6 { 
+/* Apenas definição da família de fonte */
+h1, h2, h3, h4, h5, h6, p, li, span, a, label, input, select { 
     font-family: 'Exo', sans-serif !important; 
-    font-weight: 600 !important; 
-    color: #50585C !important; 
-    letter-spacing: -0.015em !important;
 }
-p, li, span, a, label, input, select { 
-    font-family: 'Exo', sans-serif !important; 
-    font-weight: 400 !important; 
-    color: #5D6C75 !important; 
-    font-size: 14px !important;
+
+/* TAMANHOS DE TIPOGRAFIA (RESPONSIVOS / MOBILE FIRST) */
+h1, h1 * { font-size: 36px !important; }
+h2, h2 * { font-size: 30px !important; }
+h3, h3 * { font-size: 24px !important; }
+h4, h4 * { font-size: 20px !important; }
+h5, h5 * { font-size: 18px !important; }
+h6, h6 * { font-size: 16px !important; }
+p, li, p * { font-size: 16px !important; }
+strong, b { font-weight: 800 !important; }
+
+@media (min-width: 768px) {
+    h1, h1 * { font-size: 48px !important; }
+    h2, h2 * { font-size: 36px !important; }
+    h3, h3 * { font-size: 30px !important; }
+    h4, h4 * { font-size: 24px !important; }
+    h5, h5 * { font-size: 20px !important; }
+    h6, h6 * { font-size: 18px !important; }
+    p, li, p * { font-size: 18px !important; }
 }
-strong, b { font-weight: 600 !important; }
 
 /* BOTÕES BASE */
 .rd-button, .sv-btn {
@@ -600,8 +685,8 @@ strong, b { font-weight: 600 !important; }
     border: 2px solid transparent !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     text-transform: none !important;
-    padding: 10px 20px !important;
-    font-size: 14px !important;
+    padding: 12px 24px !important;
+    font-size: 16px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -615,21 +700,21 @@ strong, b { font-weight: 600 !important; }
 .sv-btn-outline { background-color: transparent !important; color: #008ECE !important; border-color: #008ECE !important; }
 .sv-btn-outline:hover { background-color: #008ECE !important; color: #FFFFFF !important; border-color: #008ECE !important; transform: translateY(-2px) !important; }
 
-/* RESPONSIVIDADE TIPOGRÁFICA */
-h1, h1 * { font-size: 24px !important; line-height: 1.2 !important; margin-bottom: 12px !important; font-weight: 700 !important; }
-h2, h2 * { font-size: 20px !important; line-height: 1.2 !important; margin-bottom: 12px !important; }
-h3, h3 * { font-size: 16px !important; line-height: 1.3 !important; }
-p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
+/* UTILITÁRIOS DE LAYOUT & GRELHAS (ESSENCIAL PARA RD STATION) */
+.grid { display: grid; gap: 1.5rem; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.col-span-12 { grid-column: span 12; } .col-span-8 { grid-column: span 8; } .col-span-6 { grid-column: span 6; } .col-span-4 { grid-column: span 4; }
+.flex { display: flex; } .flex-col { flex-direction: column; } .items-center { align-items: center; } .justify-center { justify-content: center; } .justify-between { justify-content: space-between; } 
+.gap-1 { gap: 0.5rem; } .gap-2 { gap: 1rem; } .gap-4 { gap: 2rem; } .flex-wrap { flex-wrap: wrap; }
+.w-100 { width: 100%; } .text-center { text-align: center; } .font-bold { font-weight: 700; }
 
-@media (min-width: 640px) {
-    h1, h1 * { font-size: 28px !important; }
-    h2, h2 * { font-size: 22px !important; }
-}
-
-@media (min-width: 1024px) {
-    h1, h1 * { font-size: 32px !important; margin-bottom: 16px !important; }
-    h2, h2 * { font-size: 24px !important; margin-bottom: 14px !important; }
-    h3, h3 * { font-size: 18px !important; }
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .bento-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .col-span-12, .col-span-8, .col-span-6, .col-span-4 { grid-column: span 1; }
 }
 
 /* CARDS & BENTO */
@@ -649,30 +734,25 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
     border-color: #008ECE !important;
 }
 
-/* MODAIS GLOBAIS */
-.sv-modal-overlay { position: fixed; inset: 0; background: rgba(80, 88, 92, 0.8); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-.sv-modal-overlay.active { opacity: 1; visibility: visible; }
-.sv-modal { background: #FFFFFF; border-radius: 16px; width: 90%; max-width: 600px; position: relative; transform: translateY(20px) scale(0.95); transition: all 0.3s ease; box-shadow: 0 24px 64px rgba(0, 142, 206, 0.2); border: 1px solid #D7DEE4 !important; overflow: hidden; }
-.sv-modal-overlay.active .sv-modal { transform: translateY(0) scale(1); }
-.sv-modal-close { position: absolute; top: 16px; right: 16px; background: #F2F3F4; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #50585C; transition: all 0.2s ease; z-index: 10; }
-.sv-modal-close:hover { background: #D7DEE4; color: #D71D2D; }
+.sv-bento-card.sv-bento-highlight { background: #008ECE !important; border-color: #008ECE !important; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06) !important; }
+.sv-bento-card.sv-bento-highlight * { color: #FFFFFF !important; }
 
-/* EFEITOS BLUR DE FUNDO E ANIMAÇÕES */
-.text-gradient { background-image: linear-gradient(to bottom, #333333, #5D6C75) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; }
-@keyframes appearZoom { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
-.glow-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-.glow-blob-1 { position: absolute; left: 50%; top: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0, 142, 206, 0.15) 0%, transparent 70%); transform: translateX(-50%); }
-.anim-appear-zoom { animation: appearZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+/* ACORDEÃO (FAQ) */
+.accordion-wrapper { display: flex; flex-direction: column; gap: 0.75rem; }
+.accordion-item { background: #FFFFFF; border: 1px solid #D7DEE4; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s; }
+.accordion-header { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.2s; }
+.accordion-header:hover { background: #F8F9FA; }
+.accordion-header-title { font-weight: 500; font-size: 16px; color: #50585C; flex-grow: 1; padding-right: 1rem; }
+.accordion-item.active { border-color: #008ECE; box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+.accordion-item.active .accordion-header-title { color: #008ECE; }
+.accordion-item.active .accordion-header svg { transform: rotate(180deg); color: #008ECE; }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #FFFFFF; }
+.accordion-content-inner { padding: 0 1.5rem 1.5rem 1.5rem; }
 
+/* MODAIS E DESTAQUES */
 .sv-pricing-highlight { border: 2px solid #008ECE !important; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06) !important; position: relative !important; z-index: 10 !important; }
 @media (min-width: 1025px) { .sv-pricing-highlight { transform: scale(1.03) !important; } }
-
-/* LAYOUT MOBILE HELPER */
-@media (max-width: 768px) {
-    .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 1.5rem; }
-    .text-left-desktop { text-align: center !important; }
-    .text-left-desktop .flex { justify-content: center; }
-}
+.text-primary { color: #008ECE !important; }
 </code></pre>
                     </div>
                 </div>
@@ -682,7 +762,7 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             <section id="components" class="ds-section">
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">Botões e Inputs</h1>
-                    <p class="sv-p lead">Elementos interativos redesenhados para precisão SaaS.</p>
+                    <p class="sv-p lead">Elementos interativos redesenhados para precisão SaaS e conversão.</p>
 
                     <div class="grid grid-2 mt-4">
                         <div class="sv-card">
@@ -727,6 +807,115 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">Design Builder</h1>
                     <p class="sv-p lead">Apenas clique no texto para editar o conteúdo. <b>Pode adicionar, reorganizar ou remover os blocos livremente.</b></p>
+                    
+                    <!-- NOVO: Contador de Urgência -->
+                    <div class="editor-panel mt-4" style="border-color: var(--sv-blue-brand); background: rgba(0, 142, 206, 0.02);">
+                        <div class="editor-badge">EDITAR: CONTADOR (URGÊNCIA)</div>
+                        
+                        <!-- Controlos do Editor para o Contador -->
+                        <div class="flex flex-wrap gap-4 mt-2 mb-4" style="background: var(--sv-white); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--sv-gray-30); box-shadow: var(--shadow-soft);">
+                            <div>
+                                <label class="sv-small font-bold block mb-1">Data e Hora Final:</label>
+                                <input type="datetime-local" id="timer-input-date" class="sv-input" style="margin:0; max-width: 250px;" onchange="updateTimerPreview()">
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <label class="sv-small font-bold block mb-1">Mensagem Final:</label>
+                                <input type="text" id="timer-input-msg" class="sv-input" value="A oferta expirou!" style="margin:0;" oninput="updateTimerPreview()">
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <label class="sv-small font-bold block mb-1">Título do Contador:</label>
+                                <input type="text" id="timer-input-title" class="sv-input" value="Esta oferta termina em:" placeholder="Deixe vazio para ocultar" style="margin:0;" oninput="updateTimerPreview()">
+                            </div>
+                            <div>
+                                <label class="sv-small font-bold block mb-1">Estilo Visual:</label>
+                                <select id="timer-input-style" class="sv-input" style="margin:0; max-width: 250px;" onchange="updateTimerPreview()">
+                                    <option value="solid-blue">Blocos Sólidos (Azul)</option>
+                                    <option value="outline-blue">Blocos Contorno (Azul)</option>
+                                    <option value="minimal">Minimalista (Sem fundo)</option>
+                                    <option value="dark">Blocos Escuros</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Preview Renderizado / Content to Export -->
+                        <div id="editable-countdown" style="padding: 2rem; background: var(--sv-white); border-radius: var(--radius-lg); border: 1px solid var(--sv-gray-30); box-shadow: var(--shadow-medium); text-align: center;">
+                            <div class="sv-countdown-wrapper" data-end-date="" data-end-msg="A oferta expirou!">
+                                <h3 class="sv-h3 text-center mb-4 sv-countdown-title" style="outline: none;">Esta oferta termina em:</h3>
+                                
+                                <div class="sv-countdown-timer flex justify-center gap-2 flex-wrap">
+                                    <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                                        <span class="sv-timer-num sv-timer-days" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Dias</span>
+                                    </div>
+                                    <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                                        <span class="sv-timer-num sv-timer-hours" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Horas</span>
+                                    </div>
+                                    <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                                        <span class="sv-timer-num sv-timer-minutes" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Minutos</span>
+                                    </div>
+                                    <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                                        <span class="sv-timer-num sv-timer-seconds" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Segundos</span>
+                                    </div>
+                                </div>
+                                <div class="sv-countdown-message sv-h3" style="display: none; color: #D71D2D; margin-top: 1rem; font-weight: 700;">A oferta expirou!</div>
+                            </div>
+                            
+                            <!-- Inline Script que acompanhará o HTML exportado para a RD Station -->
+                            <script class="sv-export-script">
+                                function initSvCountdowns() {
+                                    document.querySelectorAll('.sv-countdown-wrapper').forEach(wrapper => {
+                                        const endDateStr = wrapper.getAttribute('data-end-date');
+                                        if(!endDateStr) return;
+                                        
+                                        // O formato nativo do datetime-local pode precisar ser parseado adequadamente em alguns browsers
+                                        const countDownDate = new Date(endDateStr).getTime();
+                                        const timerEl = wrapper.querySelector('.sv-countdown-timer');
+                                        const msgEl = wrapper.querySelector('.sv-countdown-message');
+                                        const daysEl = wrapper.querySelector('.sv-timer-days');
+                                        const hoursEl = wrapper.querySelector('.sv-timer-hours');
+                                        const minsEl = wrapper.querySelector('.sv-timer-minutes');
+                                        const secsEl = wrapper.querySelector('.sv-timer-seconds');
+
+                                        const x = setInterval(function() {
+                                            const now = new Date().getTime();
+                                            const distance = countDownDate - now;
+
+                                            if (distance <= 0) {
+                                                clearInterval(x);
+                                                if(timerEl) timerEl.style.display = "none";
+                                                if(msgEl) {
+                                                    msgEl.innerText = wrapper.getAttribute('data-end-msg') || "A oferta expirou!";
+                                                    msgEl.style.display = "block";
+                                                }
+                                                return;
+                                            }
+
+                                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                            if(daysEl) daysEl.innerText = days < 10 ? "0" + days : days;
+                                            if(hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
+                                            if(minsEl) minsEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+                                            if(secsEl) secsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+                                        }, 1000);
+                                    });
+                                }
+                                if(document.readyState === 'loading') {
+                                    document.addEventListener('DOMContentLoaded', initSvCountdowns);
+                                } else {
+                                    initSvCountdowns();
+                                }
+                            </script>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="sv-btn sv-btn-primary" onclick="exportVisualHTML('editable-countdown', this)">Exportar HTML do Contador</button>
+                        </div>
+                    </div>
 
                     <!-- A: Tabela de Preços -->
                     <div class="editor-panel mt-4">
@@ -1454,6 +1643,19 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 50 });
             initAccordionEvents(); // Ligar acordiões no editor
             if(window.lucide) fetchAllLucideIcons(); // Busca todos os ícones dinamicamente
+
+            // Setup Data Final Default do Contador (Amanhã 23:59)
+            const tmr = new Date();
+            tmr.setDate(tmr.getDate() + 1);
+            tmr.setHours(23, 59, 59);
+            const pad = (n) => n < 10 ? '0'+n : n;
+            const formattedDate = `${tmr.getFullYear()}-${pad(tmr.getMonth()+1)}-${pad(tmr.getDate())}T${pad(tmr.getHours())}:${pad(tmr.getMinutes())}`;
+            
+            const dateInput = document.getElementById('timer-input-date');
+            if(dateInput) {
+                dateInput.value = formattedDate;
+                updateTimerPreview();
+            }
         });
 
         // Modais Toggle Logic
@@ -1574,8 +1776,10 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
 
         // 4. PESQUISA GLOBAL DE ÍCONES (TODA A BIBLIOTECA LUCIDE)
         let fullIconDatabase = [];
+        let selectedIcons = new Set();
         
         function fetchAllLucideIcons() {
+            if (!window.lucide || !window.lucide.icons) return;
             fullIconDatabase = Object.keys(lucide.icons).map(name => 
                 name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
             );
@@ -1587,38 +1791,65 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             if(!grid || fullIconDatabase.length === 0) return;
             grid.innerHTML = '';
             
-            const size = document.getElementById('icon-size-picker').value || 32;
             const color = document.getElementById('icon-color-picker').value || '#008ECE';
-            
             const filteredIcons = fullIconDatabase.filter(name => name.includes(filterText.toLowerCase().trim()));
             
             const maxRender = 60;
             const iconsToDisplay = filteredIcons.slice(0, maxRender);
 
             if (filteredIcons.length === 0) {
-                grid.innerHTML = '<p class="sv-p col-span-4 text-center py-4">Nenhum ícone encontrado com essa palavra-chave.</p>';
+                grid.innerHTML = '<p class="sv-p text-center py-4" style="grid-column: 1 / -1;">Nenhum ícone encontrado com essa palavra-chave.</p>';
                 return;
             }
 
             iconsToDisplay.forEach(name => {
+                const isSelected = selectedIcons.has(name) ? 'selected' : '';
                 grid.innerHTML += `
-                    <div class="sv-card text-center flex flex-col items-center justify-between">
-                        <div style="margin-bottom: 1rem; display:flex; justify-content:center; align-items:center; height: 40px;" id="icon-wrap-${name}">
-                            <i data-lucide="${name}" color="${color}" width="${size}" height="${size}" stroke-width="1.5"></i>
+                    <div class="sv-card icon-card flex flex-col items-center justify-center ${isSelected}" style="cursor: pointer; position: relative; min-height: 120px; padding: 1rem;" onclick="toggleIconSelection('${name}', this)">
+                        <div class="icon-check-badge"><i data-lucide="check" style="width:12px; height:12px;"></i></div>
+                        <div style="margin-bottom: 0.5rem; display:flex; justify-content:center; align-items:center; height: 40px; width: 100%;" id="icon-wrap-${name}">
+                            <i data-lucide="${name}" style="color: ${color}; width: 32px; height: 32px;" stroke-width="1.5"></i>
                         </div>
-                        <p class="sv-small font-bold" style="margin-bottom: 16px; font-family: monospace; word-break: break-all;">${name}</p>
-                        <div class="flex flex-col gap-1 w-100" style="width: 100%;">
-                            <button class="sv-btn sv-btn-outline w-100" style="padding: 6px; min-height: 0; font-size: 0.75rem; width: 100%; border-radius: var(--radius-sm);" onclick="copyIconSVG('${name}', this)"><i data-lucide="code" style="width:12px;"></i> Copiar</button>
-                        </div>
+                        <p class="sv-small font-bold" style="margin:0; font-family: monospace; word-break: break-all; text-align: center;">${name}</p>
                     </div>
                 `;
             });
             
             if (filteredIcons.length > maxRender) {
-                grid.innerHTML += `<p class="sv-small col-span-4 text-center py-4">Mostrando ${maxRender} de ${filteredIcons.length} ícones. Use a pesquisa para refinar os resultados.</p>`;
+                grid.innerHTML += `<p class="sv-small text-center py-4" style="grid-column: 1 / -1;">Mostrando ${maxRender} de ${filteredIcons.length} ícones. Use a pesquisa para refinar os resultados.</p>`;
             }
             
             if(window.lucide) lucide.createIcons();
+        }
+
+        function toggleIconSelection(iconName, cardElement) {
+            if (selectedIcons.has(iconName)) {
+                selectedIcons.delete(iconName);
+                cardElement.classList.remove('selected');
+            } else {
+                selectedIcons.add(iconName);
+                cardElement.classList.add('selected');
+            }
+            updateIconActionBar();
+        }
+
+        function updateIconActionBar() {
+            const bar = document.getElementById('icon-action-bar');
+            const countLabel = document.getElementById('icon-selected-count');
+            if (!bar || !countLabel) return;
+            
+            if (selectedIcons.size > 0) {
+                countLabel.innerText = `${selectedIcons.size} selecionado${selectedIcons.size > 1 ? 's' : ''}`;
+                bar.classList.add('active');
+            } else {
+                bar.classList.remove('active');
+            }
+        }
+
+        function clearIconSelection() {
+            selectedIcons.clear();
+            document.querySelectorAll('.icon-card.selected').forEach(card => card.classList.remove('selected'));
+            updateIconActionBar();
         }
 
         let searchTimeout;
@@ -1635,17 +1866,205 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             renderIconGallery(val); 
         }
 
-        function copyIconSVG(iconName, btn) {
+        function copySelectedIconsSVG(btn) {
+            if (selectedIcons.size === 0) return;
             const size = document.getElementById('icon-size-picker').value || 32;
             const color = document.getElementById('icon-color-picker').value || '#008ECE';
-            const htmlString = `<i data-lucide="${iconName}" style="color: ${color}; width: ${size}px; height: ${size}px;"></i>`;
-            copyToClipboard(htmlString, btn);
+            let htmlString = "";
+            selectedIcons.forEach(iconName => {
+                htmlString += `<i data-lucide="${iconName}" style="color: ${color}; width: ${size}px; height: ${size}px;"></i>\n`;
+            });
+            copyToClipboard(htmlString, btn || document.querySelector('#icon-action-bar .sv-btn-outline'));
+        }
+
+        function downloadSelectedIconsPNG() {
+            if (selectedIcons.size === 0) return;
+            const btn = document.getElementById('btn-download-bulk');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="loader-2" class="spin" style="width:16px;"></i> Processando...`;
+            btn.style.pointerEvents = 'none';
+            if(window.lucide) lucide.createIcons();
+
+            let delay = 0;
+            selectedIcons.forEach(iconName => {
+                setTimeout(() => {
+                    downloadSingleIconPNG(iconName, false);
+                }, delay);
+                delay += 300; // staggered download
+            });
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.pointerEvents = 'auto';
+                if(window.lucide) lucide.createIcons();
+                showToast(`${selectedIcons.size} ícone(s) descarregado(s)!`);
+                clearIconSelection();
+            }, delay + 500);
+        }
+
+        function downloadSingleIconPNG(iconName, showMsg = true) {
+            const size = parseInt(document.getElementById('icon-size-picker').value) || 512;
+            const color = document.getElementById('icon-color-picker').value || '#008ECE';
+            
+            const wrap = document.getElementById('icon-wrap-' + iconName);
+            if(!wrap) return;
+            const svgEl = wrap.querySelector('svg');
+            if(!svgEl) return;
+
+            // Clonar o SVG para forçar os tamanhos corretos
+            const clonedSvg = svgEl.cloneNode(true);
+            clonedSvg.setAttribute('width', size);
+            clonedSvg.setAttribute('height', size);
+            clonedSvg.setAttribute('stroke', color);
+            clonedSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+            const svgData = new XMLSerializer().serializeToString(clonedSvg);
+            const imgSrc = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgData);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            const img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, size, size);
+                ctx.drawImage(img, 0, 0, size, size);
+
+                const imgURI = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.setAttribute('download', `${iconName}-${size}px.png`);
+                a.setAttribute('href', imgURI);
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                if(showMsg) showToast("PNG Descarregado!");
+            };
+            img.src = imgSrc;
         }
 
         // ==========================================
         // 5. EDITOR VISUAL NO-CODE E INTERATIVIDADE
         // ==========================================
         
+        let previewIntervals = [];
+
+        function updateTimerPreview() {
+            // Limpa intervalos prévios no ambiente de preview
+            previewIntervals.forEach(clearInterval);
+            previewIntervals = [];
+
+            const dateVal = document.getElementById('timer-input-date').value;
+            const msgVal = document.getElementById('timer-input-msg').value;
+            const titleVal = document.getElementById('timer-input-title').value;
+            const styleVal = document.getElementById('timer-input-style').value;
+
+            const wrapper = document.querySelector('.sv-countdown-wrapper');
+            if(!wrapper) return;
+
+            wrapper.setAttribute('data-end-date', dateVal);
+            wrapper.setAttribute('data-end-msg', msgVal);
+
+            // Atualizar o Título do Contador
+            const titleEl = wrapper.querySelector('.sv-countdown-title');
+            if(titleEl) {
+                if(titleVal.trim() === '') {
+                    titleEl.style.display = 'none';
+                } else {
+                    titleEl.style.display = 'block';
+                    titleEl.innerText = titleVal;
+                }
+            }
+
+            // Aplicar Estilos aos Blocos do Contador (com Hexadecimais para segurança na exportação)
+            const blocks = wrapper.querySelectorAll('.sv-timer-block');
+            const labels = wrapper.querySelectorAll('.sv-timer-label');
+            const numbers = wrapper.querySelectorAll('.sv-timer-num');
+
+            blocks.forEach(block => {
+                if(styleVal === 'solid-blue') {
+                    block.style.background = '#008ECE';
+                    block.style.border = 'none';
+                    block.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.03)';
+                } else if(styleVal === 'outline-blue') {
+                    block.style.background = 'transparent';
+                    block.style.border = '2px solid #008ECE';
+                    block.style.boxShadow = 'none';
+                } else if(styleVal === 'minimal') {
+                    block.style.background = 'transparent';
+                    block.style.border = 'none';
+                    block.style.boxShadow = 'none';
+                } else if(styleVal === 'dark') {
+                    block.style.background = '#121212';
+                    block.style.border = 'none';
+                    block.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.03)';
+                }
+            });
+
+            numbers.forEach(num => {
+                if(styleVal === 'solid-blue' || styleVal === 'dark') {
+                    num.style.color = '#FFFFFF';
+                } else if(styleVal === 'outline-blue') {
+                    num.style.color = '#008ECE';
+                } else if(styleVal === 'minimal') {
+                    num.style.color = '#50585C';
+                }
+            });
+
+            labels.forEach(label => {
+                if(styleVal === 'solid-blue') {
+                    label.style.color = 'rgba(255,255,255,0.8)';
+                } else if(styleVal === 'outline-blue') {
+                    label.style.color = '#008ECE';
+                } else if(styleVal === 'minimal') {
+                    label.style.color = '#5D6C75';
+                } else if(styleVal === 'dark') {
+                    label.style.color = 'rgba(255,255,255,0.6)';
+                }
+            });
+
+            const countDownDate = new Date(dateVal).getTime();
+            if(!countDownDate) return;
+
+            const timerEl = wrapper.querySelector('.sv-countdown-timer');
+            const msgEl = wrapper.querySelector('.sv-countdown-message');
+            const daysEl = wrapper.querySelector('.sv-timer-days');
+            const hoursEl = wrapper.querySelector('.sv-timer-hours');
+            const minsEl = wrapper.querySelector('.sv-timer-minutes');
+            const secsEl = wrapper.querySelector('.sv-timer-seconds');
+
+            if(timerEl) timerEl.style.display = "flex";
+            if(msgEl) msgEl.style.display = "none";
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                if (distance <= 0) {
+                    clearInterval(x);
+                    if(timerEl) timerEl.style.display = "none";
+                    if(msgEl) {
+                        msgEl.innerText = msgVal;
+                        msgEl.style.display = "block";
+                    }
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if(daysEl) daysEl.innerText = days < 10 ? "0" + days : days;
+                if(hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
+                if(minsEl) minsEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+                if(secsEl) secsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+            }, 1000);
+
+            previewIntervals.push(x);
+        }
+
         function addAccordionItem() {
             const container = document.getElementById('editable-accordion');
             const newItem = document.createElement('div');
@@ -1696,7 +2115,6 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             });
         }
 
-        // Funções para Editar Links
         function editLink(buttonEl) {
             const card = buttonEl.closest('.sv-card');
             const linkEl = card.querySelector('a.sv-btn');
@@ -1789,39 +2207,14 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
         }
 
         let swiperInstancePreview;
-        function addSwiperSlide() {
-            const wrapper = document.getElementById('editable-swiper-wrapper');
-            const newSlide = document.createElement('div');
-            newSlide.className = 'swiper-slide';
-            newSlide.innerHTML = `
-                <div class="sv-card flex flex-col justify-between" style="min-height: 260px; position:relative;">
-                    <div class="editor-only-controls">
-                        <button class="editor-only-btn danger" onclick="this.closest('.swiper-slide').remove(); swiperInstancePreview.update();" aria-label="Remover"><i data-lucide="trash-2" style="width:12px;"></i></button>
-                    </div>
-                    <p class="sv-p" contenteditable="true" style="font-style: italic;">"Insira um novo depoimento incrivel de um cliente aqui."</p>
-                    <div class="mt-4 flex items-center gap-2">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--sv-blue-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i data-lucide="user" style="color: var(--sv-white); width: 20px;"></i>
-                        </div>
-                        <div>
-                            <p class="font-bold sv-p" contenteditable="true" style="margin:0; line-height: 1.2;">Nome do Cliente</p>
-                            <p class="sv-small" contenteditable="true" style="margin:0;">Empresa Lda.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            wrapper.appendChild(newSlide);
-            if(swiperInstancePreview) swiperInstancePreview.destroy();
-            initEditableSwiper();
-            if(window.lucide) lucide.createIcons();
-        }
-
         function initEditableSwiper() {
-            swiperInstancePreview = new Swiper('#editable-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                breakpoints: { 768: { slidesPerView: 2 } }
-            });
+            if(document.querySelector('#editable-swiper')) {
+                swiperInstancePreview = new Swiper('#editable-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    breakpoints: { 768: { slidesPerView: 2 } }
+                });
+            }
             
             if(document.querySelector('.testimonialsSwiper')) {
                 new Swiper('.testimonialsSwiper', {
@@ -1841,7 +2234,6 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
             clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
             clone.querySelectorAll('.editor-only-controls').forEach(el => el.remove());
             clone.querySelectorAll('.editor-only-btn').forEach(el => el.remove());
-            // Remove the 'add feature' button from pricing
             clone.querySelectorAll('button[onclick="addPricingFeature(this)"]').forEach(el => el.remove());
             
             clone.classList.remove('editor-modal-preview');
@@ -1861,7 +2253,24 @@ p, li, p * { font-size: 14px !important; line-height: 1.6 !important; }
                 clone.querySelector('.swiper-wrapper').removeAttribute('style');
             }
 
-            const finalHTML = `<!-- Template Gerado pelo SimplesVet Design System -->\n${clone.outerHTML}`;
+            // Injetar Scripts Nativos para RD Station (Ícones e Acordeão)
+            let externalScripts = `\n\n<!-- SCRIPTS DE FUNCIONAMENTO (Obrigatório para RD Station) -->\n<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"><\/script>\n<script>\n(function() {\n    var initSvDesign = function() {\n        if(window.lucide) lucide.createIcons();\n`;
+            
+            if(containerId === 'editable-accordion') {
+                externalScripts += `\n        document.querySelectorAll('.accordion-header').forEach(function(header) {\n            var newHeader = header.cloneNode(true);\n            header.parentNode.replaceChild(newHeader, header);\n            newHeader.addEventListener('click', function() {\n                var item = this.parentElement;\n                var content = item.querySelector('.accordion-content');\n                var isOpen = item.classList.contains('active');\n                var parent = item.closest('.accordion-wrapper');\n                if (parent) {\n                    parent.querySelectorAll('.accordion-item').forEach(function(i) {\n                        i.classList.remove('active');\n                        if(i.querySelector('.accordion-content')) i.querySelector('.accordion-content').style.maxHeight = null;\n                    });\n                }\n                if (!isOpen) {\n                    item.classList.add('active');\n                    content.style.maxHeight = content.scrollHeight + "px";\n                }\n            });\n        });\n`;
+            }
+            
+            externalScripts += `    };\n    if(document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initSvDesign); }\n    else { initSvDesign(); }\n})();\n<\/script>`;
+
+            const isEmail = containerId.includes('email');
+            let finalHTML = "";
+            
+            if(isEmail) {
+                finalHTML = `<!-- Template Gerado pelo SimplesVet Design System -->\n${clone.outerHTML}`;
+            } else {
+                finalHTML = `<!-- Template Gerado pelo SimplesVet Design System -->\n<!-- IMPORTANTE: O "CSS Global" deste Design System deve estar no "CSS Personalizado" da sua Landing Page -->\n${clone.outerHTML}${externalScripts}`;
+            }
+            
             copyToClipboard(finalHTML, buttonEl);
         }
 
