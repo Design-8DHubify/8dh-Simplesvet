@@ -251,6 +251,9 @@
             pointer-events: auto;
         }
 
+        /* Classes Utilitárias UX Adicionais */
+        .img-responsive-h { height: 350px; object-fit: cover; }
+
         /* ==========================================
            5. UTILITÁRIOS DE LAYOUT (GRELHAS)
            ========================================== */
@@ -267,7 +270,7 @@
         .col-span-12 { grid-column: span 12; } .col-span-8 { grid-column: span 8; } .col-span-6 { grid-column: span 6; } .col-span-4 { grid-column: span 4; }
 
         .flex { display: flex; } .flex-col { flex-direction: column; } .items-center { align-items: center; } .justify-center { justify-content: center; } .justify-between { justify-content: space-between; } 
-        .gap-1 { gap: 0.5rem; } .gap-2 { gap: 1rem; } .gap-4 { gap: 2rem; } .flex-wrap { flex-wrap: wrap; }
+        .gap-1 { gap: 0.5rem; } .gap-2 { gap: 1rem; } .gap-3 { gap: 1.5rem; } .gap-4 { gap: 2rem; } .flex-wrap { flex-wrap: wrap; }
         
         .mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 2rem; } .mt-4 { margin-top: 3rem; }
         .mb-1 { margin-bottom: 1rem; } .mb-2 { margin-bottom: 2rem; }
@@ -341,7 +344,7 @@
         .copy-action:active { transform: scale(0.98); }
 
         .editor-panel { background: #fdfdfd; border: 2px dashed var(--sv-gray-100); padding: 2.5rem 2rem 2rem 2rem; border-radius: var(--radius-lg); margin-bottom: 3rem; position: relative; }
-        .editor-badge { position: absolute; top: -10px; left: 1.5rem; background: var(--sv-blue-brand); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.5px; z-index: 2; }
+        .editor-badge { position: absolute; top: -10px; left: 1.5rem; background: var(--sv-blue-brand); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); letter-spacing: 0.5px; z-index: 2; }
         .editor-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--sv-gray-30); flex-wrap: wrap; gap: 1rem; }
         .editor-actions-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -403,10 +406,12 @@
             .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 1rem; } /* Manter cores e ícones 2 a 2 */
             .col-span-12, .col-span-8, .col-span-6, .col-span-4 { grid-column: span 1; }
             
-            /* Utilitário Inversão Mobile (Hero Lado a Lado) */
+            /* Utilitário Inversão Mobile e UX Ajustes */
             .stack-reverse-mobile { display: flex !important; flex-direction: column-reverse !important; gap: 1.5rem; }
             .text-left-desktop { text-align: center !important; padding-right: 0 !important; }
             .text-left-desktop .flex { justify-content: center; }
+            .mobile-w-100 { width: 100% !important; justify-content: center; margin-left: 0 !important; margin-right: 0 !important; }
+            .img-responsive-h { height: 220px !important; }
 
             /* Editor Panels Mobile */
             .editor-panel { padding: 2.5rem 1rem 1.5rem 1rem; }
@@ -459,20 +464,20 @@
                 <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet Logo" style="max-width: 100%; height: 28px; display: block;">
             </div>
             <nav>
-                <div class="sv-small mb-2 mt-4" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5; text-transform: uppercase;">Fundação</div>
+                <div class="sv-small mb-2 mt-4" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5;">Fundação</div>
                 <div class="ds-menu-item active" onclick="navigate('colors', this)"><i data-lucide="palette"></i> Cores</div>
                 <div class="ds-menu-item" onclick="navigate('typography', this)"><i data-lucide="type"></i> Tipografia</div>
                 <div class="ds-menu-item" onclick="navigate('effects', this)"><i data-lucide="layers"></i> Efeitos & Sombras</div>
                 <div class="ds-menu-item" onclick="navigate('icons', this)"><i data-lucide="image"></i> Gerador de Ícones</div>
                 <div class="ds-menu-item" onclick="navigate('global-css', this)"><i data-lucide="file-code-2"></i> CSS Global</div>
                 
-                <div class="sv-small mt-5 mb-2" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5; text-transform: uppercase;">Design Builder</div>
+                <div class="sv-small mt-5 mb-2" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5;">Design Builder</div>
                 <div class="ds-menu-item" onclick="navigate('components', this)"><i data-lucide="mouse-pointer-click"></i> Botões & Inputs</div>
                 <div class="ds-menu-item" onclick="navigate('templates', this)"><i data-lucide="layout-template"></i> Editor de Secções</div>
                 <div class="ds-menu-item" onclick="navigate('popups', this)"><i data-lucide="message-square-plus"></i> Pop-ups & Modais</div>
                 <div class="ds-menu-item" onclick="navigate('emails', this)"><i data-lucide="mail"></i> E-mail Marketing</div>
                 
-                <div class="sv-small mt-5 mb-2" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5; text-transform: uppercase;">Preview Mode</div>
+                <div class="sv-small mt-5 mb-2" style="padding-left: 14px; font-weight: 700; letter-spacing: 0.05em; opacity: 0.5;">Preview Mode</div>
                 <div class="ds-menu-item" onclick="navigate('landing-long', this)"><i data-lucide="monitor-play"></i> Landing Page</div>
                 <div class="ds-menu-item" onclick="navigate('thank-you', this)"><i data-lucide="check-circle"></i> Página de Sucesso</div>
             </nav>
@@ -810,7 +815,7 @@ strong, b { font-weight: 800 !important; }
                     
                     <!-- NOVO: Contador de Urgência -->
                     <div class="editor-panel mt-4" style="border-color: var(--sv-blue-brand); background: rgba(0, 142, 206, 0.02);">
-                        <div class="editor-badge">EDITAR: CONTADOR (URGÊNCIA)</div>
+                        <div class="editor-badge">Editar: Contador (Urgência)</div>
                         
                         <!-- Controlos do Editor para o Contador -->
                         <div class="flex flex-wrap gap-4 mt-2 mb-4" style="background: var(--sv-white); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--sv-gray-30); box-shadow: var(--shadow-soft);">
@@ -845,19 +850,19 @@ strong, b { font-weight: 800 !important; }
                                 <div class="sv-countdown-timer flex justify-center gap-2 flex-wrap">
                                     <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
                                         <span class="sv-timer-num sv-timer-days" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
-                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Dias</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Dias</span>
                                     </div>
                                     <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
                                         <span class="sv-timer-num sv-timer-hours" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
-                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Horas</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Horas</span>
                                     </div>
                                     <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
                                         <span class="sv-timer-num sv-timer-minutes" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
-                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Minutos</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Minutos</span>
                                     </div>
                                     <div class="sv-timer-block flex flex-col items-center justify-center" style="background: #008ECE; color: white; padding: 1rem; border-radius: 8px; min-width: 80px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
                                         <span class="sv-timer-num sv-timer-seconds" style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: 'Exo', sans-serif;">00</span>
-                                        <span class="sv-small font-bold sv-timer-label" style="text-transform: uppercase; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Segundos</span>
+                                        <span class="sv-small font-bold sv-timer-label" style="margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Segundos</span>
                                     </div>
                                 </div>
                                 <div class="sv-countdown-message sv-h3" style="display: none; color: #D71D2D; margin-top: 1rem; font-weight: 700;">A oferta expirou!</div>
@@ -919,7 +924,7 @@ strong, b { font-weight: 800 !important; }
 
                     <!-- A: Tabela de Preços -->
                     <div class="editor-panel mt-4">
-                        <div class="editor-badge">EDITAR: PLANOS DE PREÇOS (EM R$)</div>
+                        <div class="editor-badge">Editar: Planos de Preços (em R$)</div>
                         <div class="grid grid-3 mt-2" id="editable-pricing">
                             <div class="sv-card flex flex-col text-center" style="position: relative;">
                                 <div class="editor-only-controls">
@@ -951,7 +956,7 @@ strong, b { font-weight: 800 !important; }
 
                     <!-- B: Bento Grid Editável -->
                     <div class="editor-panel mt-4">
-                        <div class="editor-badge">EDITAR E REORGANIZAR: BENTO GRID</div>
+                        <div class="editor-badge">Editar e Reorganizar: Bento Grid</div>
                         <div class="bento-grid mt-2" id="editable-bento">
                             <div class="sv-bento-card col-span-8">
                                 <div class="editor-only-controls">
@@ -992,7 +997,7 @@ strong, b { font-weight: 800 !important; }
 
                     <!-- C: Accordion Editável -->
                     <div class="editor-panel mt-4">
-                        <div class="editor-badge">EDITAR: ACORDEÃO (FAQ)</div>
+                        <div class="editor-badge">Editar: Acordeão (FAQ)</div>
                         <div class="accordion-wrapper mt-2" id="editable-accordion">
                             <div class="accordion-item active">
                                 <div class="editor-only-controls">
@@ -1027,7 +1032,7 @@ strong, b { font-weight: 800 !important; }
                     
                     <!-- Pop-up Captura -->
                     <div class="editor-panel mt-4">
-                        <div class="editor-badge">MODAL DE CAPTURA (E-BOOK / NEWSLETTER)</div>
+                        <div class="editor-badge">Modal de Captura (E-book / Newsletter)</div>
                         
                         <div id="editable-modal-1" class="editor-modal-preview">
                             <div class="sv-modal" style="display: flex; max-width: 700px; flex-wrap: wrap;">
@@ -1056,7 +1061,7 @@ strong, b { font-weight: 800 !important; }
 
                     <!-- Pop-up Oferta Simples -->
                     <div class="editor-panel mt-4">
-                        <div class="editor-badge">MODAL DE AVISO / OFERTA DIRETA</div>
+                        <div class="editor-badge">Modal de Aviso / Oferta Direta</div>
                         
                         <div id="editable-modal-2" class="editor-modal-preview">
                             <div class="sv-modal" style="padding: 2.5rem; text-align: center; max-width: 450px;">
@@ -1089,26 +1094,20 @@ strong, b { font-weight: 800 !important; }
                     
                     <!-- E-mail Boas Vindas -->
                     <div class="editor-panel mt-4" style="background: #e9ecef;">
-                        <div class="editor-badge">E-MAIL: BOAS VINDAS</div>
+                        <div class="editor-badge">E-mail: Boas-vindas</div>
                         
                         <div id="editable-email-1" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
                             <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                                 
-                                <!-- Header Oficial -->
-                                <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #008ECE;">
-                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 30px; display: block; margin: 0 auto;">
-                                </div>
-                                
                                 <!-- Hero Image/Color -->
-                                <div style="background-image: linear-gradient(135deg, #008ECE 0%, #134C77 100%); padding: 40px 30px; text-align: center;">
-                                    <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: -0.5px;" contenteditable="true">Lorem Ipsum! 🎉</h1>
-                                    <p style="color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.6; margin-top: 10px; margin-bottom: 0;" contenteditable="true">Dolor sit amet consectetur.</p>
+                                <div>
+                                    <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/b356727242e8b15ab7b2e1234451d829f8cabbfc/head-iniciou-teste-gratis-7.jpg?raw=true" alt="Iniciou Teste Grátis" style="width: 100%; max-width: 600px; display: block; border: 0;">
                                 </div>
                                 
                                 <!-- Content -->
-                                <div style="padding: 40px 30px;">
+                                <div style="padding: 30px 30px 40px 30px;">
                                     <p style="color: #5D6C75; font-size: 15px; line-height: 1.6; margin-top: 0;" contenteditable="true">
-                                        Olá <strong>[Lorem Ipsum]</strong>,<br><br>
+                                        Olá <strong>[Nome]</strong>,<br><br>
                                         Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                     </p>
                                     
@@ -1121,7 +1120,7 @@ strong, b { font-weight: 800 !important; }
                                 
                                 <!-- Footer Completo -->
                                 <div style="background-color: #F8F9FA; padding: 30px; text-align: center; border-top: 1px solid #D7DEE4;">
-                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 18px; display: block; margin: 0 auto 20px auto; opacity: 0.5;">
+                                    <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/67be5efb8e7a28a24f5d001eba0d16c05f4fa396/logo-preferencial.svg?raw=true" alt="SimplesVet" style="height: 18px; display: block; margin: 0 auto 20px auto; opacity: 0.5;">
                                     
                                     <div style="margin-bottom: 20px;">
                                         <a href="https://simples.vet" style="color: #008ECE; text-decoration: none; font-size: 12px; font-weight: bold; margin: 0 8px;" contenteditable="true">Nosso Site</a>
@@ -1156,20 +1155,14 @@ strong, b { font-weight: 800 !important; }
 
                     <!-- E-mail Lançamento Promo -->
                     <div class="editor-panel mt-4" style="background: #e9ecef;">
-                        <div class="editor-badge">E-MAIL: PROMOÇÃO / NEWSLETTER</div>
+                        <div class="editor-badge">E-mail: Promoção / Newsletter</div>
                         
                         <div id="editable-email-2" class="sv-email-wrapper" style="background-color: #F4F7F9; padding: 40px 20px; font-family: Arial, Helvetica, sans-serif;">
                             <div class="sv-email-body" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
-                                
-                                <!-- Header Oficial -->
-                                <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #008ECE;">
-                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 30px; display: block; margin: 0 auto;">
-                                </div>
 
                                 <!-- Promo Hero -->
-                                <div style="background-color: #121212; padding: 50px 30px; text-align: center; background-image: radial-gradient(circle at center, #222222 0%, #121212 100%);">
-                                    <span style="display: inline-block; background: #008ECE; color: #ffffff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;" contenteditable="true">LOREM IPSUM</span>
-                                    <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: -0.5px; word-break: break-word;" contenteditable="true">Dolor sit amet consectetur.</h1>
+                                <div>
+                                    <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/f666a4b3bbac18dace902271485b41453950e16e/newsletter-maio.jpg?raw=true" alt="Newsletter Maio" style="width: 100%; max-width: 600px; display: block; border: 0;">
                                 </div>
                                 
                                 <!-- Content -->
@@ -1194,7 +1187,7 @@ strong, b { font-weight: 800 !important; }
                                 
                                 <!-- Footer Completo -->
                                 <div style="background-color: #F8F9FA; padding: 30px; text-align: center; border-top: 1px solid #D7DEE4;">
-                                    <img src="https://wp-prod-images.simples.vet/wp-content/uploads/2022/12/simplesvet-logo.svg" alt="SimplesVet" style="height: 18px; display: block; margin: 0 auto 20px auto; opacity: 0.5;">
+                                    <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/67be5efb8e7a28a24f5d001eba0d16c05f4fa396/logo-preferencial.svg?raw=true" alt="SimplesVet" style="height: 18px; display: block; margin: 0 auto 20px auto; opacity: 0.5;">
                                     
                                     <div style="margin-bottom: 20px;">
                                         <a href="https://simples.vet" style="color: #008ECE; text-decoration: none; font-size: 12px; font-weight: bold; margin: 0 8px;" contenteditable="true">Nosso Site</a>
@@ -1233,17 +1226,18 @@ strong, b { font-weight: 800 !important; }
                  ========================================== -->
             <section id="landing-long" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
                 
-                <!-- Dobra 1: Hero Imersivo + Mockup Lado-a-Lado com Glow Tech -->
-                <div class="py-xl" style="background: var(--sv-white); position: relative; overflow: hidden; border-bottom: 1px solid var(--sv-gray-30);">
-                    
-                    <!-- Glow Blur Radial Effect -->
-                    <div class="glow-bg anim-appear-zoom anim-delay-1000">
-                        <div class="glow-blob-1"></div>
-                        <div class="glow-blob-2"></div>
+                <!-- Cabeçalho (Logo) -->
+                <header style="background: var(--sv-white); padding: 2rem 0 0 0;">
+                    <div class="container text-center text-left-desktop">
+                        <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/logo-preferencial.svg?raw=true" alt="SimplesVet Logo" style="height: 32px;">
                     </div>
+                </header>
 
-                    <div class="container relative z-10" style="padding-top: 2rem;">
-                        <div class="grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                <!-- Dobra 1: Hero Imersivo + Mockup Lado-a-Lado com Glow Tech -->
+                <div class="py-xl" style="background: var(--sv-white); position: relative; overflow: hidden; border-bottom: 1px solid var(--sv-gray-30); padding-top: 1.5rem !important;">
+                    
+                    <div class="container relative z-10">
+                        <div class="grid grid-2 items-center gap-4 text-left-desktop">
                             
                             <!-- Esquerda: Texto e CTA -->
                             <div class="anim-appear" style="padding-right: 1rem;">
@@ -1257,8 +1251,8 @@ strong, b { font-weight: 800 !important; }
                                     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                 </p>
                                 <div class="flex flex-wrap gap-3 anim-appear anim-delay-300">
-                                    <button class="sv-btn sv-btn-primary" style="box-shadow: 0 10px 30px rgba(0,142,206,0.2);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
-                                    <button class="sv-btn sv-btn-outline"><i data-lucide="play-circle" style="width: 18px;"></i> Dolor Sit</button>
+                                    <button class="sv-btn sv-btn-primary mobile-w-100" style="box-shadow: 0 10px 30px rgba(0,142,206,0.2);" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">Lorem Ipsum</button>
+                                    <button class="sv-btn sv-btn-outline mobile-w-100"><i data-lucide="play-circle" style="width: 18px;"></i> Dolor Sit</button>
                                 </div>
                             </div>
 
@@ -1305,12 +1299,12 @@ strong, b { font-weight: 800 !important; }
                 <!-- Dobra 3: Prova Social -->
                 <div style="background: var(--sv-white); padding: 3rem 0; border-bottom: 1px solid var(--sv-gray-30);">
                     <div class="container text-center">
-                        <p class="sv-small font-bold" style="color: var(--sv-gray-200); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">LOREM IPSUM DOLOR SIT AMET</p>
+                        <p class="sv-small font-bold" style="color: var(--sv-gray-200); letter-spacing: 1px; margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet</p>
                         <div class="flex flex-wrap justify-center items-center gap-4" style="opacity: 0.5;">
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">LOREM</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">IPSUM</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">DOLOR</div>
-                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">SIT AMET</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">Lorem</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">Ipsum</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">Dolor</div>
+                            <div style="font-family: 'Exo', sans-serif; font-size: 1.25rem; font-weight: 800; padding: 0 20px;">Sit amet</div>
                         </div>
                     </div>
                 </div>
@@ -1319,9 +1313,6 @@ strong, b { font-weight: 800 !important; }
                 <div class="py-lg" style="background: var(--sv-white);">
                     <div class="container grid grid-2 items-center gap-4">
                         <div data-aos="fade-right">
-                            <div style="background: var(--sv-blue-100); width: 48px; height: 48px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1rem;">
-                                <i data-lucide="calculator" style="color: var(--sv-primary); width: 24px; height: 24px;"></i>
-                            </div>
                             <h2 class="sv-h2">Lorem ipsum dolor sit amet</h2>
                             <p class="sv-p lead">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                             <ul style="list-style:none; padding:0; margin-top:1.5rem;" class="flex flex-col gap-2">
@@ -1331,9 +1322,7 @@ strong, b { font-weight: 800 !important; }
                             </ul>
                         </div>
                         <div data-aos="fade-left">
-                            <div style="background: var(--sv-gray-10); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" style="border-radius: var(--radius-sm); width: 100%;">
-                            </div>
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" style="border-radius: var(--radius-lg); width: 100%; box-shadow: var(--shadow-medium);">
                         </div>
                     </div>
                 </div>
@@ -1342,14 +1331,9 @@ strong, b { font-weight: 800 !important; }
                 <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
                         <div data-aos="fade-right">
-                            <div style="background: var(--sv-white); border: 1px solid var(--sv-gray-30); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-medium);">
-                                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" style="border-radius: var(--radius-sm); width: 100%;">
-                            </div>
+                            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" style="border-radius: var(--radius-lg); width: 100%; box-shadow: var(--shadow-medium);">
                         </div>
                         <div data-aos="fade-left">
-                            <div style="background: rgba(51, 163, 68, 0.15); width: 48px; height: 48px; border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom: 1rem;">
-                                <i data-lucide="package" style="color: var(--sv-green-success); width: 24px; height: 24px;"></i>
-                            </div>
                             <h2 class="sv-h2">Consectetur adipiscing elit</h2>
                             <p class="sv-p lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                             <ul style="list-style:none; padding:0; margin-top:1.5rem;" class="flex flex-col gap-2">
@@ -1496,7 +1480,7 @@ strong, b { font-weight: 800 !important; }
                                 </div>
                             </div>
                             <div class="sv-card sv-pricing-highlight flex flex-col text-center">
-                                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sv-blue-brand); color: white; padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.7rem; font-weight: bold;">LOREM IPSUM</div>
+                                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sv-blue-brand); color: white; padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.7rem; font-weight: bold;">Lorem Ipsum</div>
                                 <h3 class="sv-h3">Ipsum</h3>
                                 <p class="sv-small mb-2">Sit amet consectetur</p>
                                 <h2 class="sv-h1 text-primary my-1">R$ 289<span class="sv-small" style="color: var(--sv-gray-300);">,90/mês</span></h2>
@@ -1571,18 +1555,35 @@ strong, b { font-weight: 800 !important; }
                 </div>
 
                 <!-- CTA Final -->
-                <div class="py-xl bg-primary text-center relative overflow-hidden" style="background: var(--sv-blue-brand);">
-                    <div class="container relative z-10" data-aos="fade-up">
-                        <h2 class="sv-h2 text-white mb-2">Lorem ipsum dolor sit amet?</h2>
-                        <p class="sv-p text-white mb-4" style="opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div class="flex justify-center gap-4 flex-wrap">
-                            <button class="sv-btn sv-btn-white" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">
-                                Lorem Ipsum
-                            </button>
+                <div class="py-xl bg-primary relative overflow-hidden" style="background: var(--sv-blue-brand);">
+                    <div class="container relative z-10">
+                        <div class="grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                            <!-- Coluna Esquerda: Imagem -->
+                            <div data-aos="fade-right">
+                                <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/imagem-template.png?raw=true" alt="Imagem CTA Final" class="img-responsive-h" style="border-radius: var(--radius-lg); width: 100%; box-shadow: var(--shadow-brutal);">
+                            </div>
+                            
+                            <!-- Coluna Direita: Textos e Botão -->
+                            <div data-aos="fade-left">
+                                <h2 class="sv-h2 text-white mb-2">Lorem ipsum dolor sit amet?</h2>
+                                <p class="sv-p text-white mb-4" style="opacity: 0.9; max-width: 600px;">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="flex gap-4 flex-wrap">
+                                    <button class="sv-btn sv-btn-white mobile-w-100" onclick="document.getElementById('form-dobra-2').scrollIntoView({behavior:'smooth'})">
+                                        Lorem Ipsum
+                                    </button>
+                                </div>
+                                <p class="sv-small text-white mt-4" style="opacity: 0.7;">Lorem ipsum dolor sit amet.</p>
+                            </div>
                         </div>
-                        <p class="sv-small text-white mt-4" style="opacity: 0.7;">Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
+
+                <!-- Rodapé da Landing Page -->
+                <footer style="background: var(--sv-white); padding: 3rem 0; text-align: center;">
+                    <div class="container">
+                        <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/logo-preferencial.svg?raw=true" alt="SimplesVet Logo" style="height: 24px; opacity: 0.5; display: block; margin: 0 auto;">
+                    </div>
+                </footer>
             </section>
 
             <!-- ==========================================
@@ -1591,20 +1592,12 @@ strong, b { font-weight: 800 !important; }
             <section id="thank-you" class="ds-section" style="margin: -3rem; padding: 0;">
                 <div class="py-xl" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sv-white); position: relative; overflow: hidden;">
                     
-                    <!-- Glow Blur Radial Effect -->
-                    <div class="glow-bg anim-appear-zoom anim-delay-1000">
-                        <div class="glow-blob-1" style="background: radial-gradient(ellipse at center, rgba(0, 142, 206, 0.15) 10%, transparent 60%); top: 50%; transform: translate(-50%, -50%) scale(2.5);"></div>
-                        <div class="glow-blob-2" style="background: radial-gradient(ellipse at center, rgba(55, 151, 222, 0.2) 10%, transparent 60%); top: 50%; transform: translate(-50%, -50%) scale(2);"></div>
-                    </div>
-
                     <div class="container relative z-10">
-                        <div class="grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
+                        <div class="grid grid-2 items-center gap-4 text-left-desktop">
                             
                             <!-- Esquerda: Texto e Ações -->
                             <div class="anim-appear" style="padding-right: 1rem;">
-                                <div style="width: 64px; height: 64px; background: rgba(51, 163, 68, 0.1); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom: 1.5rem; display: inline-flex;">
-                                    <i data-lucide="check" style="color: var(--sv-green-success); width: 32px; height: 32px;"></i>
-                                </div>
+                                <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/logo-preferencial.svg?raw=true" alt="SimplesVet Logo" style="height: 32px; margin-bottom: 2rem;">
                                 
                                 <h1 class="sv-h1 text-gradient" style="margin-bottom: 0.75rem;">Lorem Ipsum!</h1>
                                 
@@ -1613,8 +1606,8 @@ strong, b { font-weight: 800 !important; }
                                 </p>
                                 
                                 <div class="flex flex-wrap gap-3 anim-appear anim-delay-300">
-                                    <button class="sv-btn sv-btn-secondary" onclick="navigate('landing-long', document.querySelector('[onclick*=\'landing-long\']'))"><i data-lucide="arrow-left"></i> Lorem Ipsum</button>
-                                    <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary">Dolor Sit <i data-lucide="external-link" style="width: 16px;"></i></a>
+                                    <button class="sv-btn sv-btn-secondary mobile-w-100" onclick="navigate('landing-long', document.querySelector('[onclick*=\'landing-long\']'))"><i data-lucide="arrow-left"></i> Lorem Ipsum</button>
+                                    <a href="https://simples.vet/blog" target="_blank" class="sv-btn sv-btn-primary mobile-w-100">Dolor Sit <i data-lucide="external-link" style="width: 16px;"></i></a>
                                 </div>
                             </div>
 
