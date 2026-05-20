@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
     <title>SimplesVet - Design System (Ultra Refined)</title>
 
     <!-- ==========================================
@@ -811,7 +812,7 @@ strong, b { font-weight: 800 !important; }
             <section id="templates" class="ds-section">
                 <div class="ds-section-inner">
                     <h1 class="sv-h1">Design Builder</h1>
-                    <p class="sv-p lead">Apenas clique no texto para editar o conteúdo. <b>Pode adicionar, reorganizar ou remover os blocos livremente.</b></p>
+                    <p class="sv-p lead">Apenas clique no text para editar o conteúdo. <b>Pode adicionar, reorganizar ou remover os blocos livremente.</b></p>
                     
                     <!-- NOVO: Contador de Urgência -->
                     <div class="editor-panel mt-4" style="border-color: var(--sv-blue-brand); background: rgba(0, 142, 206, 0.02);">
@@ -1227,9 +1228,9 @@ strong, b { font-weight: 800 !important; }
             <section id="landing-long" class="ds-section" style="margin: -3rem; padding: 0; max-width: 100%;">
                 
                 <!-- Cabeçalho (Logo) -->
-                <header style="background: var(--sv-white); padding: 2rem 0 0 0;">
+                <header style="background: var(--sv-white); padding: 4rem 0 0.5rem 0;">
                     <div class="container text-center text-left-desktop">
-                        <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/logo-preferencial.svg?raw=true" alt="SimplesVet Logo" style="height: 32px;">
+                        <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/logo-preferencial.svg?raw=true" alt="SimplesVet Logo" style="height: 32px; object-fit: contain;">
                     </div>
                 </header>
 
@@ -1331,7 +1332,7 @@ strong, b { font-weight: 800 !important; }
                 <div class="py-lg" style="background: var(--sv-gray-10);">
                     <div class="container grid grid-2 items-center gap-4 stack-reverse-mobile text-left-desktop">
                         <div data-aos="fade-right">
-                            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop" style="border-radius: var(--radius-lg); width: 100%; box-shadow: var(--shadow-medium);">
+                            <img src="https://github.com/Design-8DHubify/8dh-Simplesvet/blob/757c8c4b89911873bba4393e7f8b7c775e37997d/imagem-template.png?raw=true" alt="Imagem Feature" style="border-radius: var(--radius-lg); width: 100%; box-shadow: var(--shadow-medium);">
                         </div>
                         <div data-aos="fade-left">
                             <h2 class="sv-h2">Consectetur adipiscing elit</h2>
@@ -1700,23 +1701,6 @@ strong, b { font-weight: 800 !important; }
                 console.error('Erro ao copiar', err);
             }
             document.body.removeChild(textArea);
-        }
-
-        function copyCodeTemplate(buttonEl) {
-            const preElement = buttonEl.parentNode.nextElementSibling;
-            if(!preElement) return;
-            const code = preElement.innerText;
-            copyToClipboard(code, buttonEl);
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('feedback-toast');
-            if(toast) {
-                const textSpan = toast.querySelector('span');
-                if (textSpan && message) textSpan.innerText = message;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2500);
-            }
         }
 
         // 3. GERADOR DINÂMICO DE CORES DA MARCA
@@ -2351,7 +2335,7 @@ strong, b { font-weight: 800 !important; }
                 btnSubmit.disabled = false;
                 
                 // Redirecionar para Thank You usando a função de navegação que gere a barra lateral
-                navigate('thank-you', document.querySelector('.ds-menu-item[onclick*="thank-you"]'));
+                navigate('thank-you', document.querySelector('.ds-menu-item[onclick*=\"thank-you\"]'));
             });
         }
     </script>
